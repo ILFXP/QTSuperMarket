@@ -35,6 +35,7 @@ namespace QTSuperMarket
             Settings1.Default.tci1 = 1;
             Settings1.Default.tci2 = 2;
             Settings1.Default.Save();
+            checkBox5.Checked = true;
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -70,9 +71,9 @@ namespace QTSuperMarket
              * 1-8位
              * 不可为空
              */
-            Regex defaultpersonPasswordCheck = new Regex("^\d{1,8}$");
+            Regex defaultpersonPasswordCheck = new Regex("^[0-9]*$");
             string defaultpersonPassword = textBox1.Text.Trim();
-            if (defaultpersonPasswordCheck.IsMatch(defaultpersonPassword))
+            if (defaultpersonPasswordCheck.IsMatch(defaultpersonPassword) && defaultpersonPassword.Length > 0)
             {
                 /*
                  * 通过默认密码的数据验证

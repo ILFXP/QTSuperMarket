@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace QTSuperMarket
 {
@@ -84,8 +85,83 @@ namespace QTSuperMarket
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*Settings1.Default.lastUseTime = DateTime.Now.ToString();
-            Settings1.Default.lastUsePerson = textBox1.Text.Trim();*/
+            /*
+             * 读取本地设置中的配置
+             * 1.保持窗口总在最前
+             * 2.不再显示引导页
+             */
+            if(Settings1.Default.skipGuide == false)
+            {
+                GuideForm gf = new GuideForm();
+                gf.Show();
+            }
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            /*
+             * 读取本地设置中的配置
+             * 判断是否开启以下功能：
+             * 1.关闭程序是清理SQL Server Management Studio客户端
+             * 2.退出确认
+             */
+            if(Settings1.Default.quiteCheck == true)
+            {
+                //打开-退出确认
+                DialogResult result = MessageBox.Show("是否退出程序？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    //确认退出程序
+                    if (Settings1.Default.cleanSSMS == true)
+                    {
+                        //开启-关闭程序是清理SQL Server Management Studio客户端
+                        Process[] ifSSMSisRun = Process.GetProcessesByName("SSMS");
+                        if (ifSSMSisRun.Length > 0)
+                        {
+                            MessageBox.Show("即将为您关闭SQL Server Management Studio并退出程序！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            foreach (Process killSSMS in ifSSMSisRun)
+                                killSSMS.Kill();
+                            Application.Exit();
+                        }
+                        else
+                        {
+                            MessageBox.Show("本地的SQL Server Managem Studio客户端未运行,程序即将退出！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Application.Exit();
+                        }
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+
+            }
+            else
+            {
+                //关闭-退出确认
+                if(Settings1.Default.cleanSSMS == true)
+                {
+                    //开启-关闭程序是清理SQL Server Management Studio客户端
+                    Process[] ifSSMSisRun = Process.GetProcessesByName("SSMS");
+                    if (ifSSMSisRun.Length > 0)
+                    {
+                        MessageBox.Show("即将为您关闭SQL Server Management Studio并退出程序！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        foreach (Process killSSMS in ifSSMSisRun)
+                            killSSMS.Kill();
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("本地的SQL Server Managem Studio客户端未运行,程序即将退出！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Exit();
+                    }
+                }
+                else
+                {
+                    //关闭-关闭程序是清理SQL Server Management Studio客户端
+                    Application.Exit();
+                }
+            }
         }
     }
 }

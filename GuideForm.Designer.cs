@@ -36,6 +36,7 @@ namespace QTSuperMarket
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
@@ -50,7 +51,6 @@ namespace QTSuperMarket
             this.button5 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -144,13 +144,24 @@ namespace QTSuperMarket
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Enabled = false;
+            this.checkBox5.Location = new System.Drawing.Point(61, 163);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(228, 22);
+            this.checkBox5.TabIndex = 12;
+            this.checkBox5.Text = "为员工分配默认登录密码";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(295, 161);
             this.textBox1.MaxLength = 11;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(228, 28);
-            this.textBox1.TabIndex = 11;
+            this.textBox1.TabIndex = 8;
             // 
             // checkBox4
             // 
@@ -280,17 +291,6 @@ namespace QTSuperMarket
             this.label4.Size = new System.Drawing.Size(152, 18);
             this.label4.TabIndex = 0;
             this.label4.Text = "您启用的功能有：";
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Enabled = false;
-            this.checkBox5.Location = new System.Drawing.Point(61, 163);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(228, 22);
-            this.checkBox5.TabIndex = 12;
-            this.checkBox5.Text = "为员工分配默认登录密码";
-            this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // GuideForm
             // 

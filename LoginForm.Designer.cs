@@ -42,9 +42,9 @@ namespace QTSuperMarket
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(169, 201);
+            this.button1.Location = new System.Drawing.Point(169, 190);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 39);
+            this.button1.Size = new System.Drawing.Size(94, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "进入系统";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,44 +53,44 @@ namespace QTSuperMarket
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 138);
+            this.label1.Location = new System.Drawing.Point(14, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "姓名：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 171);
+            this.label2.Location = new System.Drawing.Point(14, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 20);
+            this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "密码：";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 135);
+            this.textBox1.Location = new System.Drawing.Point(72, 122);
             this.textBox1.MaxLength = 8;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 27);
+            this.textBox1.Size = new System.Drawing.Size(191, 28);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(72, 168);
+            this.textBox2.Location = new System.Drawing.Point(72, 156);
             this.textBox2.MaxLength = 16;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(191, 27);
+            this.textBox2.Size = new System.Drawing.Size(191, 28);
             this.textBox2.TabIndex = 4;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 109);
+            this.pictureBox1.Size = new System.Drawing.Size(251, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -98,9 +98,9 @@ namespace QTSuperMarket
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(72, 210);
+            this.linkLabel1.Location = new System.Drawing.Point(72, 198);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(69, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(80, 18);
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "忘记密码";
@@ -108,9 +108,9 @@ namespace QTSuperMarket
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 252);
+            this.ClientSize = new System.Drawing.Size(275, 239);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox2);
@@ -118,12 +118,14 @@ namespace QTSuperMarket
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "清涛超市库存管理系统";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
