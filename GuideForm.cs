@@ -36,6 +36,17 @@ namespace QTSuperMarket
             Settings1.Default.tci2 = 2;
             Settings1.Default.Save();
             checkBox5.Checked = true;
+            if (Settings1.Default.cleanSSMS == true) checkBox2.Checked = true;
+            else checkBox2.Checked = false;
+            if (Settings1.Default.startBoot == true) checkBox3.Checked = true;
+            else checkBox3.Checked = false;
+            if (Settings1.Default.index999 == true) checkBox4.Checked = true;
+            else checkBox4.Checked = false;
+            if (Settings1.Default.quiteCheck == true) checkBox6.Checked = true;
+            else checkBox6.Checked = false;
+            if (Settings1.Default.skipGuide == true) checkBox7.Checked = true;
+            else checkBox7.Checked = false;
+            textBox1.Text = Settings1.Default.defaultPassword;
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -161,9 +172,13 @@ namespace QTSuperMarket
             }
             Settings1.Default.defaultPassword = textBox1.Text.Trim();
             Settings1.Default.Save();
-            LoginForm LF = new LoginForm();
-            LF.Show();
-            this.Hide();
+            MessageBox.Show("设置已保存，请重新启动程序！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            Application.Exit();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

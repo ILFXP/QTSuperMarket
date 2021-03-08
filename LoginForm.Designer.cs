@@ -76,6 +76,7 @@ namespace QTSuperMarket
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(191, 28);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox2
             // 
@@ -85,6 +86,7 @@ namespace QTSuperMarket
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(191, 28);
             this.textBox2.TabIndex = 4;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
@@ -113,7 +115,7 @@ namespace QTSuperMarket
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(52, 35);
             this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
+            this.button2.Text = "调试";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

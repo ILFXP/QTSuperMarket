@@ -31,7 +31,6 @@ namespace QTSuperMarket
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -68,11 +67,11 @@ namespace QTSuperMarket
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(588, 310);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.button1);
@@ -83,15 +82,6 @@ namespace QTSuperMarket
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "首页";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(3, 233);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 40);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "测试数据库连接";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -158,10 +148,11 @@ namespace QTSuperMarket
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(295, 161);
-            this.textBox1.MaxLength = 11;
+            this.textBox1.MaxLength = 8;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(228, 28);
-            this.textBox1.TabIndex = 8;
+            this.textBox1.TabIndex = 6;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // checkBox4
             // 
@@ -301,6 +292,7 @@ namespace QTSuperMarket
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GuideForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "清涛超市库存管理系统：引导页";
             this.Load += new System.EventHandler(this.GuideForm_Load);
             this.tabControl1.ResumeLayout(false);
@@ -321,7 +313,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox6;

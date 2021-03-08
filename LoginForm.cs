@@ -110,6 +110,7 @@ namespace QTSuperMarket
             {
                 if(Settings1.Default.quiteCheck == true)
                 {
+                    //打开-打开
                     DialogResult result = MessageBox.Show("是否退出程序？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     if (result == DialogResult.OK)
                     {
@@ -133,13 +134,53 @@ namespace QTSuperMarket
                         e.Cancel = true;
                     }
                 }
+                else
+                {
+                    //打开-关闭
+                    Process[] ifSSMSisRun = Process.GetProcessesByName("SSMS");
+                    if (ifSSMSisRun.Length > 0)
+                    {
+                        MessageBox.Show("即将为您关闭SQL Server Management Studio并退出程序！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        foreach (Process killSSMS in ifSSMSisRun)
+                            killSSMS.Kill();
+                        Dispose();
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("本地的SQL Server Managem Studio客户端未运行,程序即将退出！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Dispose();
+                        Application.Exit();
+                    }
+                }
+            }
+            else
+            {
+                if(Settings1.Default.quiteCheck == true)
+                {
+                    //关闭-打开
+                    DialogResult result = MessageBox.Show("是否退出程序？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (result == DialogResult.OK)
+                    {
+                        Dispose();
+                        Application.Exit();
+                    }
+                    else if(result == DialogResult.Cancel)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else
+                {
+                    //关闭-关闭
+                    Dispose();
+                    Application.Exit();
+                }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GuideForm gf = new GuideForm();
-            gf.Show();
             tiaoshi ts = new tiaoshi();
             ts.Show();
 

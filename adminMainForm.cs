@@ -20,6 +20,7 @@ namespace QTSuperMarket
 
         private void adminMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Dispose();
             Application.Exit();
         }
 
