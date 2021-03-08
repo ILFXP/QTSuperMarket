@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace QTSuperMarket
 {
@@ -63,22 +64,62 @@ namespace QTSuperMarket
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim() == "")
-                MessageBox.Show("请设置正确的员工默认登录密码！","提示");
-            else
+            /*
+             * 数据验证
+             * 设置纯数字默认密码
+             * 1-8位
+             * 不可为空
+             */
+            Regex defaultpersonPasswordCheck = new Regex("^\d{1,8}$");
+            string defaultpersonPassword = textBox1.Text.Trim();
+            if (defaultpersonPasswordCheck.IsMatch(defaultpersonPassword))
             {
-                if (checkBox2.Checked == true) label5.Text = label5.Text + checkBox2.Text + "\n";
-                if (checkBox3.Checked == true) label5.Text = label5.Text + checkBox3.Text + "\n";
-                if (checkBox4.Checked == true) label5.Text = label5.Text + checkBox4.Text + "\n";
-                if (checkBox6.Checked == true) label5.Text = label5.Text + checkBox6.Text + "\n";
-                if (checkBox7.Checked == true) label5.Text = label5.Text + checkBox7.Text + "\n";
-                label5.Text = label5.Text + "员工默认登录密码：" + textBox1.Text.Trim();
+                /*
+                 * 通过默认密码的数据验证
+                 * 将选中项进行显示
+                 * 将选中项写入配置
+                 */
+                if (checkBox2.Checked == true)
+                {
+                    //关闭程序时清理SQL Server Management Studio客户端
+                    label5.Text += checkBox2.Text + "\n";
+                    Settings1.Default.cleanSSMS = true;
+                }
+
+                if (checkBox3.Checked == true) {
+                    //开机自动启动
+                    label5.Text += checkBox3.Text + "\n";
+                    Settings1.Default.startBoot = true;
+                }
+
+                if (checkBox4.Checked == true) {
+                    //保持窗口总在最前
+                    label5.Text += checkBox4.Text + "\n";
+                    Settings1.Default.index999 = true;
+                }
+                
+                if (checkBox6.Checked == true) {
+                    //退出确认
+                    label5.Text += checkBox6.Text + "\n";
+                    Settings1.Default.quiteCheck = true;
+                }
+                
+                if (checkBox7.Checked == true) {
+                    //不再显示引导页
+                    label5.Text += checkBox7.Text + "\n";
+                    Settings1.Default.skipGuide = true;
+                }
+                
+                label5.Text += "您设置的员工默认登录密码为：" + defaultpersonPassword;
                 Settings1.Default.tci1 = 0;
                 Settings1.Default.tci2 = 1;
                 Settings1.Default.Save();
                 tabControl1.SelectedIndex = 2;
             }
-            
+            else
+            {
+                MessageBox.Show("默认密码设置格式有误，请设置为1~8位的纯数字密码，请检查后重试！","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -104,12 +145,12 @@ namespace QTSuperMarket
             }
             if (checkBox4.Checked == true)
             {
-                Settings1.Default.useRecord = true;
+                Settings1.Default.quiteCheck = true;
                 Settings1.Default.Save();
             }
             if (checkBox6.Checked == true)
             {
-                Settings1.Default.quiteCheck = true;
+                Settings1.Default.index999 = true;
                 Settings1.Default.Save();
             }
             if (checkBox7.Checked == true)

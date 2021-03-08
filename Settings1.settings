@@ -32,10 +32,10 @@
     <Setting Name="startBoot" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="quiteCheck" Type="System.Boolean" Scope="User">
+    <Setting Name="index999" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="useRecord" Type="System.Boolean" Scope="User">
+    <Setting Name="quiteCheck" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="defaultPassword" Type="System.String" Scope="User">

@@ -33,10 +33,10 @@ namespace QTSuperMarket
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -50,8 +50,7 @@ namespace QTSuperMarket
             this.button5 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -63,6 +62,7 @@ namespace QTSuperMarket
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -74,13 +74,12 @@ namespace QTSuperMarket
             // 
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(580, 277);
+            this.tabPage1.Size = new System.Drawing.Size(580, 278);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "首页";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -89,36 +88,27 @@ namespace QTSuperMarket
             // 
             this.button2.Location = new System.Drawing.Point(3, 233);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 40);
+            this.button2.Size = new System.Drawing.Size(150, 40);
             this.button2.TabIndex = 4;
             this.button2.Text = "测试数据库连接";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(39, 50);
+            this.label2.Location = new System.Drawing.Point(39, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(501, 166);
+            this.label2.Size = new System.Drawing.Size(501, 184);
             this.label2.TabIndex = 3;
             this.label2.Text = "本程序为-清涛超市库存管理系统-：\r\n程序运行时需要连接SQL Server数据库，请确认您的计算机能够正常连接到数据库。（您可点击-测试数据库连接-按钮测试联通" +
-    "情况）\r\n本程序需要在本地计算机保存设置，需要一定的存储空间。\r\n在使用的过程中如果出现问题请联系作者：\r\n手机：13525475487（微信同号）\r\nQQ：1" +
-    "352070625\r\n邮箱：1352070625@qq.com";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "关于程序：";
+    "情况）\r\n本程序需要在本地计算机保存设置，需要一定的存储空间。\r\n在使用的过程中如果出现问题请联系作者：\r\n\r\n手机：13525475487（微信同号）\r\nQQ" +
+    "：1352070625\r\n邮箱：1352070625@qq.com";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(371, 242);
+            this.checkBox1.Location = new System.Drawing.Point(357, 243);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(106, 24);
+            this.checkBox1.Size = new System.Drawing.Size(120, 22);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "同意并开始";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -136,8 +126,8 @@ namespace QTSuperMarket
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBox5);
             this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.checkBox4);
             this.tabPage2.Controls.Add(this.checkBox7);
             this.tabPage2.Controls.Add(this.checkBox6);
@@ -146,30 +136,38 @@ namespace QTSuperMarket
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(580, 277);
+            this.tabPage2.Size = new System.Drawing.Size(580, 278);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(295, 161);
+            this.textBox1.MaxLength = 11;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(228, 28);
+            this.textBox1.TabIndex = 11;
+            // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(277, 137);
+            this.checkBox4.Location = new System.Drawing.Point(349, 135);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(151, 24);
+            this.checkBox4.Size = new System.Drawing.Size(174, 22);
             this.checkBox4.TabIndex = 9;
-            this.checkBox4.Text = "保存最近使用记录";
+            this.checkBox4.Text = "保持窗口总在最前";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(84, 137);
+            this.checkBox7.Location = new System.Drawing.Point(61, 135);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(136, 24);
+            this.checkBox7.Size = new System.Drawing.Size(156, 22);
             this.checkBox7.TabIndex = 8;
             this.checkBox7.Text = "不再显示引导页";
             this.checkBox7.UseVisualStyleBackColor = true;
@@ -177,9 +175,9 @@ namespace QTSuperMarket
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(277, 107);
+            this.checkBox6.Location = new System.Drawing.Point(349, 107);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(91, 24);
+            this.checkBox6.Size = new System.Drawing.Size(102, 22);
             this.checkBox6.TabIndex = 7;
             this.checkBox6.Text = "退出确认";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -187,9 +185,9 @@ namespace QTSuperMarket
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(84, 107);
+            this.checkBox3.Location = new System.Drawing.Point(61, 107);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(121, 24);
+            this.checkBox3.Size = new System.Drawing.Size(138, 22);
             this.checkBox3.TabIndex = 4;
             this.checkBox3.Text = "开机自动启动";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -197,9 +195,9 @@ namespace QTSuperMarket
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(84, 77);
+            this.checkBox2.Location = new System.Drawing.Point(61, 79);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(414, 24);
+            this.checkBox2.Size = new System.Drawing.Size(462, 22);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "关闭程序时清理SQL Server Management Studio客户端";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -229,7 +227,7 @@ namespace QTSuperMarket
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(40, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(234, 20);
+            this.label3.Size = new System.Drawing.Size(278, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "以下为程序提供的一些功能设置：";
             // 
@@ -239,9 +237,9 @@ namespace QTSuperMarket
             this.tabPage4.Controls.Add(this.button5);
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.label4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(580, 277);
+            this.tabPage4.Size = new System.Drawing.Size(580, 278);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "完成";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -271,7 +269,7 @@ namespace QTSuperMarket
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(100, 80);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 20);
+            this.label5.Size = new System.Drawing.Size(0, 18);
             this.label5.TabIndex = 1;
             // 
             // label4
@@ -279,26 +277,20 @@ namespace QTSuperMarket
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(40, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 20);
+            this.label4.Size = new System.Drawing.Size(152, 18);
             this.label4.TabIndex = 0;
             this.label4.Text = "您启用的功能有：";
             // 
-            // label6
+            // checkBox5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(84, 180);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "员工默认登录密码：";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(234, 177);
-            this.textBox1.MaxLength = 12;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 27);
-            this.textBox1.TabIndex = 11;
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Enabled = false;
+            this.checkBox5.Location = new System.Drawing.Point(61, 163);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(228, 22);
+            this.checkBox5.TabIndex = 12;
+            this.checkBox5.Text = "为员工分配默认登录密码";
+            this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // GuideForm
             // 
@@ -329,7 +321,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox7;
@@ -346,6 +337,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBox5;
     }
 }

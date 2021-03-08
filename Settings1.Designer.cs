@@ -146,24 +146,24 @@ namespace QTSuperMarket {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool quiteCheck {
+        public bool index999 {
             get {
-                return ((bool)(this["quiteCheck"]));
+                return ((bool)(this["index999"]));
             }
             set {
-                this["quiteCheck"] = value;
+                this["index999"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool useRecord {
+        public bool quiteCheck {
             get {
-                return ((bool)(this["useRecord"]));
+                return ((bool)(this["quiteCheck"]));
             }
             set {
-                this["useRecord"] = value;
+                this["quiteCheck"] = value;
             }
         }
         
