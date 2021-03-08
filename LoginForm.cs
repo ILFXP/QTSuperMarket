@@ -24,7 +24,7 @@ namespace QTSuperMarket
             //建立数据库的连接
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
-
+            //创建变量
             string personName = textBox1.Text.Trim();
             string personPassword = textBox2.Text.Trim();
             string personNum = "";
@@ -53,11 +53,11 @@ namespace QTSuperMarket
                 {
                     Settings1.Default.nowAdmin = personName;
                     Settings1.Default.Save();
-                    MessageBox.Show("欢迎，" + personName + "！您拥有管理员权限，即将为您打开后台控制程序。","提示");
+                    MessageBox.Show("欢迎，" + personName + "！您拥有管理员权限，即将为您打开后台控制程序。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     adminMainForm amf = new adminMainForm();
-                    amf.Show();
-                    this.Hide();
-
+                    Dispose();
+                    this.Close();
+                    amf.ShowDialog();
                 }
                 else if(personLimit == "worker"){
                     Settings1.Default.workerLastUseName = Settings1.Default.nowWorker = personName;
@@ -66,14 +66,15 @@ namespace QTSuperMarket
                     Settings1.Default.Save();
                     MessageBox.Show("欢迎，" + personName + "!","提示");
                     workerMainForm wmf = new workerMainForm();
-                    wmf.Show();
-                    this.Hide();
+                    Dispose();
+                    this.Close();
+                    wmf.ShowDialog();
                 }
             }
             //无查询结果
             else
             {
-                MessageBox.Show("请确认您输入的姓名和密码是否正确！请在确认后重新尝试登录！", "错误");
+                MessageBox.Show("请确认您输入的姓名和密码是否正确！请在确认后重新尝试登录！", "错误",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 textBox1.Text = textBox2.Text = "";
             }
         }
@@ -83,107 +84,10 @@ namespace QTSuperMarket
             MessageBox.Show("忘记密码请联系管理员！","提示");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            /*
-             * 读取本地设置中的配置
-             * 1.保持窗口总在最前
-             * 2.不再显示引导页
-             */
-            if(Settings1.Default.skipGuide == false)
-            {
-                GuideForm gf = new GuideForm();
-                gf.Show();
-                this.Hide();
-            }
-        }
-
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            /*
-             * 读取本地设置中的配置
-             * 判断是否开启以下功能：
-             * 1.关闭程序是清理SQL Server Management Studio客户端
-             * 2.退出确认
-             */
-            if (Settings1.Default.cleanSSMS == true)
-            {
-                if(Settings1.Default.quiteCheck == true)
-                {
-                    //打开-打开
-                    DialogResult result = MessageBox.Show("是否退出程序？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    if (result == DialogResult.OK)
-                    {
-                        Process[] ifSSMSisRun = Process.GetProcessesByName("SSMS");
-                        if (ifSSMSisRun.Length > 0)
-                        {
-                            MessageBox.Show("即将为您关闭SQL Server Management Studio并退出程序！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            foreach (Process killSSMS in ifSSMSisRun)
-                                killSSMS.Kill();
-                            Dispose();
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            MessageBox.Show("本地的SQL Server Managem Studio客户端未运行,程序即将退出！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Dispose();
-                            Application.Exit();
-                        }
-                    }
-                    else if(result == DialogResult.Cancel){
-                        e.Cancel = true;
-                    }
-                }
-                else
-                {
-                    //打开-关闭
-                    Process[] ifSSMSisRun = Process.GetProcessesByName("SSMS");
-                    if (ifSSMSisRun.Length > 0)
-                    {
-                        MessageBox.Show("即将为您关闭SQL Server Management Studio并退出程序！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        foreach (Process killSSMS in ifSSMSisRun)
-                            killSSMS.Kill();
-                        Dispose();
-                        Application.Exit();
-                    }
-                    else
-                    {
-                        MessageBox.Show("本地的SQL Server Managem Studio客户端未运行,程序即将退出！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Dispose();
-                        Application.Exit();
-                    }
-                }
-            }
-            else
-            {
-                if(Settings1.Default.quiteCheck == true)
-                {
-                    //关闭-打开
-                    DialogResult result = MessageBox.Show("是否退出程序？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    if (result == DialogResult.OK)
-                    {
-                        Dispose();
-                        Application.Exit();
-                    }
-                    else if(result == DialogResult.Cancel)
-                    {
-                        e.Cancel = true;
-                    }
-                }
-                else
-                {
-                    //关闭-关闭
-                    Dispose();
-                    Application.Exit();
-                }
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             tiaoshi ts = new tiaoshi();
             ts.Show();
-
         }
     }
 }
