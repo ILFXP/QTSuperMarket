@@ -108,23 +108,32 @@ namespace QTSuperMarket
             textBox2.Text = Settings1.Default.workerLastUseTime.Trim();
             textBox3.Text = Settings1.Default.workerLastUseNum.Trim();
             radioButton1.Checked = true;
-
-            byte[] imagebytes = null;
-            string personNum = textBox3.Text;
-            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-            con.Open();
-            SqlCommand com = new SqlCommand("select personPhoto from personInf where personNum = '" + personNum + "'", con);
-            SqlDataReader dr = com.ExecuteReader();
-            while (dr.Read())
+            /*
+             * 判断之前是否有员工使用过
+             */
+            if (textBox1.Text != null && textBox2.Text != null && textBox3.Text != null)
             {
-                imagebytes = (byte[])dr.GetValue(0);
+                /*
+                 * 当配置中的上次使用员工、上次试用员工工号、上次使用时间不为空值时
+                 * 执行SQL语句，查询上次使用人的照片并在pictureBox1显示
+                 */
+                byte[] imagebytes = null;
+                string personNum = textBox3.Text;
+                SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+                con.Open();
+                SqlCommand com = new SqlCommand("select personPhoto from personInf where personNum = '" + personNum + "'", con);
+                SqlDataReader dr = com.ExecuteReader();
+                while (dr.Read())
+                {
+                    imagebytes = (byte[])dr.GetValue(0);
+                }
+                dr.Close();
+                com.Clone();
+                con.Close();
+                MemoryStream ms = new MemoryStream(imagebytes);
+                Bitmap bmpt = new Bitmap(ms);
+                pictureBox1.Image = bmpt;
             }
-            dr.Close();
-            com.Clone();
-            con.Close();
-            MemoryStream ms = new MemoryStream(imagebytes);
-            Bitmap bmpt = new Bitmap(ms);
-            pictureBox1.Image = bmpt;
         }
 
         private void checkBox1_MouseHover(object sender, EventArgs e)
@@ -286,6 +295,11 @@ namespace QTSuperMarket
             //为dataGridView1自动添加序号
             SolidBrush sb = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor);
             e.Graphics.DrawString((e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),dataGridView1.DefaultCellStyle.Font,sb,e.RowBounds.Location.X + 20,e.RowBounds.Location.Y + 4);
+        }
+
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

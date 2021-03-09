@@ -178,5 +178,53 @@ namespace QTSuperMarket {
                 this["defaultPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool firstUse {
+            get {
+                return ((bool)(this["firstUse"]));
+            }
+            set {
+                this["firstUse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int tci3 {
+            get {
+                return ((int)(this["tci3"]));
+            }
+            set {
+                this["tci3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool havaAdmin {
+            get {
+                return ((bool)(this["havaAdmin"]));
+            }
+            set {
+                this["havaAdmin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string adminName {
+            get {
+                return ((string)(this["adminName"]));
+            }
+            set {
+                this["adminName"] = value;
+            }
+        }
     }
 }
