@@ -62,18 +62,6 @@ namespace QTSuperMarket {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string nowAdmin {
-            get {
-                return ((string)(this["nowAdmin"]));
-            }
-            set {
-                this["nowAdmin"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string nowWorker {
             get {
                 return ((string)(this["nowWorker"]));

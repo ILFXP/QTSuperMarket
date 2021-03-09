@@ -51,7 +51,6 @@ namespace QTSuperMarket
                 //判断登录人身份
                 if(personLimit == "admin")
                 {
-                    Settings1.Default.nowAdmin = personName;
                     Settings1.Default.Save();
                     MessageBox.Show("欢迎，" + personName + "！您拥有管理员权限，即将为您打开后台控制程序。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     adminMainForm amf = new adminMainForm();

@@ -103,6 +103,12 @@ namespace QTSuperMarket
 
         private void adminMainForm_Load(object sender, EventArgs e)
         {
+            //写入日志
+            writeLog.writeProgramLog(string.Concat("使用管理员账号使用系统，","使用人为：",Settings1.Default.adminName));
+            //writeLog.writeProgramLog("登录系统后台，使用人：" + Settings1.Default.adminName.ToString());
+            //statusTrip
+            toolStripStatusLabel2.Text = "当前时间：" + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
+            toolStripStatusLabel1.Text = "当前使用人：" + Settings1.Default.adminName.Trim();
             //读取Settings设置
             textBox1.Text = Settings1.Default.workerLastUseName.Trim();
             textBox2.Text = Settings1.Default.workerLastUseTime.Trim();
@@ -111,7 +117,7 @@ namespace QTSuperMarket
             /*
              * 判断之前是否有员工使用过
              */
-            if (textBox1.Text != null && textBox2.Text != null && textBox3.Text != null)
+            if (textBox1.Text != "" || textBox2.Text !=  "" || textBox3.Text != "")
             {
                 /*
                  * 当配置中的上次使用员工、上次试用员工工号、上次使用时间不为空值时
@@ -295,6 +301,11 @@ namespace QTSuperMarket
             //为dataGridView1自动添加序号
             SolidBrush sb = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor);
             e.Graphics.DrawString((e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),dataGridView1.DefaultCellStyle.Font,sb,e.RowBounds.Location.X + 20,e.RowBounds.Location.Y + 4);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = "当前时间：" + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
         }
 
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)

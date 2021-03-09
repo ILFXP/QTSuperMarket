@@ -11,9 +11,6 @@
     <Setting Name="workerLastUseName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="nowAdmin" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="nowWorker" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

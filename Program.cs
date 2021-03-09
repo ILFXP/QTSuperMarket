@@ -18,9 +18,9 @@ namespace QTSuperMarket
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new adminMainForm());
-            Application.Run(new GuideForm());
+            //Application.Run(new GuideForm());
             //Application.Run(new LoginForm());
-            //Application.Run(new Loading());
+            Application.Run(new Loading());
         }
     }
 }

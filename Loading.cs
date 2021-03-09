@@ -18,14 +18,16 @@ namespace QTSuperMarket
 
         private void Loading_Load(object sender, EventArgs e)
         {
+            //日志
+            writeLog.writeProgramLog("程序启动");
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
-            label1.Text = "打开连接";
+            writeLog.writeProgramLog("测试数据库连接");
             SqlCommand selectcom = new SqlCommand("select COUNT(*) from connecttest where col1 = 'a'",con);
             int numCheck = (int)selectcom.ExecuteScalar();
             if (numCheck > 0)
             {
-                label1.Text = "数据库连接正常";
+                writeLog.writeProgramLog("数据库连接正常");
                 con.Close();
                 if (Settings1.Default.skipGuide == true)
                 {
@@ -43,6 +45,7 @@ namespace QTSuperMarket
             else
             {
                 con.Close();
+                writeLog.writeProgramLog("错误：数据库连接失败");
                 label1.Text = "数据库连接失败，请检查数据库状态";
             }
             
@@ -50,6 +53,7 @@ namespace QTSuperMarket
 
         private void button1_Click(object sender, EventArgs e)
         {
+            writeLog.writeProgramLog("退出程序");
             Application.Exit();
         }
     }

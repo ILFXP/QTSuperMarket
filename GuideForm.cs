@@ -32,6 +32,7 @@ namespace QTSuperMarket
 
         private void GuideForm_Load(object sender, EventArgs e)
         {
+            writeLog.writeProgramLog("打开引导页");
             button1.Enabled = false;
             radioButton1.Checked = true;
             Settings1.Default.tci1 = 1;
@@ -116,7 +117,7 @@ namespace QTSuperMarket
                 }
                 
                 if (checkBox6.Checked == true) {
-                    //退出确认
+                    //退出前询问
                     label5.Text += checkBox6.Text + "\n";
                     Settings1.Default.quiteCheck = true;
                 }
@@ -181,31 +182,39 @@ namespace QTSuperMarket
             {
                 Settings1.Default.cleanSSMS = true;
                 Settings1.Default.Save();
+                writeLog.writeProgramLog("提示：启用功能-关闭程序时清理SQL Server Management Studio客户端");
             }
             if (checkBox3.Checked == true)
             {
                 Settings1.Default.startBoot = true;
                 Settings1.Default.Save();
+                writeLog.writeProgramLog("提示：启用功能-开机自动启动");
             }
             if (checkBox4.Checked == true)
             {
                 Settings1.Default.quiteCheck = true;
                 Settings1.Default.Save();
+                writeLog.writeProgramLog("提示：启用功能-保持窗口总在最前");
             }
             if (checkBox6.Checked == true)
             {
                 Settings1.Default.index999 = true;
                 Settings1.Default.Save();
+                writeLog.writeProgramLog("提示：启用功能-退出前询问");
             }
             if (checkBox7.Checked == true)
             {
                 Settings1.Default.skipGuide = true;
                 Settings1.Default.Save();
+                writeLog.writeProgramLog("提示：启用功能-不再显示引导页");
             }
             Settings1.Default.havaAdmin = true;
             Settings1.Default.defaultPassword = textBox1.Text.Trim();
             Settings1.Default.Save();
             MessageBox.Show("设置已保存，请重新启动程序！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            writeLog.writeProgramLog("设置管理员账户成功");
+            writeLog.writeProgramLog("设置员工默认登录密码");
+            writeLog.writeProgramLog("退出程序");
             Application.Exit();
         }
 
