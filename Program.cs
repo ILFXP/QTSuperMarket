@@ -17,10 +17,10 @@ namespace QTSuperMarket
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new adminMainForm());
+            Application.Run(new adminMainForm());
             //Application.Run(new GuideForm());
             //Application.Run(new LoginForm());
-            Application.Run(new Loading());
+            //Application.Run(new Loading());
         }
     }
 }

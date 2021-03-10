@@ -30,6 +30,10 @@ namespace QTSuperMarket
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,18 +47,23 @@ namespace QTSuperMarket
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.personPhoto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personPhoto = new System.Windows.Forms.DataGridViewImageColumn();
             this.personName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personPhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -222,48 +231,109 @@ namespace QTSuperMarket
             this.tabControl2.Location = new System.Drawing.Point(3, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(830, 424);
+            this.tabControl2.Size = new System.Drawing.Size(1223, 640);
             this.tabControl2.TabIndex = 0;
-            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button8);
+            this.tabPage7.Controls.Add(this.button7);
+            this.tabPage7.Controls.Add(this.button6);
+            this.tabPage7.Controls.Add(this.button5);
             this.tabPage7.Controls.Add(this.button4);
+            this.tabPage7.Controls.Add(this.textBox10);
             this.tabPage7.Controls.Add(this.textBox6);
             this.tabPage7.Controls.Add(this.button3);
             this.tabPage7.Controls.Add(this.label11);
             this.tabPage7.Controls.Add(this.dataGridView1);
             this.tabPage7.Location = new System.Drawing.Point(4, 30);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(822, 390);
+            this.tabPage7.Size = new System.Drawing.Size(1215, 606);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "查询员工信息";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(760, 10);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(40, 30);
+            this.button8.TabIndex = 9;
+            this.button8.Text = ">>";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(714, 10);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(40, 30);
+            this.button7.TabIndex = 8;
+            this.button7.Text = ">";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(471, 10);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(40, 30);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "<";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(425, 10);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(40, 30);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "<<";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(3, 3);
+            this.button4.Location = new System.Drawing.Point(648, 10);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(104, 40);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "查询全部";
+            this.button4.Size = new System.Drawing.Size(60, 30);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "跳转";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(517, 10);
+            this.textBox10.MaxLength = 11;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.PlaceholderText = "请输入行号";
+            this.textBox10.Size = new System.Drawing.Size(125, 30);
+            this.textBox10.TabIndex = 4;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox10.Visible = false;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(461, 10);
+            this.textBox6.Location = new System.Drawing.Point(806, 10);
             this.textBox6.MaxLength = 12;
             this.textBox6.Name = "textBox6";
             this.textBox6.PlaceholderText = "请输入待查询员工的姓名或工号";
-            this.textBox6.Size = new System.Drawing.Size(245, 30);
+            this.textBox6.Size = new System.Drawing.Size(300, 30);
             this.textBox6.TabIndex = 3;
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(713, 3);
+            this.button3.Location = new System.Drawing.Point(1112, 10);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(104, 40);
+            this.button3.Size = new System.Drawing.Size(100, 30);
             this.button3.TabIndex = 2;
             this.button3.Text = "查询";
             this.button3.UseVisualStyleBackColor = true;
@@ -272,89 +342,133 @@ namespace QTSuperMarket
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(386, 13);
+            this.label11.Location = new System.Drawing.Point(3, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 20);
+            this.label11.Size = new System.Drawing.Size(199, 20);
             this.label11.TabIndex = 1;
-            this.label11.Text = "label11";
+            this.label11.Text = "共查询到99999条数据";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 29;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.personPhoto,
             this.personName,
+            this.personSex,
             this.personNum,
             this.personPassword,
-            this.personSex,
-            this.personAddress,
-            this.personPhoneNum});
+            this.personPhoneNum,
+            this.personAddress});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Location = new System.Drawing.Point(3, 49);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidth = 40;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(814, 340);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.ShowCellErrors = false;
+            this.dataGridView1.ShowCellToolTips = false;
+            this.dataGridView1.ShowEditingIcon = false;
+            this.dataGridView1.ShowRowErrors = false;
+            this.dataGridView1.Size = new System.Drawing.Size(1209, 554);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // personPhoto
             // 
+            this.personPhoto.DataPropertyName = "personPhoto";
             this.personPhoto.HeaderText = "照片";
+            this.personPhoto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.personPhoto.MinimumWidth = 6;
             this.personPhoto.Name = "personPhoto";
             this.personPhoto.ReadOnly = true;
-            this.personPhoto.Width = 125;
+            this.personPhoto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.personPhoto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // personName
             // 
+            this.personName.DataPropertyName = "personName";
             this.personName.HeaderText = "姓名";
             this.personName.MinimumWidth = 6;
             this.personName.Name = "personName";
             this.personName.ReadOnly = true;
-            this.personName.Width = 125;
-            // 
-            // personNum
-            // 
-            this.personNum.HeaderText = "工号";
-            this.personNum.MinimumWidth = 6;
-            this.personNum.Name = "personNum";
-            this.personNum.ReadOnly = true;
-            this.personNum.Width = 125;
-            // 
-            // personPassword
-            // 
-            this.personPassword.HeaderText = "密码";
-            this.personPassword.MinimumWidth = 6;
-            this.personPassword.Name = "personPassword";
-            this.personPassword.ReadOnly = true;
-            this.personPassword.Width = 125;
             // 
             // personSex
             // 
+            this.personSex.DataPropertyName = "personSex";
             this.personSex.HeaderText = "性别";
             this.personSex.MinimumWidth = 6;
             this.personSex.Name = "personSex";
             this.personSex.ReadOnly = true;
-            this.personSex.Width = 50;
+            this.personSex.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // personAddress
+            // personNum
             // 
-            this.personAddress.HeaderText = "地址";
-            this.personAddress.MinimumWidth = 6;
-            this.personAddress.Name = "personAddress";
-            this.personAddress.ReadOnly = true;
-            this.personAddress.Width = 240;
+            this.personNum.DataPropertyName = "personNum";
+            this.personNum.HeaderText = "工号";
+            this.personNum.MinimumWidth = 6;
+            this.personNum.Name = "personNum";
+            this.personNum.ReadOnly = true;
+            // 
+            // personPassword
+            // 
+            this.personPassword.DataPropertyName = "personPassword";
+            this.personPassword.HeaderText = "登录密码";
+            this.personPassword.MinimumWidth = 6;
+            this.personPassword.Name = "personPassword";
+            this.personPassword.ReadOnly = true;
             // 
             // personPhoneNum
             // 
-            this.personPhoneNum.HeaderText = "手机";
+            this.personPhoneNum.DataPropertyName = "personPhoneNum";
+            this.personPhoneNum.HeaderText = "手机号码";
             this.personPhoneNum.MinimumWidth = 6;
             this.personPhoneNum.Name = "personPhoneNum";
             this.personPhoneNum.ReadOnly = true;
-            this.personPhoneNum.Width = 125;
+            // 
+            // personAddress
+            // 
+            this.personAddress.DataPropertyName = "personAddress";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.personAddress.DefaultCellStyle = dataGridViewCellStyle2;
+            this.personAddress.HeaderText = "家庭住址";
+            this.personAddress.MinimumWidth = 6;
+            this.personAddress.Name = "personAddress";
+            this.personAddress.ReadOnly = true;
             // 
             // tabPage5
             // 
@@ -376,7 +490,7 @@ namespace QTSuperMarket
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(822, 390);
+            this.tabPage5.Size = new System.Drawing.Size(1215, 606);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "添加员工信息";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -524,7 +638,7 @@ namespace QTSuperMarket
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(822, 390);
+            this.tabPage6.Size = new System.Drawing.Size(1215, 606);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "修改员工信息";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -533,7 +647,7 @@ namespace QTSuperMarket
             // 
             this.tabPage8.Location = new System.Drawing.Point(4, 30);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(822, 390);
+            this.tabPage8.Size = new System.Drawing.Size(1215, 606);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "删除员工信息";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -765,21 +879,26 @@ namespace QTSuperMarket
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personPhoto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personPassword;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personSex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personPhoneNum;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewImageColumn personPhoto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personSex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personPassword;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personPhoneNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personAddress;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
     }
 }

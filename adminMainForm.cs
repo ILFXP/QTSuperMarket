@@ -18,7 +18,9 @@ namespace QTSuperMarket
         {
             InitializeComponent();
         }
-
+        //定义全局变量
+        public int count = 0;
+        public int currentSelect = 0;
         private void adminMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             /*
@@ -103,6 +105,16 @@ namespace QTSuperMarket
 
         private void adminMainForm_Load(object sender, EventArgs e)
         {
+            label11.Text = "";
+            //调节dateGridView1的视觉效果
+            dataGridView1.Columns[0].Width = 148;
+            dataGridView1.Columns[1].Width = 80;
+            dataGridView1.Columns[2].Width = 80;
+            dataGridView1.Columns[3].Width = 160;
+            dataGridView1.Columns[4].Width = 160;
+            dataGridView1.Columns[5].Width = 160;
+            dataGridView1.RowTemplate.Height = 207;
+
             //写入日志
             writeLog.writeProgramLog(string.Concat("使用管理员账号使用系统，","使用人为：",Settings1.Default.adminName));
             //writeLog.writeProgramLog("登录系统后台，使用人：" + Settings1.Default.adminName.ToString());
@@ -254,48 +266,90 @@ namespace QTSuperMarket
         
         private void button4_Click(object sender, EventArgs e)
         {
-            SqlConnection personInfcon = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-            personInfcon.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select personName as '姓名',personNum as '工号',personPassword as '密码',personSex as '性别',personAddress as '地址',personPhoneNum as '手机',personPhoto as '照片' from personInf where personLimit = 'worker'", personInfcon);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            DataTable dt = ds.Tables[0];
-            dataGridView1.DataSource = dt.DefaultView;
-            personInfcon.Close();
+            
         }
-
+        private void visiblestatus()
+        {
+            button4.Visible = button5.Visible = button6.Visible = button7.Visible = button8.Visible = textBox10.Visible = true;
+        }
         private void button3_Click(object sender, EventArgs e)
         {
+            textBox10.Text = "1";
             string search = textBox6.Text.Trim();
-            //非空判断
-            if(search == "")
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            if (search == "")
             {
-                MessageBox.Show("请检查输入是否正确！","提示");
+                //简化查询
+                visiblestatus();
+                SqlCommand com1 = new SqlCommand("select personPhoto,personName,personSex,personNum,personPassword,personPhoneNum,personAddress from personInf where personLimit = 'worker'", con);
+                SqlCommand com2 = new SqlCommand("select count(*) from personInf where personLimit = 'worker'", con);
+                //com2.ExecuteScalar();
+                label11.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
+                count = Convert.ToInt32(com2.ExecuteScalar());
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                SqlCommandBuilder bu = new SqlCommandBuilder(da);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "personInf");
+                dataGridView1.DataSource = ds.Tables["personInf"];
+                con.Close();
             }
             else
             {
                 //通过验证
-                SqlConnection searchcon = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-                searchcon.Open();
                 //判断输入内容是否为数字--工号
                 Regex searchCheck = new Regex("^[0-9]*[1-9][0-9]*$");
                 if(searchCheck.IsMatch(search)){
                     //查询的是工号
                     //构造Sql语句
-                    SqlDataAdapter searchda = new SqlDataAdapter("select * from personInf where personNum like '%" + search + "%'",searchcon);
+                    visiblestatus();
+                    SqlDataAdapter searchda = new SqlDataAdapter("select personPhoto,personName,personSex,personNum,personPassword,personPhoneNum,personAddress from personInf where (personNum like '%" + search + "%' and personLimit != 'admin')",con);
+                    SqlCommand searchcom = new SqlCommand("select count(*) from personInf where (personNum like '%" + search + "%' and personLimit != 'admin')",con);
+                    label11.Text = "共查询到" + searchcom.ExecuteScalar() + "条数据";
+                    count = Convert.ToInt32(searchcom.ExecuteScalar());
+                    if (count == 0)
+                    {
+                        textBox10.Text = "0";
+                    }
                     DataSet searchds = new DataSet();
+                    searchds.Clear();
                     searchda.Fill(searchds);
                     DataTable searchdt = searchds.Tables[0];
                     dataGridView1.DataSource = searchdt.DefaultView;
-                    searchcon.Close();
+                    con.Close();
+                    
                 }
                 else
                 {
                     //查询的是姓名
+                    //验证是否为汉字
+                    Regex nameCheck = new Regex("^[\u4e00-\u9fa5]{0,}$");
+                    if (nameCheck.IsMatch(search))
+                    {
+                        //通过验证
+                        //构造SQL语句
+                        visiblestatus();
+                        SqlDataAdapter searchda = new SqlDataAdapter("select personPhoto,personName,personSex,personNum,personPassword,personPhoneNum,personAddress from personInf where (personName like '%" + search + "%' and personLimit != 'admin')", con);
+                        SqlCommand searchcom = new SqlCommand("select count(*) from personInf where (personName like '%" + search + "%' and personLimit != 'admin')", con);
+                        label11.Text = "共查询到" + searchcom.ExecuteScalar() + "条数据";
+                        count = Convert.ToInt32(searchcom.ExecuteScalar());
+                        if(count == 0)
+                        {
+                            textBox10.Text = "0";
+                        }
+                        DataSet searchds = new DataSet();
+                        searchds.Clear();
+                        searchda.Fill(searchds);
+                        DataTable searchdt = searchds.Tables[0];
+                        dataGridView1.DataSource = searchdt.DefaultView;
+                        con.Close();
+                    }
+                    else
+                        MessageBox.Show("请检查输入是否正确！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
-
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             //为dataGridView1自动添加序号
@@ -308,9 +362,163 @@ namespace QTSuperMarket
             toolStripStatusLabel2.Text = "当前时间：" + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
         }
 
-        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
+            //判断是否通过数据库查询到了值
+            //count的值必定是 >= 0的
+            if(count == 0)
+            {
+                MessageBox.Show("无查询结果！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if(count > 0){
+                if (textBox10.Text.Trim() == "")
+                {
+                    //判断textBox10值为空值，如果是将其赋值为1
+                    dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+                    textBox10.Text = "1";
+                }
+                else
+                {
+                    //验证输入内容是否为数字
+                    Regex numCheck = new Regex("^[0-9]*$");
+                    if (numCheck.IsMatch(textBox10.Text.Trim()))
+                    {
+                        //通过验证
+                        //判断是否超出了count的大小
+                        if(Convert.ToInt32(textBox10.Text.Trim()) >= count)
+                        {
+                            //超出
+                            textBox10.Text = count.ToString();
+                            dataGridView1.CurrentCell = dataGridView1.Rows[count -1].Cells[0];
+                        }
+                        else
+                        {
+                            //未超出
+                            //判断输入值是否为0和1
+                            if(textBox10.Text.Trim() == "0" || textBox10.Text.Trim() == "1")
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+                                textBox10.Text = "1";
+                            }
+                            else
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[Convert.ToInt32(textBox10.Text.Trim()) - 1].Cells[0];
+                                textBox10.Text = (dataGridView1.CurrentRow.Index + 1).ToString();
+                            }
+                        }
+                    }
+                    else
+                        MessageBox.Show("输入内容格式错误，请检查后重试！","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                
+            }
+        }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //下一条
+            //判断count是否为0
+            if (count == 0)
+            {
+                MessageBox.Show("无查询结果！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //判断是否已经选到了最后一条数据
+                //给全局变量currentSelect赋值，令其与现行选中项的行索引相等
+                currentSelect = dataGridView1.CurrentRow.Index;
+                int countNum = count - 1;
+                if (currentSelect == countNum)
+                {
+                    //现行选中项的行索引已将增加到了和count一样了
+                    //实际的currentSelect的值应该要比count小1
+                    //给textBox10赋值为和count一样
+                    textBox10.Text = count.ToString();
+                }
+                else
+                {
+                    //如果现行选中项的行索引不为count（还有可以增加的空间）
+                    //变更现行选中项
+                    dataGridView1.CurrentCell = dataGridView1.Rows[currentSelect + 1].Cells[0];
+                    currentSelect = dataGridView1.CurrentRow.Index;
+                    textBox10.Text = (currentSelect + 1).ToString();
+                }
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if(count == 0)
+            {
+                MessageBox.Show("无查询结果！","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                dataGridView1.CurrentCell = dataGridView1.Rows[count - 1].Cells[0];
+                textBox10.Text = count.ToString();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //上一条
+            //判断count是否为0
+            if(count == 0)
+            {
+                MessageBox.Show("无查询结果！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //判断是否已经选到了第一条数据
+                //给全局变量currentSelect赋值，令其与现行选中项的行索引相等
+                currentSelect = dataGridView1.CurrentRow.Index;
+                //此时currentSelect应该和textBox10的显示值相差1
+
+                if(currentSelect == 0)
+                {
+                    textBox10.Text = "1";
+                }
+                else
+                {
+                    //如果现行选中项的行索引不为0（还有可以减少的空间）
+                    //变更现行选中项
+                    dataGridView1.CurrentCell = dataGridView1.Rows[currentSelect - 1].Cells[0];
+                    textBox10.Text = currentSelect.ToString();
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (count == 0)
+            {
+                MessageBox.Show("无查询结果！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+                textBox10.Text = "1";
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dataGridView1.Rows.Count == 0)
+            {
+                textBox10.Text = "0";
+            }
+            else
+            {
+                if(textBox10.Text == "0")
+                {
+                }
+                else
+                {
+                    int currentIndex = dataGridView1.CurrentRow.Index;
+                    textBox10.Text = (currentIndex + 1).ToString();
+                }
+                
+            }
         }
     }
 }
