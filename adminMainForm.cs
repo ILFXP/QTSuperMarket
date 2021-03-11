@@ -21,6 +21,7 @@ namespace QTSuperMarket
         //定义全局变量
         public int count = 0;
         public int currentSelect = 0;
+        public string editpersonNum = "";
         private void adminMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             /*
@@ -173,8 +174,6 @@ namespace QTSuperMarket
             ofd.Filter = "图片文件(JPG，JPEG，BMP，PNG)|*.jpg;*.jpeg;*.bmp;*.png";
             if (ofd.ShowDialog() == DialogResult.OK && (openFileDialog1.FileName != ""))
             {
-
-                label6.Visible = false;
                 pictureBox2.ImageLocation = ofd.FileName;
             }
             ofd.Dispose();
@@ -194,76 +193,118 @@ namespace QTSuperMarket
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //
             //初始化变量
             string personName = textBox4.Text.Trim();
             string personNum = textBox5.Text.Trim();
             string personAddress = textBox8.Text.Trim();
             string personPhoneNum = textBox9.Text.Trim();
+            string personSex = "男";
 
             //step 1 进行非空验证
             if (personName == "" || personNum == "" || personAddress == "" || personPhoneNum == "")
             {
-                MessageBox.Show("请将员工信息补充完整！", "提示");
+                MessageBox.Show("请先将员工信息补充完整！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                //通过非空验证
-                //step 2 进行工号验证
-                SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-                con.Open();
-                SqlCommand personNumCheck = new SqlCommand("select count(*) from personInf where personNum = '" + personNum + "'",con);
-                int numCheck = (int)personNumCheck.ExecuteScalar();
-                if (numCheck > 0)
+                //step 2 姓名验证
+                Regex nameCheck = new Regex("^[\u4e00-\u9fa5]{0,}$");
+                if (nameCheck.IsMatch(personName))
                 {
-                    MessageBox.Show("已经有与工号重复的员工，请检查后重试！","提示");
-                }
-                else
-                {
-                    //通过工号验证
-                    //step 3 进行手机号验证
-                    //电信
-                    string dianxin = @"^1[3578][01379]\d{8}$";
-                    Regex dxReg = new Regex(dianxin);
-                    //联通
-                    string liantong = @"^1[34578][01256]\d{8}$";
-                    Regex ltReg = new Regex(liantong);
-                    //移动
-                    string yidong = @"^(134[012345678]\d{7}|1[34578][012356789]\d{8})$";
-                    Regex ydReg = new Regex(yidong);
-
-                    if (dxReg.IsMatch(personPhoneNum) || ltReg.IsMatch(personPhoneNum) || ydReg.IsMatch(personPhoneNum))
+                    //step 3 工号验证
+                    //3.1 数字验证
+                    Regex numCheck = new Regex("^[0-9]*$");
+                    if (numCheck.IsMatch(personNum) && personNum.Length == 8)
                     {
-                        //通过手机号验证
-                        string fullPath = pictureBox2.ImageLocation;
-                        string defaultPassword = Settings1.Default.defaultPassword;
-                        string personSex = "男";
-                        if (radioButton1.Checked == true) personSex = "男";
-                        if (radioButton2.Checked == true) personSex = "女";
-                        if (pictureBox2.ImageLocation == null)
-                            //step 4 进行照片非空验证
-                            MessageBox.Show("请先添加员工照片!", "提示");
+                        //3.2 重复验证
+                        SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+                        con.Open();
+                        SqlCommand com = new SqlCommand("select count(*) from personInf where personNum = '" + personNum + "'", con);
+                        int numRet = (int)com.ExecuteScalar();
+                        if (numRet > 0)
+                            MessageBox.Show("已经存在工号重复的员工，请更改工号后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
                         {
-                            //通过照片非空验证
-                            FileStream fs = new FileStream(fullPath, FileMode.Open);
-                            byte[] bytes = new byte[fs.Length];
-                            BinaryReader br = new BinaryReader(fs);
-                            bytes = br.ReadBytes(Convert.ToInt32(fs.Length));
-                            SqlCommand com = new SqlCommand("insert into personInf(personName,personPassword,personLimit,personNum,personSex,personAddress,personPhoneNum,personPhoto) values ('" + personName + "','" + defaultPassword + "','worker','" + personNum + "','" + personSex + "','" + personAddress + "','" + personPhoneNum + "',@ImageList)", con);
-                            com.Parameters.Add("ImageList", SqlDbType.Image);
-                            com.Parameters["ImageList"].Value = bytes;
-                            com.ExecuteNonQuery();
-                            con.Close();
-                            MessageBox.Show("您已经成功添加一名员工：" + personName + "。");
+                            //step 4 添加性别
+                            if (radioButton1.Checked == true)
+                                personSex = "男";
+                            else
+                                personSex = "女";
+                            if (radioButton2.Checked == true)
+                                personSex = "女";
+                            else
+                                personSex = "男";
+                            //step 5 手机号验证
+                            if (personPhoneNum.Length < 11 || personPhoneNum.Length > 11)
+                            {
+                                MessageBox.Show("手机号不完整，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                Regex phoneCheck1 = new Regex("(^1(3[4-9]|4[7]|5[0-27-9]|7[8]|8[2-478]|9[8])\\d{8}$)|(^1705\\d{7}$)");
+                                //正则，验证移动手机号
+                                Regex phoneCheck2 = new Regex("(^1(3[0-2]|4[5]|5[56]|6[6]|7[6]|8[56])\\d{8}$)|(^1709\\d{7}$)");
+                                //正则，验证联通手机号
+                                Regex phoneCheck3 = new Regex("(^1(33|53|77|99|8[019])\\d{8}$)|(^1700\\d{7}$)");
+                                //正则，验证电信手机号
+                                if (phoneCheck1.IsMatch(personPhoneNum) || phoneCheck2.IsMatch(personPhoneNum) || phoneCheck3.IsMatch(personPhoneNum))
+                                {
+                                    if(pictureBox2.ImageLocation == null)
+                                    {
+                                        MessageBox.Show("未找到员工照片，请添加后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                    else
+                                    {
+                                        string fullPath = pictureBox2.ImageLocation;
+                                        string defaultPassword = Settings1.Default.defaultPassword;
+                                        FileStream fs = new FileStream(fullPath, FileMode.Open);
+                                        byte[] bytes = new byte[fs.Length];
+                                        BinaryReader br = new BinaryReader(fs);
+                                        bytes = br.ReadBytes(Convert.ToInt32(fs.Length));
+                                        SqlCommand comm = new SqlCommand("insert into personInf(personName,personPassword,personLimit,personNum,personSex,personAddress,personPhoneNum,personPhoto) values ('" + personName + "','" + defaultPassword + "','worker','" + personNum + "','" + personSex + "','" + personAddress + "','" + personPhoneNum + "',@ImageList)", con);
+                                        comm.Parameters.Add("ImageList", SqlDbType.Image);
+                                        comm.Parameters["ImageList"].Value = bytes;
+                                        comm.ExecuteNonQuery();
+                                        con.Close();
+                                        MessageBox.Show("您已经成功添加一名员工：" + personName + "。","提示");
+                                        deleteInf();
+                                        DialogResult result = MessageBox.Show("是否在查询界面查看添加的员工信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                        if (result == DialogResult.Yes)
+                                        {
+                                            tabControl2.SelectedIndex = 0;
+                                            textBox6.Text = personName;
+                                            button3.PerformClick();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("手机号格式不正确，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
                     }
                     else
-                        MessageBox.Show("手机号验证未通过，请检查后重试！", "提示");
+                        MessageBox.Show("工号格式有误，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("姓名格式有误，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        
+        private void deleteInf()
+        {
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+            radioButton1.Checked = true;
+            pictureBox2.ImageLocation = null;
+            textBox6.Text = "";
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             
@@ -354,7 +395,7 @@ namespace QTSuperMarket
         {
             //为dataGridView1自动添加序号
             SolidBrush sb = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor);
-            e.Graphics.DrawString((e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),dataGridView1.DefaultCellStyle.Font,sb,e.RowBounds.Location.X + 20,e.RowBounds.Location.Y + 4);
+            e.Graphics.DrawString((e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),dataGridView1.DefaultCellStyle.Font,sb,e.RowBounds.Location.X,e.RowBounds.Location.Y);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -518,6 +559,66 @@ namespace QTSuperMarket
                     textBox10.Text = (currentIndex + 1).ToString();
                 }
                 
+            }
+        }
+
+        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //判断count的值，为0时不允许修改和删除
+            if(count == 0)
+            {
+                if(contextMenuStrip1.Items[1].Selected == true || contextMenuStrip1.Items[2].Selected == true)
+                {
+                    contextMenuStrip1.Close();
+                    MessageBox.Show("暂无选中项需要更改","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+                else if(contextMenuStrip1.Items[0].Selected == true)
+                {
+                    contextMenuStrip1.Close();
+                    tabControl2.SelectedIndex = 1;
+                }
+            }
+            else
+            {
+                if(contextMenuStrip1.Items[0].Selected == true)
+                {
+                    contextMenuStrip1.Close();
+                    tabControl2.SelectedIndex = 1;
+                }
+                else if(contextMenuStrip1.Items[1].Selected == true)
+                {
+                    contextMenuStrip1.Close();
+                    //获取当前选中行
+                    currentSelect = dataGridView1.CurrentRow.Index;
+                    //获取选中行中的工号数据
+                    editpersonNum = dataGridView1.Rows[currentSelect].Cells[3].Value.ToString();
+                    tabControl2.SelectedIndex = 2;
+                    //修改
+                }
+                else if(contextMenuStrip1.Items[2].Selected == true)
+                {
+                    contextMenuStrip1.Close();
+                    //获取当前选中行
+                    currentSelect = dataGridView1.CurrentRow.Index;
+                    //获取选中行中的工号数据
+                    string deletepersonName = dataGridView1.Rows[currentSelect].Cells[1].Value.ToString();
+                    string deletepersonNum = dataGridView1.Rows[currentSelect].Cells[3].Value.ToString();
+                    string deletepersonSex = dataGridView1.Rows[currentSelect].Cells[2].Value.ToString();
+                    string deletepersonPhoneNum = dataGridView1.Rows[currentSelect].Cells[5].Value.ToString();
+                    string deleteperAddress = dataGridView1.Rows[currentSelect].Cells[6].Value.ToString();
+                    DialogResult result = MessageBox.Show("您想要删除的员工信息如下：\n" + "姓名：" + deletepersonName + "\n" + "性别：" + deletepersonSex + "\n" + "工号：" + deletepersonNum + "\n" + "手机：" + deletepersonPhoneNum + "\n" + "地址：" + deleteperAddress + "\n" + "确定删除吗？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (result == DialogResult.OK)
+                    {
+                        SqlConnection deletecon = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+                        deletecon.Open();
+                        SqlCommand deletecom = new SqlCommand("delete from personInf where personNum = '" + deletepersonNum + "'",deletecon);
+                        deletecom.ExecuteScalar();
+                        MessageBox.Show("您已成功删除" + deletepersonName + "的员工信息！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        deletecon.Close();
+                        textBox6.Text = "";
+                        button3.PerformClick();
+                    }
+                }
             }
         }
     }

@@ -294,13 +294,13 @@ namespace QTSuperMarket
                             tabControl1.SelectedIndex = 3;
                         }
                         else
-                            MessageBox.Show("手机号格式有误！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("手机号格式有误，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
-                        MessageBox.Show("密码格式有误！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("密码格式有误，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("姓名格式有误！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("姓名格式有误，请检查后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

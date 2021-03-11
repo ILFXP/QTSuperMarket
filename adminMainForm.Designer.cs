@@ -64,6 +64,10 @@ namespace QTSuperMarket
             this.personPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personPhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -75,13 +79,11 @@ namespace QTSuperMarket
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -105,6 +107,7 @@ namespace QTSuperMarket
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -227,7 +230,6 @@ namespace QTSuperMarket
             this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Controls.Add(this.tabPage8);
             this.tabControl2.Location = new System.Drawing.Point(3, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -374,6 +376,7 @@ namespace QTSuperMarket
             this.personPassword,
             this.personPhoneNum,
             this.personAddress});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -382,7 +385,7 @@ namespace QTSuperMarket
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 49);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 46);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -470,6 +473,40 @@ namespace QTSuperMarket
             this.personAddress.Name = "personAddress";
             this.personAddress.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.ShowImageMargin = false;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 70);
+            this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem1.Text = "添加员工信息";
+            this.toolStripMenuItem1.ToolTipText = "添加一个新的员工";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem2.Text = "修改员工信息";
+            this.toolStripMenuItem2.ToolTipText = "修改当前选中员工的信息";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem3.Text = "删除员工信息";
+            this.toolStripMenuItem3.ToolTipText = "删除当前选中员工的信息";
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.button2);
@@ -482,7 +519,6 @@ namespace QTSuperMarket
             this.tabPage5.Controls.Add(this.label7);
             this.tabPage5.Controls.Add(this.textBox5);
             this.tabPage5.Controls.Add(this.textBox4);
-            this.tabPage5.Controls.Add(this.label6);
             this.tabPage5.Controls.Add(this.label5);
             this.tabPage5.Controls.Add(this.label4);
             this.tabPage5.Controls.Add(this.button1);
@@ -497,9 +533,9 @@ namespace QTSuperMarket
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(594, 236);
+            this.button2.Location = new System.Drawing.Point(410, 409);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 40);
+            this.button2.Size = new System.Drawing.Size(201, 40);
             this.button2.TabIndex = 16;
             this.button2.Text = "添加";
             this.button2.UseVisualStyleBackColor = true;
@@ -508,7 +544,7 @@ namespace QTSuperMarket
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(538, 140);
+            this.radioButton2.Location = new System.Drawing.Point(561, 225);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(50, 24);
             this.radioButton2.TabIndex = 15;
@@ -520,7 +556,7 @@ namespace QTSuperMarket
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(481, 140);
+            this.radioButton1.Location = new System.Drawing.Point(410, 225);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(50, 24);
             this.radioButton1.TabIndex = 14;
@@ -532,7 +568,7 @@ namespace QTSuperMarket
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(414, 206);
+            this.label10.Location = new System.Drawing.Point(335, 258);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 20);
             this.label10.TabIndex = 13;
@@ -541,7 +577,7 @@ namespace QTSuperMarket
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(414, 173);
+            this.label9.Location = new System.Drawing.Point(335, 294);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 20);
             this.label9.TabIndex = 12;
@@ -549,7 +585,7 @@ namespace QTSuperMarket
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(481, 203);
+            this.textBox9.Location = new System.Drawing.Point(410, 255);
             this.textBox9.MaxLength = 11;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(201, 30);
@@ -557,15 +593,17 @@ namespace QTSuperMarket
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(481, 170);
+            this.textBox8.Location = new System.Drawing.Point(410, 291);
+            this.textBox8.MaxLength = 100;
+            this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(201, 30);
+            this.textBox8.Size = new System.Drawing.Size(201, 66);
             this.textBox8.TabIndex = 10;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(414, 142);
+            this.label7.Location = new System.Drawing.Point(335, 227);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 20);
             this.label7.TabIndex = 8;
@@ -573,33 +611,24 @@ namespace QTSuperMarket
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(481, 107);
-            this.textBox5.MaxLength = 12;
+            this.textBox5.Location = new System.Drawing.Point(410, 189);
+            this.textBox5.MaxLength = 8;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(201, 30);
             this.textBox5.TabIndex = 6;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(481, 74);
-            this.textBox4.MaxLength = 4;
+            this.textBox4.Location = new System.Drawing.Point(410, 153);
+            this.textBox4.MaxLength = 3;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(201, 30);
             this.textBox4.TabIndex = 5;
             // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(18, 158);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(254, 51);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "暂无照片，请点击下方“选择照片”按钮添加";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(414, 110);
+            this.label5.Location = new System.Drawing.Point(335, 192);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 20);
             this.label5.TabIndex = 3;
@@ -608,7 +637,7 @@ namespace QTSuperMarket
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(414, 77);
+            this.label4.Location = new System.Drawing.Point(335, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
             this.label4.TabIndex = 2;
@@ -616,9 +645,9 @@ namespace QTSuperMarket
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(481, 236);
+            this.button1.Location = new System.Drawing.Point(410, 363);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 40);
+            this.button1.Size = new System.Drawing.Size(201, 40);
             this.button1.TabIndex = 1;
             this.button1.Text = "选择照片";
             this.button1.UseVisualStyleBackColor = true;
@@ -626,9 +655,9 @@ namespace QTSuperMarket
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(617, 99);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(283, 386);
+            this.pictureBox2.Size = new System.Drawing.Size(271, 412);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -642,15 +671,6 @@ namespace QTSuperMarket
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "修改员工信息";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 30);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1215, 606);
-            this.tabPage8.TabIndex = 3;
-            this.tabPage8.Text = "删除员工信息";
-            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -805,7 +825,6 @@ namespace QTSuperMarket
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "adminMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "清涛超市库存管理系统：管理员权限";
@@ -821,6 +840,7 @@ namespace QTSuperMarket
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -853,7 +873,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
@@ -879,7 +898,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -900,5 +918,9 @@ namespace QTSuperMarket
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
