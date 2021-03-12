@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace QTSuperMarket
 {
@@ -36,11 +28,11 @@ namespace QTSuperMarket
             int numCheck = (int)com.ExecuteScalar();
 
             //有查询结果
-            if(numCheck > 0)
+            if (numCheck > 0)
             {
                 string personLimit = "";
                 string sqllang2 = "select personLimit,personNum from personInf where personName = '" + personName + "'";
-                SqlCommand limitCheck = new SqlCommand(sqllang2,con);
+                SqlCommand limitCheck = new SqlCommand(sqllang2, con);
                 //读取查询的结果
                 SqlDataReader reader = limitCheck.ExecuteReader();
                 while (reader.Read())
@@ -49,21 +41,22 @@ namespace QTSuperMarket
                     personNum = reader["personNum"].ToString().Trim();
                 }
                 //判断登录人身份
-                if(personLimit == "admin")
+                if (personLimit == "admin")
                 {
                     Settings1.Default.Save();
-                    MessageBox.Show("欢迎，" + personName + "！您拥有管理员权限，即将为您打开后台控制程序。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("欢迎，" + personName + "！您拥有管理员权限，即将为您打开后台控制程序。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     adminMainForm amf = new adminMainForm();
                     Dispose();
                     this.Close();
                     amf.ShowDialog();
                 }
-                else if(personLimit == "worker"){
+                else if (personLimit == "worker")
+                {
                     Settings1.Default.workerLastUseName = Settings1.Default.nowWorker = personName;
                     Settings1.Default.workerLastUseTime = DateTime.Now.ToString();
                     Settings1.Default.workerLastUseNum = personNum;
                     Settings1.Default.Save();
-                    MessageBox.Show("欢迎，" + personName + "!","提示");
+                    MessageBox.Show("欢迎，" + personName + "!", "提示");
                     workerMainForm wmf = new workerMainForm();
                     Dispose();
                     this.Close();
@@ -73,14 +66,14 @@ namespace QTSuperMarket
             //无查询结果
             else
             {
-                MessageBox.Show("请确认您输入的姓名和密码是否正确！请在确认后重新尝试登录！", "错误",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("请确认您输入的姓名和密码是否正确！请在确认后重新尝试登录！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBox1.Text = textBox2.Text = "";
             }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("忘记密码请联系管理员！","提示");
+            MessageBox.Show("忘记密码请联系管理员！", "提示");
         }
 
         private void button2_Click(object sender, EventArgs e)

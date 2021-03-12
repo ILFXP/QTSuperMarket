@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace QTSuperMarket
 {
@@ -23,7 +18,7 @@ namespace QTSuperMarket
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
             writeLog.writeProgramLog("测试数据库连接");
-            SqlCommand selectcom = new SqlCommand("select COUNT(*) from connecttest where col1 = 'a'",con);
+            SqlCommand selectcom = new SqlCommand("select COUNT(*) from connecttest where col1 = 'a'", con);
             int numCheck = (int)selectcom.ExecuteScalar();
             if (numCheck > 0)
             {
@@ -48,7 +43,7 @@ namespace QTSuperMarket
                 writeLog.writeProgramLog("错误：数据库连接失败");
                 label1.Text = "数据库连接失败，请检查数据库状态";
             }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)

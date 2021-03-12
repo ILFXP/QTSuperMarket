@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace QTSuperMarket
@@ -13,11 +11,11 @@ namespace QTSuperMarket
             lock (locker)
             {
                 string logAddress = Environment.CurrentDirectory + "\\Logs";
-                if(!Directory.Exists(logAddress))
+                if (!Directory.Exists(logAddress))
                 {
                     Directory.CreateDirectory(logAddress);
                 }
-                logAddress = string.Concat(logAddress, '\\',DateTime.Now.ToLongDateString(),"使用记录.log");
+                logAddress = string.Concat(logAddress, '\\', DateTime.Now.ToLongDateString(), "使用记录.log");
                 StreamWriter sw = new StreamWriter(logAddress, true);
                 foreach (string log in logs)
                 {

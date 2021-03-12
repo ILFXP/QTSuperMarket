@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace QTSuperMarket
@@ -42,7 +37,7 @@ namespace QTSuperMarket
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "true")
+            if (textBox1.Text == "true")
             {
                 Settings1.Default.cleanSSMS = true;
             }

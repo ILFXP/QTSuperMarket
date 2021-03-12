@@ -30,12 +30,14 @@ namespace QTSuperMarket
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminMainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.logopicb = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,15 +49,15 @@ namespace QTSuperMarket
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lastbtn = new System.Windows.Forms.Button();
+            this.nextbtn = new System.Windows.Forms.Button();
+            this.previousbtn = new System.Windows.Forms.Button();
+            this.firstbtn = new System.Windows.Forms.Button();
+            this.gobtn = new System.Windows.Forms.Button();
+            this.rownumbtn = new System.Windows.Forms.TextBox();
+            this.searchtxt = new System.Windows.Forms.TextBox();
+            this.searchbtn = new System.Windows.Forms.Button();
+            this.countlabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.personPhoto = new System.Windows.Forms.DataGridViewImageColumn();
             this.personName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,22 +70,42 @@ namespace QTSuperMarket
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.updategrb = new System.Windows.Forms.GroupBox();
+            this.updategrb2 = new System.Windows.Forms.GroupBox();
+            this.updatebtn = new System.Windows.Forms.Button();
+            this.updatePasswordtxt = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.updatePhoneNumtxt = new System.Windows.Forms.TextBox();
+            this.updateAddresstxt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.updateNumtxt = new System.Windows.Forms.TextBox();
+            this.updateNametxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.updategrb1 = new System.Windows.Forms.GroupBox();
+            this.otxt = new System.Windows.Forms.TextBox();
+            this.opicb = new System.Windows.Forms.PictureBox();
+            this.insertgrb = new System.Windows.Forms.GroupBox();
+            this.insertpicb = new System.Windows.Forms.PictureBox();
+            this.insertbtn = new System.Windows.Forms.Button();
+            this.insertFemalerad = new System.Windows.Forms.RadioButton();
+            this.insertMalerad = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.insertPhoneNumtxt = new System.Windows.Forms.TextBox();
+            this.insertAddresstxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.insertNumtxt = new System.Windows.Forms.TextBox();
+            this.insertNametxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.insertPhotobtn = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -101,6 +123,7 @@ namespace QTSuperMarket
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logopicb)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -109,7 +132,12 @@ namespace QTSuperMarket
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.updategrb.SuspendLayout();
+            this.updategrb2.SuspendLayout();
+            this.updategrb1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.opicb)).BeginInit();
+            this.insertgrb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.insertpicb)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -129,6 +157,7 @@ namespace QTSuperMarket
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.logopicb);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
@@ -137,6 +166,16 @@ namespace QTSuperMarket
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "首页";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // logopicb
+            // 
+            this.logopicb.Image = ((System.Drawing.Image)(resources.GetObject("logopicb.Image")));
+            this.logopicb.Location = new System.Drawing.Point(3, 3);
+            this.logopicb.Name = "logopicb";
+            this.logopicb.Size = new System.Drawing.Size(272, 119);
+            this.logopicb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logopicb.TabIndex = 1;
+            this.logopicb.TabStop = false;
             // 
             // groupBox1
             // 
@@ -147,9 +186,9 @@ namespace QTSuperMarket
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(278, 640);
+            this.groupBox1.Size = new System.Drawing.Size(278, 515);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "最近一次使用人";
@@ -157,7 +196,7 @@ namespace QTSuperMarket
             // textBox3
             // 
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(73, 92);
+            this.textBox3.Location = new System.Drawing.Point(73, 101);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(199, 30);
             this.textBox3.TabIndex = 6;
@@ -165,7 +204,7 @@ namespace QTSuperMarket
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 96);
+            this.label3.Location = new System.Drawing.Point(7, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 20);
             this.label3.TabIndex = 5;
@@ -173,9 +212,9 @@ namespace QTSuperMarket
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 246);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 137);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(266, 388);
+            this.pictureBox1.Size = new System.Drawing.Size(266, 372);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -183,7 +222,7 @@ namespace QTSuperMarket
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(73, 59);
+            this.textBox2.Location = new System.Drawing.Point(73, 65);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(199, 30);
             this.textBox2.TabIndex = 3;
@@ -191,7 +230,7 @@ namespace QTSuperMarket
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(73, 26);
+            this.textBox1.Location = new System.Drawing.Point(73, 29);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(199, 30);
             this.textBox1.TabIndex = 2;
@@ -199,7 +238,7 @@ namespace QTSuperMarket
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 62);
+            this.label2.Location = new System.Drawing.Point(7, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 1;
@@ -208,7 +247,7 @@ namespace QTSuperMarket
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 29);
+            this.label1.Location = new System.Drawing.Point(7, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
             this.label1.TabIndex = 0;
@@ -229,7 +268,6 @@ namespace QTSuperMarket
             // 
             this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Location = new System.Drawing.Point(3, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -238,117 +276,117 @@ namespace QTSuperMarket
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.button8);
-            this.tabPage7.Controls.Add(this.button7);
-            this.tabPage7.Controls.Add(this.button6);
-            this.tabPage7.Controls.Add(this.button5);
-            this.tabPage7.Controls.Add(this.button4);
-            this.tabPage7.Controls.Add(this.textBox10);
-            this.tabPage7.Controls.Add(this.textBox6);
-            this.tabPage7.Controls.Add(this.button3);
-            this.tabPage7.Controls.Add(this.label11);
+            this.tabPage7.Controls.Add(this.lastbtn);
+            this.tabPage7.Controls.Add(this.nextbtn);
+            this.tabPage7.Controls.Add(this.previousbtn);
+            this.tabPage7.Controls.Add(this.firstbtn);
+            this.tabPage7.Controls.Add(this.gobtn);
+            this.tabPage7.Controls.Add(this.rownumbtn);
+            this.tabPage7.Controls.Add(this.searchtxt);
+            this.tabPage7.Controls.Add(this.searchbtn);
+            this.tabPage7.Controls.Add(this.countlabel);
             this.tabPage7.Controls.Add(this.dataGridView1);
             this.tabPage7.Location = new System.Drawing.Point(4, 30);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(1215, 606);
             this.tabPage7.TabIndex = 2;
-            this.tabPage7.Text = "查询员工信息";
+            this.tabPage7.Text = "查询";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // lastbtn
             // 
-            this.button8.Location = new System.Drawing.Point(760, 10);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(40, 30);
-            this.button8.TabIndex = 9;
-            this.button8.Text = ">>";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Visible = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.lastbtn.Location = new System.Drawing.Point(760, 10);
+            this.lastbtn.Name = "lastbtn";
+            this.lastbtn.Size = new System.Drawing.Size(40, 30);
+            this.lastbtn.TabIndex = 9;
+            this.lastbtn.Text = ">>";
+            this.lastbtn.UseVisualStyleBackColor = true;
+            this.lastbtn.Visible = false;
+            this.lastbtn.Click += new System.EventHandler(this.lastbtn_Click);
             // 
-            // button7
+            // nextbtn
             // 
-            this.button7.Location = new System.Drawing.Point(714, 10);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(40, 30);
-            this.button7.TabIndex = 8;
-            this.button7.Text = ">";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.nextbtn.Location = new System.Drawing.Point(714, 10);
+            this.nextbtn.Name = "nextbtn";
+            this.nextbtn.Size = new System.Drawing.Size(40, 30);
+            this.nextbtn.TabIndex = 8;
+            this.nextbtn.Text = ">";
+            this.nextbtn.UseVisualStyleBackColor = true;
+            this.nextbtn.Visible = false;
+            this.nextbtn.Click += new System.EventHandler(this.nextbtn_Click);
             // 
-            // button6
+            // previousbtn
             // 
-            this.button6.Location = new System.Drawing.Point(471, 10);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(40, 30);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "<";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.previousbtn.Location = new System.Drawing.Point(471, 10);
+            this.previousbtn.Name = "previousbtn";
+            this.previousbtn.Size = new System.Drawing.Size(40, 30);
+            this.previousbtn.TabIndex = 7;
+            this.previousbtn.Text = "<";
+            this.previousbtn.UseVisualStyleBackColor = true;
+            this.previousbtn.Visible = false;
+            this.previousbtn.Click += new System.EventHandler(this.previousbtn_Click);
             // 
-            // button5
+            // firstbtn
             // 
-            this.button5.Location = new System.Drawing.Point(425, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(40, 30);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "<<";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.firstbtn.Location = new System.Drawing.Point(425, 10);
+            this.firstbtn.Name = "firstbtn";
+            this.firstbtn.Size = new System.Drawing.Size(40, 30);
+            this.firstbtn.TabIndex = 6;
+            this.firstbtn.Text = "<<";
+            this.firstbtn.UseVisualStyleBackColor = true;
+            this.firstbtn.Visible = false;
+            this.firstbtn.Click += new System.EventHandler(this.firstbtn_Click);
             // 
-            // button4
+            // gobtn
             // 
-            this.button4.Location = new System.Drawing.Point(648, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 30);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "跳转";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.gobtn.Location = new System.Drawing.Point(648, 10);
+            this.gobtn.Name = "gobtn";
+            this.gobtn.Size = new System.Drawing.Size(60, 30);
+            this.gobtn.TabIndex = 5;
+            this.gobtn.Text = "跳转";
+            this.gobtn.UseVisualStyleBackColor = true;
+            this.gobtn.Visible = false;
+            this.gobtn.Click += new System.EventHandler(this.gobtn_Click);
             // 
-            // textBox10
+            // rownumbtn
             // 
-            this.textBox10.Location = new System.Drawing.Point(517, 10);
-            this.textBox10.MaxLength = 11;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.PlaceholderText = "请输入行号";
-            this.textBox10.Size = new System.Drawing.Size(125, 30);
-            this.textBox10.TabIndex = 4;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox10.Visible = false;
+            this.rownumbtn.Location = new System.Drawing.Point(517, 10);
+            this.rownumbtn.MaxLength = 11;
+            this.rownumbtn.Name = "rownumbtn";
+            this.rownumbtn.PlaceholderText = "请输入行号";
+            this.rownumbtn.Size = new System.Drawing.Size(125, 30);
+            this.rownumbtn.TabIndex = 4;
+            this.rownumbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rownumbtn.Visible = false;
             // 
-            // textBox6
+            // searchtxt
             // 
-            this.textBox6.Location = new System.Drawing.Point(806, 10);
-            this.textBox6.MaxLength = 12;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PlaceholderText = "请输入待查询员工的姓名或工号";
-            this.textBox6.Size = new System.Drawing.Size(300, 30);
-            this.textBox6.TabIndex = 3;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.searchtxt.Location = new System.Drawing.Point(806, 10);
+            this.searchtxt.MaxLength = 12;
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.PlaceholderText = "请输入待查询员工的姓名或工号";
+            this.searchtxt.Size = new System.Drawing.Size(300, 30);
+            this.searchtxt.TabIndex = 3;
+            this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button3
+            // searchbtn
             // 
-            this.button3.Location = new System.Drawing.Point(1112, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 30);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "查询";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.searchbtn.Location = new System.Drawing.Point(1112, 10);
+            this.searchbtn.Name = "searchbtn";
+            this.searchbtn.Size = new System.Drawing.Size(100, 30);
+            this.searchbtn.TabIndex = 2;
+            this.searchbtn.Text = "查询";
+            this.searchbtn.UseVisualStyleBackColor = true;
+            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
             // 
-            // label11
+            // countlabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(199, 20);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "共查询到99999条数据";
+            this.countlabel.AutoSize = true;
+            this.countlabel.Location = new System.Drawing.Point(3, 13);
+            this.countlabel.Name = "countlabel";
+            this.countlabel.Size = new System.Drawing.Size(199, 20);
+            this.countlabel.TabIndex = 1;
+            this.countlabel.Text = "共查询到99999条数据";
             // 
             // dataGridView1
             // 
@@ -480,21 +518,25 @@ namespace QTSuperMarket
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 92);
             this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.ShowShortcutKeys = false;
             this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.toolStripMenuItem1.Text = "添加员工信息";
             this.toolStripMenuItem1.ToolTipText = "添加一个新的员工";
             // 
             // toolStripMenuItem2
             // 
+            this.toolStripMenuItem2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(159, 22);
             this.toolStripMenuItem2.Text = "修改员工信息";
@@ -502,175 +544,372 @@ namespace QTSuperMarket
             // 
             // toolStripMenuItem3
             // 
+            this.toolStripMenuItem3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(159, 22);
             this.toolStripMenuItem3.Text = "删除员工信息";
             this.toolStripMenuItem3.ToolTipText = "删除当前选中员工的信息";
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem4.Text = "打印员工信息";
+            // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button2);
-            this.tabPage5.Controls.Add(this.radioButton2);
-            this.tabPage5.Controls.Add(this.radioButton1);
-            this.tabPage5.Controls.Add(this.label10);
-            this.tabPage5.Controls.Add(this.label9);
-            this.tabPage5.Controls.Add(this.textBox9);
-            this.tabPage5.Controls.Add(this.textBox8);
-            this.tabPage5.Controls.Add(this.label7);
-            this.tabPage5.Controls.Add(this.textBox5);
-            this.tabPage5.Controls.Add(this.textBox4);
-            this.tabPage5.Controls.Add(this.label5);
-            this.tabPage5.Controls.Add(this.label4);
-            this.tabPage5.Controls.Add(this.button1);
-            this.tabPage5.Controls.Add(this.pictureBox2);
+            this.tabPage5.Controls.Add(this.updategrb);
+            this.tabPage5.Controls.Add(this.insertgrb);
             this.tabPage5.Location = new System.Drawing.Point(4, 30);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1215, 606);
             this.tabPage5.TabIndex = 0;
-            this.tabPage5.Text = "添加员工信息";
+            this.tabPage5.Text = "添加\\修改";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // updategrb
             // 
-            this.button2.Location = new System.Drawing.Point(410, 409);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(201, 40);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "添加";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.updategrb.Controls.Add(this.updategrb2);
+            this.updategrb.Controls.Add(this.updategrb1);
+            this.updategrb.Location = new System.Drawing.Point(612, 3);
+            this.updategrb.Name = "updategrb";
+            this.updategrb.Size = new System.Drawing.Size(600, 600);
+            this.updategrb.TabIndex = 18;
+            this.updategrb.TabStop = false;
+            this.updategrb.Text = "修改员工";
             // 
-            // radioButton2
+            // updategrb2
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(561, 225);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(50, 24);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "女";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.updategrb2.Controls.Add(this.updatebtn);
+            this.updategrb2.Controls.Add(this.updatePasswordtxt);
+            this.updategrb2.Controls.Add(this.label16);
+            this.updategrb2.Controls.Add(this.radioButton3);
+            this.updategrb2.Controls.Add(this.radioButton4);
+            this.updategrb2.Controls.Add(this.label6);
+            this.updategrb2.Controls.Add(this.label12);
+            this.updategrb2.Controls.Add(this.updatePhoneNumtxt);
+            this.updategrb2.Controls.Add(this.updateAddresstxt);
+            this.updategrb2.Controls.Add(this.label13);
+            this.updategrb2.Controls.Add(this.updateNumtxt);
+            this.updategrb2.Controls.Add(this.updateNametxt);
+            this.updategrb2.Controls.Add(this.label14);
+            this.updategrb2.Controls.Add(this.label15);
+            this.updategrb2.Location = new System.Drawing.Point(6, 319);
+            this.updategrb2.Name = "updategrb2";
+            this.updategrb2.Size = new System.Drawing.Size(588, 275);
+            this.updategrb2.TabIndex = 1;
+            this.updategrb2.TabStop = false;
+            this.updategrb2.Text = "要修改的信息：";
             // 
-            // radioButton1
+            // updatebtn
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(410, 225);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(50, 24);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "男";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.updatebtn.Location = new System.Drawing.Point(409, 48);
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Size = new System.Drawing.Size(60, 168);
+            this.updatebtn.TabIndex = 43;
+            this.updatebtn.Text = "修改";
+            this.updatebtn.UseVisualStyleBackColor = true;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
+            // 
+            // updatePasswordtxt
+            // 
+            this.updatePasswordtxt.Location = new System.Drawing.Point(202, 186);
+            this.updatePasswordtxt.Name = "updatePasswordtxt";
+            this.updatePasswordtxt.Size = new System.Drawing.Size(201, 30);
+            this.updatePasswordtxt.TabIndex = 41;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(127, 189);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 20);
+            this.label16.TabIndex = 40;
+            this.label16.Text = "密码：";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(258, 120);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(50, 24);
+            this.radioButton3.TabIndex = 39;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "女";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(202, 120);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(50, 24);
+            this.radioButton4.TabIndex = 38;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "男";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(127, 153);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 20);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "电话：";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(127, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 20);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "地址：";
+            // 
+            // updatePhoneNumtxt
+            // 
+            this.updatePhoneNumtxt.Location = new System.Drawing.Point(202, 150);
+            this.updatePhoneNumtxt.MaxLength = 11;
+            this.updatePhoneNumtxt.Name = "updatePhoneNumtxt";
+            this.updatePhoneNumtxt.Size = new System.Drawing.Size(201, 30);
+            this.updatePhoneNumtxt.TabIndex = 35;
+            // 
+            // updateAddresstxt
+            // 
+            this.updateAddresstxt.Location = new System.Drawing.Point(202, 222);
+            this.updateAddresstxt.MaxLength = 98;
+            this.updateAddresstxt.Name = "updateAddresstxt";
+            this.updateAddresstxt.Size = new System.Drawing.Size(267, 30);
+            this.updateAddresstxt.TabIndex = 34;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(127, 122);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 20);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "性别：";
+            // 
+            // updateNumtxt
+            // 
+            this.updateNumtxt.Location = new System.Drawing.Point(202, 84);
+            this.updateNumtxt.MaxLength = 8;
+            this.updateNumtxt.Name = "updateNumtxt";
+            this.updateNumtxt.Size = new System.Drawing.Size(201, 30);
+            this.updateNumtxt.TabIndex = 32;
+            // 
+            // updateNametxt
+            // 
+            this.updateNametxt.Location = new System.Drawing.Point(202, 48);
+            this.updateNametxt.MaxLength = 3;
+            this.updateNametxt.Name = "updateNametxt";
+            this.updateNametxt.Size = new System.Drawing.Size(201, 30);
+            this.updateNametxt.TabIndex = 31;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(127, 87);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 20);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "工号：";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(127, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 20);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "姓名：";
+            // 
+            // updategrb1
+            // 
+            this.updategrb1.Controls.Add(this.otxt);
+            this.updategrb1.Controls.Add(this.opicb);
+            this.updategrb1.Location = new System.Drawing.Point(6, 29);
+            this.updategrb1.Name = "updategrb1";
+            this.updategrb1.Size = new System.Drawing.Size(588, 275);
+            this.updategrb1.TabIndex = 0;
+            this.updategrb1.TabStop = false;
+            this.updategrb1.Text = "员工原信息：";
+            // 
+            // otxt
+            // 
+            this.otxt.Enabled = false;
+            this.otxt.Location = new System.Drawing.Point(219, 42);
+            this.otxt.Multiline = true;
+            this.otxt.Name = "otxt";
+            this.otxt.Size = new System.Drawing.Size(326, 207);
+            this.otxt.TabIndex = 1;
+            // 
+            // opicb
+            // 
+            this.opicb.Location = new System.Drawing.Point(40, 42);
+            this.opicb.Name = "opicb";
+            this.opicb.Size = new System.Drawing.Size(148, 207);
+            this.opicb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.opicb.TabIndex = 0;
+            this.opicb.TabStop = false;
+            // 
+            // insertgrb
+            // 
+            this.insertgrb.Controls.Add(this.insertpicb);
+            this.insertgrb.Controls.Add(this.insertbtn);
+            this.insertgrb.Controls.Add(this.insertFemalerad);
+            this.insertgrb.Controls.Add(this.insertMalerad);
+            this.insertgrb.Controls.Add(this.label10);
+            this.insertgrb.Controls.Add(this.label9);
+            this.insertgrb.Controls.Add(this.insertPhoneNumtxt);
+            this.insertgrb.Controls.Add(this.insertAddresstxt);
+            this.insertgrb.Controls.Add(this.label7);
+            this.insertgrb.Controls.Add(this.insertNumtxt);
+            this.insertgrb.Controls.Add(this.insertNametxt);
+            this.insertgrb.Controls.Add(this.label5);
+            this.insertgrb.Controls.Add(this.label4);
+            this.insertgrb.Controls.Add(this.insertPhotobtn);
+            this.insertgrb.Location = new System.Drawing.Point(3, 3);
+            this.insertgrb.Name = "insertgrb";
+            this.insertgrb.Size = new System.Drawing.Size(600, 600);
+            this.insertgrb.TabIndex = 17;
+            this.insertgrb.TabStop = false;
+            this.insertgrb.Text = "添加员工";
+            // 
+            // insertpicb
+            // 
+            this.insertpicb.Location = new System.Drawing.Point(29, 120);
+            this.insertpicb.Name = "insertpicb";
+            this.insertpicb.Size = new System.Drawing.Size(266, 372);
+            this.insertpicb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.insertpicb.TabIndex = 30;
+            this.insertpicb.TabStop = false;
+            // 
+            // insertbtn
+            // 
+            this.insertbtn.Location = new System.Drawing.Point(376, 413);
+            this.insertbtn.Name = "insertbtn";
+            this.insertbtn.Size = new System.Drawing.Size(201, 40);
+            this.insertbtn.TabIndex = 29;
+            this.insertbtn.Text = "添加";
+            this.insertbtn.UseVisualStyleBackColor = true;
+            this.insertbtn.Click += new System.EventHandler(this.insertbtn_Click);
+            // 
+            // insertFemalerad
+            // 
+            this.insertFemalerad.AutoSize = true;
+            this.insertFemalerad.Location = new System.Drawing.Point(432, 229);
+            this.insertFemalerad.Name = "insertFemalerad";
+            this.insertFemalerad.Size = new System.Drawing.Size(50, 24);
+            this.insertFemalerad.TabIndex = 28;
+            this.insertFemalerad.TabStop = true;
+            this.insertFemalerad.Text = "女";
+            this.insertFemalerad.UseVisualStyleBackColor = true;
+            this.insertFemalerad.CheckedChanged += new System.EventHandler(this.insertFemalerad_CheckedChanged);
+            // 
+            // insertMalerad
+            // 
+            this.insertMalerad.AutoSize = true;
+            this.insertMalerad.Location = new System.Drawing.Point(376, 229);
+            this.insertMalerad.Name = "insertMalerad";
+            this.insertMalerad.Size = new System.Drawing.Size(50, 24);
+            this.insertMalerad.TabIndex = 27;
+            this.insertMalerad.TabStop = true;
+            this.insertMalerad.Text = "男";
+            this.insertMalerad.UseVisualStyleBackColor = true;
+            this.insertMalerad.CheckedChanged += new System.EventHandler(this.insertMalerad_CheckedChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(335, 258);
+            this.label10.Location = new System.Drawing.Point(301, 262);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 20);
-            this.label10.TabIndex = 13;
+            this.label10.TabIndex = 26;
             this.label10.Text = "电话：";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(335, 294);
+            this.label9.Location = new System.Drawing.Point(301, 298);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 20);
-            this.label9.TabIndex = 12;
+            this.label9.TabIndex = 25;
             this.label9.Text = "地址：";
             // 
-            // textBox9
+            // insertPhoneNumtxt
             // 
-            this.textBox9.Location = new System.Drawing.Point(410, 255);
-            this.textBox9.MaxLength = 11;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(201, 30);
-            this.textBox9.TabIndex = 11;
+            this.insertPhoneNumtxt.Location = new System.Drawing.Point(376, 259);
+            this.insertPhoneNumtxt.MaxLength = 11;
+            this.insertPhoneNumtxt.Name = "insertPhoneNumtxt";
+            this.insertPhoneNumtxt.Size = new System.Drawing.Size(201, 30);
+            this.insertPhoneNumtxt.TabIndex = 24;
             // 
-            // textBox8
+            // insertAddresstxt
             // 
-            this.textBox8.Location = new System.Drawing.Point(410, 291);
-            this.textBox8.MaxLength = 100;
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(201, 66);
-            this.textBox8.TabIndex = 10;
+            this.insertAddresstxt.Location = new System.Drawing.Point(376, 295);
+            this.insertAddresstxt.MaxLength = 98;
+            this.insertAddresstxt.Multiline = true;
+            this.insertAddresstxt.Name = "insertAddresstxt";
+            this.insertAddresstxt.Size = new System.Drawing.Size(201, 66);
+            this.insertAddresstxt.TabIndex = 23;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(335, 227);
+            this.label7.Location = new System.Drawing.Point(301, 231);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 20);
-            this.label7.TabIndex = 8;
+            this.label7.TabIndex = 22;
             this.label7.Text = "性别：";
             // 
-            // textBox5
+            // insertNumtxt
             // 
-            this.textBox5.Location = new System.Drawing.Point(410, 189);
-            this.textBox5.MaxLength = 8;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(201, 30);
-            this.textBox5.TabIndex = 6;
+            this.insertNumtxt.Location = new System.Drawing.Point(376, 193);
+            this.insertNumtxt.MaxLength = 8;
+            this.insertNumtxt.Name = "insertNumtxt";
+            this.insertNumtxt.Size = new System.Drawing.Size(201, 30);
+            this.insertNumtxt.TabIndex = 21;
             // 
-            // textBox4
+            // insertNametxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(410, 153);
-            this.textBox4.MaxLength = 3;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(201, 30);
-            this.textBox4.TabIndex = 5;
+            this.insertNametxt.Location = new System.Drawing.Point(376, 157);
+            this.insertNametxt.MaxLength = 3;
+            this.insertNametxt.Name = "insertNametxt";
+            this.insertNametxt.Size = new System.Drawing.Size(201, 30);
+            this.insertNametxt.TabIndex = 20;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(335, 192);
+            this.label5.Location = new System.Drawing.Point(301, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 20);
-            this.label5.TabIndex = 3;
+            this.label5.TabIndex = 19;
             this.label5.Text = "工号：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(335, 156);
+            this.label4.Location = new System.Drawing.Point(301, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 18;
             this.label4.Text = "姓名：";
             // 
-            // button1
+            // insertPhotobtn
             // 
-            this.button1.Location = new System.Drawing.Point(410, 363);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "选择照片";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(617, 99);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(271, 412);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 30);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1215, 606);
-            this.tabPage6.TabIndex = 1;
-            this.tabPage6.Text = "修改员工信息";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.insertPhotobtn.Location = new System.Drawing.Point(376, 367);
+            this.insertPhotobtn.Name = "insertPhotobtn";
+            this.insertPhotobtn.Size = new System.Drawing.Size(201, 40);
+            this.insertPhotobtn.TabIndex = 17;
+            this.insertPhotobtn.Text = "选择照片";
+            this.insertPhotobtn.UseVisualStyleBackColor = true;
+            this.insertPhotobtn.Click += new System.EventHandler(this.insertPhotobtn_Click);
             // 
             // tabPage3
             // 
@@ -832,6 +1071,7 @@ namespace QTSuperMarket
             this.Load += new System.EventHandler(this.adminMainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logopicb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -842,8 +1082,15 @@ namespace QTSuperMarket
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.updategrb.ResumeLayout(false);
+            this.updategrb2.ResumeLayout(false);
+            this.updategrb2.PerformLayout();
+            this.updategrb1.ResumeLayout(false);
+            this.updategrb1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.opicb)).EndInit();
+            this.insertgrb.ResumeLayout(false);
+            this.insertgrb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.insertpicb)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -872,13 +1119,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox7;
@@ -886,19 +1126,11 @@ namespace QTSuperMarket
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button searchbtn;
+        private System.Windows.Forms.Label countlabel;
+        private System.Windows.Forms.TextBox searchtxt;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -912,15 +1144,51 @@ namespace QTSuperMarket
         private System.Windows.Forms.DataGridViewTextBoxColumn personPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn personPhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn personAddress;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button gobtn;
+        private System.Windows.Forms.TextBox rownumbtn;
+        private System.Windows.Forms.Button lastbtn;
+        private System.Windows.Forms.Button nextbtn;
+        private System.Windows.Forms.Button previousbtn;
+        private System.Windows.Forms.Button firstbtn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.GroupBox updategrb;
+        private System.Windows.Forms.GroupBox insertgrb;
+        private System.Windows.Forms.PictureBox insertpicb;
+        private System.Windows.Forms.Button insertbtn;
+        private System.Windows.Forms.RadioButton insertFemalerad;
+        private System.Windows.Forms.RadioButton insertMalerad;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox insertPhoneNumtxt;
+        private System.Windows.Forms.TextBox insertAddresstxt;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox insertNumtxt;
+        private System.Windows.Forms.TextBox insertNametxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button insertPhotobtn;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.GroupBox updategrb2;
+        private System.Windows.Forms.GroupBox updategrb1;
+        private System.Windows.Forms.PictureBox opicb;
+        private System.Windows.Forms.Button updatebtn;
+        private System.Windows.Forms.TextBox updatePasswordtxt;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox updatePhoneNumtxt;
+        private System.Windows.Forms.TextBox updateAddresstxt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox updateNumtxt;
+        private System.Windows.Forms.TextBox updateNametxt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox otxt;
+        private System.Windows.Forms.PictureBox logopicb;
     }
 }
