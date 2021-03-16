@@ -105,7 +105,10 @@ namespace QTSuperMarket
 
         private void adminMainForm_Load(object sender, EventArgs e)
         {
+            //调节控件
+            stockDomtxt.Text = DateTime.Now.ToShortDateString();
             countlabel.Text = "";
+            monthCalendar1.Hide();
             //调节dateGridView1的视觉效果
             dataGridView1.Columns[0].Width = 148;
             dataGridView1.Columns[1].Width = 80;
@@ -126,6 +129,12 @@ namespace QTSuperMarket
             textBox2.Text = Settings1.Default.workerLastUseTime.Trim();
             textBox3.Text = Settings1.Default.workerLastUseNum.Trim();
             insertMalerad.Checked = true;
+
+            //执行方法
+            mainCategortcomBox();
+            numUnitcomBox();
+            qgpUnitcomBox();
+            stockNamecomBox();
             /*
              * 判断之前是否有员工使用过
              */
@@ -862,6 +871,244 @@ namespace QTSuperMarket
             otxt.Text = "";
             //opicb.ImageLocation = updatepicb.ImageLocation = null;
             updateNametxt.Text = updateNumtxt.Text = updatePasswordtxt.Text = updatePhoneNumtxt.Text = updateAddresstxt.Text = "";
+        }
+
+        private void selectDatebtn1_Click(object sender, EventArgs e)
+        {
+            monthCalendar1.BringToFront();
+            monthCalendar1.Show();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            
+        }
+        private void mainCategortcomBox()
+        {
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com = new SqlCommand("select mainCategoryName from mainCategory",con);
+            com.ExecuteNonQuery();
+            SqlDataReader rd = com.ExecuteReader();
+            if (rd.HasRows)
+            {
+                while (rd.Read())
+                {
+                    mainCategorycob.Items.Add(rd[0].ToString());
+                }
+            }
+            mainCategorycob.SelectedIndex = 0;
+            rd.Close();
+            con.Close();
+        }
+
+        private void numUnitcomBox()
+        {
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com = new SqlCommand("select numUnitName from numUnit", con);
+            com.ExecuteNonQuery();
+            SqlDataReader rd = com.ExecuteReader();
+            if (rd.HasRows)
+            {
+                while (rd.Read())
+                {
+                    numUnitcob.Items.Add(rd[0].ToString());
+                }
+            }
+            numUnitcob.SelectedIndex = 0;
+            rd.Close();
+            con.Close();
+        }
+        private void qgpUnitcomBox()
+        {
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com = new SqlCommand("select qgpUnitName from qgpUnit", con);
+            com.ExecuteNonQuery();
+            SqlDataReader rd = com.ExecuteReader();
+            if (rd.HasRows)
+            {
+                while (rd.Read())
+                {
+                    qgpUnitcob.Items.Add(rd[0].ToString());
+                }
+            }
+            qgpUnitcob.SelectedIndex = 1;
+            rd.Close();
+            con.Close();
+        }
+        private void stockNamecomBox()
+        {
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com = new SqlCommand("select stockNames from stockNamesInf", con);
+            com.ExecuteNonQuery();
+            SqlDataReader rd = com.ExecuteReader();
+            if (rd.HasRows)
+            {
+                while (rd.Read())
+                {
+                    stockNamecob.Items.Add(rd[0].ToString());
+                }
+            }
+            stockNamecob.SelectedIndex = 1;
+            rd.Close();
+            con.Close();
+        }
+
+        private void mainCategorycob_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            subCategorycob.Items.Clear();
+            string selectName = mainCategorycob.Text.Trim();
+            stockDomtxt.Text = selectName;
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            //先查询数据库 获取 当前类的id，再构造语句查询此id
+            SqlCommand com1 = new SqlCommand("select mainCategoryId from mainCategory where mainCategoryName = '" + selectName + "'",con);
+            string selectId = com1.ExecuteScalar().ToString();
+            stockDomtxt.Text = selectId;
+            SqlCommand com2 = new SqlCommand("select subCategoryName from subCategory where submainid = '" + selectId + "'", con);
+            com2.ExecuteNonQuery();
+            SqlDataReader rd = com2.ExecuteReader();
+            if (rd.HasRows)
+            {
+                while (rd.Read())
+                {
+                    subCategorycob.Items.Add(rd[0].ToString());
+                }
+            }
+            subCategorycob.SelectedIndex = 0;
+            rd.Close();
+            con.Close();
+        }
+
+        private void insertAndCheckStockNames()
+        {
+
+            string stockNames = stockNamecob.Text.Trim();
+            //插入数据时先进行检查
+            SqlConnection con = new SqlConnection("Date Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com1 = new SqlCommand("select count(*) from stockNamesInf where stockNames = '" + stockNames + "'",con);
+            int numCheck = (int)com1.ExecuteNonQuery();
+            if(numCheck == 0)
+            {
+                //此时数据库中还没有数据，可以直接插入
+                SqlCommand com2 = new SqlCommand("insert into stockNames values('" + stockNames + "')",con);
+                com2.ExecuteScalar();
+                con.Close();
+            }
+            else if(numCheck > 0)
+            {
+                //此时数据库中已经存在了数据，不用再进行插入了
+            }
+        }
+        private void insertStockInfbtn_Click(object sender, EventArgs e)
+        {
+            /*当数据写入时将商品名写入stockNamesInf表中*/
+            /*
+             * 进行数据验证时，不用管库存号，这个值是唯一的
+             * 然后验证商品名是否为空
+             * 
+             */
+            string stockName = stockNamecob.Text.Trim();
+            string stockbarcode = stockBarcodetxt.Text.Trim();
+            int stockNum = Convert.ToInt32(stockNumnud.Value);
+            string stockdom = stockDomtxt.Text;
+            string stockNote = stockNotetxt.Text.Trim();
+
+            insertStockPersonNametxt.Text = Settings1.Default.nowWorker;
+            insertStockDateTimetxt.Text = DateTime.Now.ToShortDateString();
+
+            textBox11.Text += stockName + "\r\n" + stockbarcode + "\r\n" + stockNum + "\r\n" + stockdom + "\r\n" + stockNote + "\r\n" + insertStockPersonNametxt.Text + "\r\n" + insertStockDateTimetxt.Text;
+
+
+
+
+
+            /*
+             * string date = stockDomtxt.Text;
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            //先查询数据库 获取 当前类的id，再构造语句查询此id
+            SqlCommand com1 = new SqlCommand("insert into scrq values ('" + date + "')",con);
+            com1.ExecuteScalar();
+            con.Close();
+            */
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            stockDomtxt.Text = monthCalendar1.SelectionStart.ToShortDateString();
+            monthCalendar1.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string str1 = stockIdtxt.Text.Trim();
+            string str2 = DateTime.Now.ToShortDateString().Replace("/","");
+            string str3 = DateTime.Now.ToLongTimeString().Replace(":","");
+            textBox11.Text = str2 + str3;
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox5.Checked == true)
+            {
+                //商品没有保质期
+                stockQgpnud.Enabled = false;
+                qgpUnitcob.Enabled = false;
+            }
+            else
+            {
+                stockQgpnud.Enabled = true;
+                qgpUnitcob.Enabled = true;
+            }
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox6.Checked == true)
+            {
+                stockBarcodetxt.Text = "此商品无条形码";
+                stockBarcodetxt.Enabled = false;
+
+            }
+            else
+            {
+                stockBarcodetxt.Enabled = true;
+                stockBarcodetxt.Text = "";
+            }
+        }
+
+        /*private void stockNamecob_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string str1 = stockNamecob.Text.Trim();
+            string str2 = DateTime.Now.ToShortDateString().Replace("/", "");
+            string str3 = DateTime.Now.ToLongTimeString().Replace(":", "");
+            stockIdtxt.Text = str1 + str2 + str3;
+        }*/
+
+        private void stockNamecob_TextChanged(object sender, EventArgs e)
+        {
+            string str1 = stockNamecob.Text.Trim();
+            string str2 = DateTime.Now.ToShortDateString().Replace("/", "");
+            string str3 = DateTime.Now.ToLongTimeString().Replace(":", "");
+            stockIdtxt.Text = str1 + str2 + str3;
+        }
+
+        private void insertStockImgbtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "请选择库存品的照片";
+            ofd.Filter = "图片文件(JPG，JPEG，BMP，PNG)|*.jpg;*.jpeg;*.bmp;*.png";
+            if (ofd.ShowDialog() == DialogResult.OK && (openFileDialog1.FileName != ""))
+            {
+                insertStockpicb.ImageLocation = ofd.FileName;
+            }
+            ofd.Dispose();
         }
     }
 }

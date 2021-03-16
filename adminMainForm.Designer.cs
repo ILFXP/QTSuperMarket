@@ -106,6 +106,54 @@ namespace QTSuperMarket
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.insertPhotobtn = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.insertStockbtn = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.stockNamecob = new System.Windows.Forms.ComboBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.insertStockDateTimetxt = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.insertStockPersonNametxt = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.stockNotetxt = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.stockQgpnud = new System.Windows.Forms.NumericUpDown();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.stockNumnud = new System.Windows.Forms.NumericUpDown();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.insertStockInfbtn = new System.Windows.Forms.Button();
+            this.qgpUnitcob = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.numUnitcob = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.stockDomtxt = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.chooseDomDatebtn = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.subCategorycob = new System.Windows.Forms.ComboBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.mainCategorycob = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.stockBarcodetxt = new System.Windows.Forms.TextBox();
+            this.stockIdtxt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.insertStockpicb = new System.Windows.Forms.PictureBox();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -114,7 +162,6 @@ namespace QTSuperMarket
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -138,6 +185,16 @@ namespace QTSuperMarket
             ((System.ComponentModel.ISupportInitialize)(this.opicb)).BeginInit();
             this.insertgrb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insertpicb)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.tabControl3.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stockQgpnud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockNumnud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.insertStockpicb)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -147,8 +204,8 @@ namespace QTSuperMarket
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(13, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -172,7 +229,7 @@ namespace QTSuperMarket
             this.logopicb.Image = ((System.Drawing.Image)(resources.GetObject("logopicb.Image")));
             this.logopicb.Location = new System.Drawing.Point(3, 3);
             this.logopicb.Name = "logopicb";
-            this.logopicb.Size = new System.Drawing.Size(272, 119);
+            this.logopicb.Size = new System.Drawing.Size(278, 119);
             this.logopicb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logopicb.TabIndex = 1;
             this.logopicb.TabStop = false;
@@ -290,7 +347,7 @@ namespace QTSuperMarket
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(1215, 606);
             this.tabPage7.TabIndex = 2;
-            this.tabPage7.Text = "查询";
+            this.tabPage7.Text = "查询员工信息";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // lastbtn
@@ -384,9 +441,9 @@ namespace QTSuperMarket
             this.countlabel.AutoSize = true;
             this.countlabel.Location = new System.Drawing.Point(3, 13);
             this.countlabel.Name = "countlabel";
-            this.countlabel.Size = new System.Drawing.Size(199, 20);
+            this.countlabel.Size = new System.Drawing.Size(189, 20);
             this.countlabel.TabIndex = 1;
-            this.countlabel.Text = "共查询到99999条数据";
+            this.countlabel.Text = "共查询到NULL条数据";
             // 
             // dataGridView1
             // 
@@ -566,7 +623,7 @@ namespace QTSuperMarket
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1215, 606);
             this.tabPage5.TabIndex = 0;
-            this.tabPage5.Text = "添加\\修改";
+            this.tabPage5.Text = "添加\\修改信息";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // updategrb
@@ -911,6 +968,485 @@ namespace QTSuperMarket
             this.insertPhotobtn.UseVisualStyleBackColor = true;
             this.insertPhotobtn.Click += new System.EventHandler(this.insertPhotobtn_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.tabControl3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 30);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1229, 646);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "库存信息";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabControl3
+            // 
+            this.tabControl3.Controls.Add(this.tabPage6);
+            this.tabControl3.Controls.Add(this.tabPage8);
+            this.tabControl3.Controls.Add(this.tabPage9);
+            this.tabControl3.Controls.Add(this.tabPage10);
+            this.tabControl3.Location = new System.Drawing.Point(3, 3);
+            this.tabControl3.Name = "tabControl3";
+            this.tabControl3.SelectedIndex = 0;
+            this.tabControl3.Size = new System.Drawing.Size(1223, 640);
+            this.tabControl3.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.dataGridView2);
+            this.tabPage6.Location = new System.Drawing.Point(4, 30);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1215, 606);
+            this.tabPage6.TabIndex = 0;
+            this.tabPage6.Text = "查询库存信息";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.ContextMenuStrip = this.contextMenuStrip2;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 29;
+            this.dataGridView2.Size = new System.Drawing.Size(1209, 600);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.ShowImageMargin = false;
+            this.contextMenuStrip2.Size = new System.Drawing.Size(160, 70);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem5.Text = "添加库存信息";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem6.Text = "修改库存信息";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem7.Text = "删除库存信息";
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.insertStockbtn);
+            this.tabPage8.Controls.Add(this.groupBox3);
+            this.tabPage8.Controls.Add(this.insertStockpicb);
+            this.tabPage8.Location = new System.Drawing.Point(4, 30);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(1215, 606);
+            this.tabPage8.TabIndex = 1;
+            this.tabPage8.Text = "添加库存信息";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // insertStockbtn
+            // 
+            this.insertStockbtn.Location = new System.Drawing.Point(3, 564);
+            this.insertStockbtn.Name = "insertStockbtn";
+            this.insertStockbtn.Size = new System.Drawing.Size(352, 39);
+            this.insertStockbtn.TabIndex = 2;
+            this.insertStockbtn.Text = "选择商品图片";
+            this.insertStockbtn.UseVisualStyleBackColor = true;
+            this.insertStockbtn.Click += new System.EventHandler(this.insertStockImgbtn_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.stockNamecob);
+            this.groupBox3.Controls.Add(this.checkBox6);
+            this.groupBox3.Controls.Add(this.insertStockDateTimetxt);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.insertStockPersonNametxt);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.stockNotetxt);
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.stockQgpnud);
+            this.groupBox3.Controls.Add(this.checkBox5);
+            this.groupBox3.Controls.Add(this.stockNumnud);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.textBox11);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.insertStockInfbtn);
+            this.groupBox3.Controls.Add(this.qgpUnitcob);
+            this.groupBox3.Controls.Add(this.label25);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.numUnitcob);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.stockDomtxt);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.chooseDomDatebtn);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.subCategorycob);
+            this.groupBox3.Controls.Add(this.monthCalendar1);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.mainCategorycob);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.stockBarcodetxt);
+            this.groupBox3.Controls.Add(this.stockIdtxt);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox3.Location = new System.Drawing.Point(361, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(851, 600);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            // 
+            // stockNamecob
+            // 
+            this.stockNamecob.FormattingEnabled = true;
+            this.stockNamecob.Location = new System.Drawing.Point(198, 71);
+            this.stockNamecob.Name = "stockNamecob";
+            this.stockNamecob.Size = new System.Drawing.Size(534, 26);
+            this.stockNamecob.TabIndex = 38;
+            this.stockNamecob.TextChanged += new System.EventHandler(this.stockNamecob_TextChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(576, 106);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(156, 22);
+            this.checkBox6.TabIndex = 37;
+            this.checkBox6.Text = "此商品无条形码";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // insertStockDateTimetxt
+            // 
+            this.insertStockDateTimetxt.Enabled = false;
+            this.insertStockDateTimetxt.Location = new System.Drawing.Point(511, 405);
+            this.insertStockDateTimetxt.Name = "insertStockDateTimetxt";
+            this.insertStockDateTimetxt.Size = new System.Drawing.Size(221, 28);
+            this.insertStockDateTimetxt.TabIndex = 36;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(425, 408);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(98, 18);
+            this.label29.TabIndex = 35;
+            this.label29.Text = "添加时间：";
+            // 
+            // insertStockPersonNametxt
+            // 
+            this.insertStockPersonNametxt.Enabled = false;
+            this.insertStockPersonNametxt.Location = new System.Drawing.Point(198, 405);
+            this.insertStockPersonNametxt.Name = "insertStockPersonNametxt";
+            this.insertStockPersonNametxt.Size = new System.Drawing.Size(221, 28);
+            this.insertStockPersonNametxt.TabIndex = 34;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(112, 408);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(80, 18);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "添加人：";
+            // 
+            // stockNotetxt
+            // 
+            this.stockNotetxt.Location = new System.Drawing.Point(198, 271);
+            this.stockNotetxt.Multiline = true;
+            this.stockNotetxt.Name = "stockNotetxt";
+            this.stockNotetxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.stockNotetxt.Size = new System.Drawing.Size(534, 128);
+            this.stockNotetxt.TabIndex = 32;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(130, 274);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(62, 18);
+            this.label27.TabIndex = 31;
+            this.label27.Text = "备注：";
+            // 
+            // stockQgpnud
+            // 
+            this.stockQgpnud.Location = new System.Drawing.Point(198, 237);
+            this.stockQgpnud.Name = "stockQgpnud";
+            this.stockQgpnud.Size = new System.Drawing.Size(221, 28);
+            this.stockQgpnud.TabIndex = 30;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(576, 205);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(156, 22);
+            this.checkBox5.TabIndex = 29;
+            this.checkBox5.Text = "此商品无保质期";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // stockNumnud
+            // 
+            this.stockNumnud.Location = new System.Drawing.Point(198, 169);
+            this.stockNumnud.Name = "stockNumnud";
+            this.stockNumnud.Size = new System.Drawing.Size(221, 28);
+            this.stockNumnud.TabIndex = 28;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(98, 561);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "计算";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(198, 485);
+            this.textBox11.Multiline = true;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(534, 109);
+            this.textBox11.TabIndex = 26;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(130, 488);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(62, 18);
+            this.label26.TabIndex = 25;
+            this.label26.Text = "测试：";
+            // 
+            // insertStockInfbtn
+            // 
+            this.insertStockInfbtn.Location = new System.Drawing.Point(632, 439);
+            this.insertStockInfbtn.Name = "insertStockInfbtn";
+            this.insertStockInfbtn.Size = new System.Drawing.Size(100, 40);
+            this.insertStockInfbtn.TabIndex = 24;
+            this.insertStockInfbtn.Text = "添加";
+            this.insertStockInfbtn.UseVisualStyleBackColor = true;
+            this.insertStockInfbtn.Click += new System.EventHandler(this.insertStockInfbtn_Click);
+            // 
+            // qgpUnitcob
+            // 
+            this.qgpUnitcob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.qgpUnitcob.FormattingEnabled = true;
+            this.qgpUnitcob.Location = new System.Drawing.Point(511, 237);
+            this.qgpUnitcob.Name = "qgpUnitcob";
+            this.qgpUnitcob.Size = new System.Drawing.Size(221, 26);
+            this.qgpUnitcob.TabIndex = 23;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(443, 240);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(62, 18);
+            this.label25.TabIndex = 22;
+            this.label25.Text = "单位：";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(112, 240);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(80, 18);
+            this.label24.TabIndex = 20;
+            this.label24.Text = "保质期：";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(443, 174);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(62, 18);
+            this.label21.TabIndex = 19;
+            this.label21.Text = "单位：";
+            // 
+            // numUnitcob
+            // 
+            this.numUnitcob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.numUnitcob.FormattingEnabled = true;
+            this.numUnitcob.ItemHeight = 18;
+            this.numUnitcob.Location = new System.Drawing.Point(511, 171);
+            this.numUnitcob.Name = "numUnitcob";
+            this.numUnitcob.Size = new System.Drawing.Size(221, 26);
+            this.numUnitcob.TabIndex = 18;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(130, 172);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(62, 18);
+            this.label23.TabIndex = 16;
+            this.label23.Text = "数量：";
+            // 
+            // stockDomtxt
+            // 
+            this.stockDomtxt.Enabled = false;
+            this.stockDomtxt.Location = new System.Drawing.Point(198, 203);
+            this.stockDomtxt.Name = "stockDomtxt";
+            this.stockDomtxt.Size = new System.Drawing.Size(221, 28);
+            this.stockDomtxt.TabIndex = 9;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(94, 208);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(98, 18);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "生产日期：";
+            // 
+            // chooseDomDatebtn
+            // 
+            this.chooseDomDatebtn.Location = new System.Drawing.Point(425, 203);
+            this.chooseDomDatebtn.Name = "chooseDomDatebtn";
+            this.chooseDomDatebtn.Size = new System.Drawing.Size(90, 28);
+            this.chooseDomDatebtn.TabIndex = 14;
+            this.chooseDomDatebtn.Text = "选择日期";
+            this.chooseDomDatebtn.UseVisualStyleBackColor = true;
+            this.chooseDomDatebtn.Click += new System.EventHandler(this.selectDatebtn1_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(425, 140);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(80, 18);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "副类别：";
+            // 
+            // subCategorycob
+            // 
+            this.subCategorycob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subCategorycob.FormattingEnabled = true;
+            this.subCategorycob.Location = new System.Drawing.Point(511, 137);
+            this.subCategorycob.Name = "subCategorycob";
+            this.subCategorycob.Size = new System.Drawing.Size(221, 26);
+            this.subCategorycob.TabIndex = 10;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
+            this.monthCalendar1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.monthCalendar1.Location = new System.Drawing.Point(253, 243);
+            this.monthCalendar1.MaxSelectionCount = 1;
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.ShowToday = false;
+            this.monthCalendar1.TabIndex = 8;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(112, 106);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(80, 18);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "条形码：";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(112, 140);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(80, 18);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "主类别：";
+            // 
+            // mainCategorycob
+            // 
+            this.mainCategorycob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mainCategorycob.FormattingEnabled = true;
+            this.mainCategorycob.Location = new System.Drawing.Point(198, 137);
+            this.mainCategorycob.Name = "mainCategorycob";
+            this.mainCategorycob.Size = new System.Drawing.Size(221, 26);
+            this.mainCategorycob.TabIndex = 5;
+            this.mainCategorycob.SelectedIndexChanged += new System.EventHandler(this.mainCategorycob_SelectedIndexChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(112, 74);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(80, 18);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "商品名：";
+            // 
+            // stockBarcodetxt
+            // 
+            this.stockBarcodetxt.Location = new System.Drawing.Point(198, 103);
+            this.stockBarcodetxt.MaxLength = 50;
+            this.stockBarcodetxt.Name = "stockBarcodetxt";
+            this.stockBarcodetxt.Size = new System.Drawing.Size(221, 28);
+            this.stockBarcodetxt.TabIndex = 3;
+            // 
+            // stockIdtxt
+            // 
+            this.stockIdtxt.Enabled = false;
+            this.stockIdtxt.Location = new System.Drawing.Point(198, 37);
+            this.stockIdtxt.Name = "stockIdtxt";
+            this.stockIdtxt.Size = new System.Drawing.Size(534, 28);
+            this.stockIdtxt.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(112, 40);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 18);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "存储号：";
+            // 
+            // insertStockpicb
+            // 
+            this.insertStockpicb.Location = new System.Drawing.Point(3, 3);
+            this.insertStockpicb.Name = "insertStockpicb";
+            this.insertStockpicb.Size = new System.Drawing.Size(352, 555);
+            this.insertStockpicb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.insertStockpicb.TabIndex = 0;
+            this.insertStockpicb.TabStop = false;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Location = new System.Drawing.Point(4, 30);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(1215, 606);
+            this.tabPage9.TabIndex = 2;
+            this.tabPage9.Text = "修改库存信息";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Location = new System.Drawing.Point(4, 30);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(1215, 606);
+            this.tabPage10.TabIndex = 3;
+            this.tabPage10.Text = "删除库存信息";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -999,16 +1535,6 @@ namespace QTSuperMarket
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.MouseHover += new System.EventHandler(this.checkBox1_MouseHover);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 30);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1229, 646);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "信息";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -1091,6 +1617,17 @@ namespace QTSuperMarket
             this.insertgrb.ResumeLayout(false);
             this.insertgrb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insertpicb)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabControl3.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stockQgpnud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockNumnud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.insertStockpicb)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1190,5 +1727,52 @@ namespace QTSuperMarket
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox otxt;
         private System.Windows.Forms.PictureBox logopicb;
+        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox stockIdtxt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox insertStockpicb;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox mainCategorycob;
+        private System.Windows.Forms.ComboBox subCategorycob;
+        private System.Windows.Forms.TextBox stockDomtxt;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button chooseDomDatebtn;
+        private System.Windows.Forms.ComboBox numUnitcob;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button insertStockbtn;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox qgpUnitcob;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button insertStockInfbtn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown stockNumnud;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.NumericUpDown stockQgpnud;
+        private System.Windows.Forms.TextBox insertStockDateTimetxt;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox insertStockPersonNametxt;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox stockNotetxt;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.TextBox stockBarcodetxt;
+        private System.Windows.Forms.ComboBox stockNamecob;
     }
 }
