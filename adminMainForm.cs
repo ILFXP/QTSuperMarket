@@ -137,12 +137,11 @@ namespace QTSuperMarket
             dataGridView1.RowTemplate.Height = 207;
             //调节dateGridView2的视觉效果
             dataGridView2.Columns[0].Width = 148;
-            dataGridView2.Columns[1].Width = 160;
-            dataGridView2.Columns[2].Width = 80;
-            dataGridView2.Columns[3].Width = 80;
+            dataGridView2.Columns[1].Width = 200;
+            dataGridView2.Columns[2].Width = 160;
+            dataGridView2.Columns[3].Width = 160;
             dataGridView2.Columns[4].Width = 160;
             dataGridView2.Columns[5].Width = 160;
-            dataGridView2.Columns[6].Width = 160;
             dataGridView2.RowTemplate.Height = 207;
 
             //写入日志
@@ -261,7 +260,6 @@ namespace QTSuperMarket
                         con.Open();
                         SqlCommand com = new SqlCommand("select count(*) from personInf where personNum = '" + personNum + "'", con);
                         int numRet = (int)com.ExecuteScalar();
-                        con.Close();
                         if (numRet > 0)
                             MessageBox.Show("已经存在工号重复的员工，请更改工号后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
@@ -1009,22 +1007,18 @@ namespace QTSuperMarket
             con.Close();
         }
 
-        private void insertAndCheckStockNames()
+        private void deleteInf2()
         {
-
-            string stockNames = stockNamecob.Text.Trim();
-            //插入数据时先进行检查
-            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-            con.Open();
-            SqlCommand com = new SqlCommand("select count(*) from stockNamesInf where stockNames = '" + stockNames + "'",con);
-            int numCheck = (int)com.ExecuteNonQuery();
-            if(numCheck == 0)
-            {
-                //此时数据库中还没有数据，可以直接插入
-                SqlCommand com1 = new SqlCommand("insert into stockNames values('" + stockNames + "')",con);
-                com1.ExecuteScalar();
-                con.Close();
-            }
+            stockIdtxt.Text = "";
+            insertStockpicb.ImageLocation = null;
+            stockIdtxt.Text = "";
+            stockNamecob.Text = "";
+            stockBarcodetxt.Text = "";
+            stockNumnud.Value = 0;
+            stockQgpnud.Value = 0;
+            stockNotetxt.Text = "";
+            insertStockPersonNametxt.Text = "";
+            insertStockDateTimetxt.Text = "";
         }
         private void insertStockInfbtn_Click(object sender, EventArgs e)
         {
@@ -1117,19 +1111,42 @@ namespace QTSuperMarket
                 }
                 else
                 {
-                    insertAndCheckStockNames();
                     SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
                     con.Open();
+                    SqlCommand com = new SqlCommand("select count(*) from stockNamesInf where stockNames = '" + stockName + "'", con);
+                    int numCheck = (int)com.ExecuteNonQuery();
+                    if (numCheck > 0)
+                    {
+                        
+                    }
+                    else
+                    {
+                        //此时数据库中还没有数据，可以直接插入
+                        SqlCommand com1 = new SqlCommand("insert into stockNamesInf values ('" + stockName + "')", con);
+                        com1.ExecuteScalar();
+                    }
                     string fullPath = insertStockpicb.ImageLocation;
                     FileStream fs = new FileStream(fullPath, FileMode.Open);
                     byte[] bytes = new byte[fs.Length];
                     BinaryReader br = new BinaryReader(fs);
                     bytes = br.ReadBytes(Convert.ToInt32(fs.Length));
-                    SqlCommand com = new SqlCommand("insert into stockInf (stockId,stockName,stockBarCode,mainCateGory,subCategory,stockNum,stockNumUnit,stockDom,stockQgp,stockQgpUnit,stockNote,insertPerson,insertDate,stockExtime1,stockExtime2,stockExDate,stockExState,stockImage) values ('" + stockId + "','" + stockName + "','" + stockBarCode + "','" + mainCategory + "','" + subCategory + "','" + stockNum + "','" + stockNumUnit + "','" + stockDom + "','" + stockQgp + "','" + stockQgpUnit + "','" + stockNote + "','" + insertPerson + "','" + insertDate + "','" + stockExtime1 + "','" + stockExtime2 + "','" + stockExDate + "','" + stockExState + "',@ImageList)",con);
-                    com.Parameters.Add("ImageList", SqlDbType.Image);
-                    com.Parameters["ImageList"].Value = bytes;
-                    com.ExecuteNonQuery();
+                    SqlCommand com2 = new SqlCommand("insert into stockInf (stockId,stockName,stockBarCode,mainCateGory,subCategory,stockNum,stockNumUnit,stockDom,stockQgp,stockQgpUnit,stockNote,insertPerson,insertDate,stockExtime1,stockExtime2,stockExDate,stockExState,stockImage) values ('" + stockId + "','" + stockName + "','" + stockBarCode + "','" + mainCategory + "','" + subCategory + "','" + stockNum + "','" + stockNumUnit + "','" + stockDom + "','" + stockQgp + "','" + stockQgpUnit + "','" + stockNote + "','" + insertPerson + "','" + insertDate + "','" + stockExtime1 + "','" + stockExtime2 + "','" + stockExDate + "','" + stockExState + "',@ImageList)",con);
+                    com2.Parameters.Add("ImageList", SqlDbType.Image);
+                    com2.Parameters["ImageList"].Value = bytes;
+                    com2.ExecuteNonQuery();
                     con.Close();
+                    stockNamecob.Items.Clear();
+                    stockNamecomBox();
+                    deleteInf2();
+                    DialogResult result = MessageBox.Show("您已经成功添加：" + stockName + stockNum + stockNumUnit + "是否前往查询界面查看？","提示",MessageBoxButtons.OKCancel);
+                    if(result == DialogResult.OK)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
         }
@@ -1159,14 +1176,14 @@ namespace QTSuperMarket
                             double x5 = Math.Floor((x3 % 365) / 30);
                             //天
                             double x6 = ((x3 % 365) % 30);
-                            textBox11.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            showDetailtxt.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
                             stockExtime1 = x3 + "天";
                             stockExtime2 = x4 + "年零" + x5 + "个月零" + x6 + "天";
                             stockExState = "未过期";
                         }
                         else if(x3 == 0)
                         {
-                            textBox11.Text = "您添加的库存将于今天过期\r\n请及时确认";
+                            showDetailtxt.Text = "您添加的库存将于今天过期\r\n请及时确认";
                             stockExtime1 = "0天";
                             stockExtime2 = "0年零0个月零0天";
                             stockExState = "未过期";
@@ -1177,7 +1194,7 @@ namespace QTSuperMarket
                             double x5 = Math.Floor(x4 / 365);
                             double x6 = Math.Floor((x4 % 365) / 30);
                             double x7 = ((x4 % 365) % 30);
-                            textBox11.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
+                            showDetailtxt.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
                             stockExtime1 = "已过期" + x4 + "天";
                             stockExtime2 = "已过期" + x5 + "年零" + x6 + "个月零" + x7 + "天";
                             stockExState = "已过期";
@@ -1204,14 +1221,14 @@ namespace QTSuperMarket
                             double x5 = Math.Floor((x3 % 365) / 30);
                             //天
                             double x6 = ((x3 % 365) % 30);
-                            textBox11.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            showDetailtxt.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
                             stockExtime1 = x3 + "天";
                             stockExtime2 = x4 + "年零" + x5 + "个月零" + x6 + "天";
                             stockExState = "未过期";
                         }
                         else if (x3 == 0)
                         {
-                            textBox11.Text = "您添加的库存将于今天过期\r\n请及时确认";
+                            showDetailtxt.Text = "您添加的库存将于今天过期\r\n请及时确认";
                             stockExtime1 = "0天";
                             stockExtime2 = "0年零0个月零0天";
                             stockExState = "未过期";
@@ -1222,7 +1239,7 @@ namespace QTSuperMarket
                             double x5 = Math.Floor(x4 / 365);
                             double x6 = Math.Floor((x4 % 365) / 30);
                             double x7 = ((x4 % 365) % 30);
-                            textBox11.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
+                            showDetailtxt.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
                             stockExtime1 = "已过期" + x4 + "天";
                             stockExtime2 = "已过期" + x5 + "年零" + x6 + "个月零" + x7 + "天";
                             stockExState = "已过期";
@@ -1249,14 +1266,14 @@ namespace QTSuperMarket
                             double x5 = Math.Floor((x3 % 365) / 30);
                             //天
                             double x6 = ((x3 % 365) % 30);
-                            textBox11.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            showDetailtxt.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
                             stockExtime1 = x3 + "天";
                             stockExtime2 = x4 + "年零" + x5 + "个月零" + x6 + "天";
                             stockExState = "未过期";
                         }
                         else if (x3 == 0)
                         {
-                            textBox11.Text = "您添加的库存将于今天过期\r\n请及时确认";
+                            showDetailtxt.Text = "您添加的库存将于今天过期\r\n请及时确认";
                             stockExtime1 = "0天";
                             stockExtime2 = "0年零0个月零0天";
                             stockExState = "未过期";
@@ -1267,7 +1284,7 @@ namespace QTSuperMarket
                             double x5 = Math.Floor(x4 / 365);
                             double x6 = Math.Floor((x4 % 365) / 30);
                             double x7 = ((x4 % 365) % 30);
-                            textBox11.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
+                            showDetailtxt.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
                             stockExtime1 = "已过期" + x4 + "天";
                             stockExtime2 = "已过期" + x5 + "年零" + x6 + "个月零" + x7 + "天";
                             stockExState = "已过期";
