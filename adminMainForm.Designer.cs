@@ -35,6 +35,10 @@ namespace QTSuperMarket
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.logopicb = new System.Windows.Forms.PictureBox();
@@ -54,7 +58,7 @@ namespace QTSuperMarket
             this.previousbtn = new System.Windows.Forms.Button();
             this.firstbtn = new System.Windows.Forms.Button();
             this.gobtn = new System.Windows.Forms.Button();
-            this.rownumbtn = new System.Windows.Forms.TextBox();
+            this.rownumtxt = new System.Windows.Forms.TextBox();
             this.searchtxt = new System.Windows.Forms.TextBox();
             this.searchbtn = new System.Windows.Forms.Button();
             this.countlabel = new System.Windows.Forms.Label();
@@ -109,16 +113,34 @@ namespace QTSuperMarket
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.lastbtn2 = new System.Windows.Forms.Button();
+            this.nextbtn2 = new System.Windows.Forms.Button();
+            this.previousbtn2 = new System.Windows.Forms.Button();
+            this.firstbtn2 = new System.Windows.Forms.Button();
+            this.gobtn2 = new System.Windows.Forms.Button();
+            this.rownumtxt2 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.stocksearchbtn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailInftsm = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.insertStockbtn = new System.Windows.Forms.Button();
+            this.insertStockImgbtn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cleanNames = new System.Windows.Forms.Button();
             this.stockNamecob = new System.Windows.Forms.ComboBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.noBarCodecb = new System.Windows.Forms.CheckBox();
             this.insertStockDateTimetxt = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.insertStockPersonNametxt = new System.Windows.Forms.TextBox();
@@ -126,9 +148,8 @@ namespace QTSuperMarket
             this.stockNotetxt = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.stockQgpnud = new System.Windows.Forms.NumericUpDown();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.noQgpcb = new System.Windows.Forms.CheckBox();
             this.stockNumnud = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.insertStockInfbtn = new System.Windows.Forms.Button();
@@ -338,7 +359,7 @@ namespace QTSuperMarket
             this.tabPage7.Controls.Add(this.previousbtn);
             this.tabPage7.Controls.Add(this.firstbtn);
             this.tabPage7.Controls.Add(this.gobtn);
-            this.tabPage7.Controls.Add(this.rownumbtn);
+            this.tabPage7.Controls.Add(this.rownumtxt);
             this.tabPage7.Controls.Add(this.searchtxt);
             this.tabPage7.Controls.Add(this.searchbtn);
             this.tabPage7.Controls.Add(this.countlabel);
@@ -405,16 +426,16 @@ namespace QTSuperMarket
             this.gobtn.Visible = false;
             this.gobtn.Click += new System.EventHandler(this.gobtn_Click);
             // 
-            // rownumbtn
+            // rownumtxt
             // 
-            this.rownumbtn.Location = new System.Drawing.Point(517, 10);
-            this.rownumbtn.MaxLength = 11;
-            this.rownumbtn.Name = "rownumbtn";
-            this.rownumbtn.PlaceholderText = "请输入行号";
-            this.rownumbtn.Size = new System.Drawing.Size(125, 30);
-            this.rownumbtn.TabIndex = 4;
-            this.rownumbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.rownumbtn.Visible = false;
+            this.rownumtxt.Location = new System.Drawing.Point(517, 10);
+            this.rownumtxt.MaxLength = 11;
+            this.rownumtxt.Name = "rownumtxt";
+            this.rownumtxt.PlaceholderText = "请输入行号";
+            this.rownumtxt.Size = new System.Drawing.Size(125, 30);
+            this.rownumtxt.TabIndex = 4;
+            this.rownumtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rownumtxt.Visible = false;
             // 
             // searchtxt
             // 
@@ -993,6 +1014,14 @@ namespace QTSuperMarket
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.lastbtn2);
+            this.tabPage6.Controls.Add(this.nextbtn2);
+            this.tabPage6.Controls.Add(this.previousbtn2);
+            this.tabPage6.Controls.Add(this.firstbtn2);
+            this.tabPage6.Controls.Add(this.gobtn2);
+            this.tabPage6.Controls.Add(this.rownumtxt2);
+            this.tabPage6.Controls.Add(this.textBox5);
+            this.tabPage6.Controls.Add(this.stocksearchbtn);
             this.tabPage6.Controls.Add(this.dataGridView2);
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
@@ -1002,28 +1031,230 @@ namespace QTSuperMarket
             this.tabPage6.Text = "查询库存信息";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // lastbtn2
+            // 
+            this.lastbtn2.Location = new System.Drawing.Point(760, 10);
+            this.lastbtn2.Name = "lastbtn2";
+            this.lastbtn2.Size = new System.Drawing.Size(40, 30);
+            this.lastbtn2.TabIndex = 17;
+            this.lastbtn2.Text = ">>";
+            this.lastbtn2.UseVisualStyleBackColor = true;
+            this.lastbtn2.Visible = false;
+            // 
+            // nextbtn2
+            // 
+            this.nextbtn2.Location = new System.Drawing.Point(714, 10);
+            this.nextbtn2.Name = "nextbtn2";
+            this.nextbtn2.Size = new System.Drawing.Size(40, 30);
+            this.nextbtn2.TabIndex = 16;
+            this.nextbtn2.Text = ">";
+            this.nextbtn2.UseVisualStyleBackColor = true;
+            this.nextbtn2.Visible = false;
+            // 
+            // previousbtn2
+            // 
+            this.previousbtn2.Location = new System.Drawing.Point(471, 10);
+            this.previousbtn2.Name = "previousbtn2";
+            this.previousbtn2.Size = new System.Drawing.Size(40, 30);
+            this.previousbtn2.TabIndex = 15;
+            this.previousbtn2.Text = "<";
+            this.previousbtn2.UseVisualStyleBackColor = true;
+            this.previousbtn2.Visible = false;
+            // 
+            // firstbtn2
+            // 
+            this.firstbtn2.Location = new System.Drawing.Point(425, 10);
+            this.firstbtn2.Name = "firstbtn2";
+            this.firstbtn2.Size = new System.Drawing.Size(40, 30);
+            this.firstbtn2.TabIndex = 14;
+            this.firstbtn2.Text = "<<";
+            this.firstbtn2.UseVisualStyleBackColor = true;
+            this.firstbtn2.Visible = false;
+            // 
+            // gobtn2
+            // 
+            this.gobtn2.Location = new System.Drawing.Point(648, 10);
+            this.gobtn2.Name = "gobtn2";
+            this.gobtn2.Size = new System.Drawing.Size(60, 30);
+            this.gobtn2.TabIndex = 13;
+            this.gobtn2.Text = "跳转";
+            this.gobtn2.UseVisualStyleBackColor = true;
+            this.gobtn2.Visible = false;
+            // 
+            // rownumtxt2
+            // 
+            this.rownumtxt2.Location = new System.Drawing.Point(517, 10);
+            this.rownumtxt2.MaxLength = 11;
+            this.rownumtxt2.Name = "rownumtxt2";
+            this.rownumtxt2.PlaceholderText = "请输入行号";
+            this.rownumtxt2.Size = new System.Drawing.Size(125, 30);
+            this.rownumtxt2.TabIndex = 12;
+            this.rownumtxt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rownumtxt2.Visible = false;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(806, 10);
+            this.textBox5.MaxLength = 12;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.PlaceholderText = "请输入待查询的库存名";
+            this.textBox5.Size = new System.Drawing.Size(300, 30);
+            this.textBox5.TabIndex = 11;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // stocksearchbtn
+            // 
+            this.stocksearchbtn.Location = new System.Drawing.Point(1112, 10);
+            this.stocksearchbtn.Name = "stocksearchbtn";
+            this.stocksearchbtn.Size = new System.Drawing.Size(100, 30);
+            this.stocksearchbtn.TabIndex = 10;
+            this.stocksearchbtn.Text = "查询";
+            this.stocksearchbtn.UseVisualStyleBackColor = true;
+            // 
             // dataGridView2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView2.ColumnHeadersHeight = 29;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewImageColumn1,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.subCategory,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
             this.dataGridView2.ContextMenuStrip = this.contextMenuStrip2;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 46);
+            this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView2.RowHeadersWidth = 40;
+            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.RowTemplate.Height = 29;
-            this.dataGridView2.Size = new System.Drawing.Size(1209, 600);
-            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.ShowCellErrors = false;
+            this.dataGridView2.ShowCellToolTips = false;
+            this.dataGridView2.ShowEditingIcon = false;
+            this.dataGridView2.ShowRowErrors = false;
+            this.dataGridView2.Size = new System.Drawing.Size(1209, 554);
+            this.dataGridView2.TabIndex = 1;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.DataPropertyName = "stockImg";
+            this.dataGridViewImageColumn1.HeaderText = "图片";
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "stockName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "库存名";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "mainCategory";
+            this.dataGridViewTextBoxColumn2.HeaderText = "主类别";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // subCategory
+            // 
+            this.subCategory.HeaderText = "副类别";
+            this.subCategory.MinimumWidth = 6;
+            this.subCategory.Name = "subCategory";
+            this.subCategory.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "stockNum";
+            this.dataGridViewTextBoxColumn4.HeaderText = "库存数量";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "stockDom";
+            this.dataGridViewTextBoxColumn5.HeaderText = "生产日期";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "stockQgp";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewTextBoxColumn6.HeaderText = "剩余保质期";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailInftsm,
+            this.toolStripSeparator1,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6,
             this.toolStripMenuItem7});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.ShowImageMargin = false;
-            this.contextMenuStrip2.Size = new System.Drawing.Size(160, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(160, 98);
+            // 
+            // showDetailInftsm
+            // 
+            this.showDetailInftsm.Name = "showDetailInftsm";
+            this.showDetailInftsm.Size = new System.Drawing.Size(159, 22);
+            this.showDetailInftsm.Text = "详细信息";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
             // 
             // toolStripMenuItem5
             // 
@@ -1048,7 +1279,7 @@ namespace QTSuperMarket
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.insertStockbtn);
+            this.tabPage8.Controls.Add(this.insertStockImgbtn);
             this.tabPage8.Controls.Add(this.groupBox3);
             this.tabPage8.Controls.Add(this.insertStockpicb);
             this.tabPage8.Location = new System.Drawing.Point(4, 30);
@@ -1059,20 +1290,21 @@ namespace QTSuperMarket
             this.tabPage8.Text = "添加库存信息";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // insertStockbtn
+            // insertStockImgbtn
             // 
-            this.insertStockbtn.Location = new System.Drawing.Point(3, 564);
-            this.insertStockbtn.Name = "insertStockbtn";
-            this.insertStockbtn.Size = new System.Drawing.Size(352, 39);
-            this.insertStockbtn.TabIndex = 2;
-            this.insertStockbtn.Text = "选择商品图片";
-            this.insertStockbtn.UseVisualStyleBackColor = true;
-            this.insertStockbtn.Click += new System.EventHandler(this.insertStockImgbtn_Click);
+            this.insertStockImgbtn.Location = new System.Drawing.Point(3, 564);
+            this.insertStockImgbtn.Name = "insertStockImgbtn";
+            this.insertStockImgbtn.Size = new System.Drawing.Size(352, 39);
+            this.insertStockImgbtn.TabIndex = 2;
+            this.insertStockImgbtn.Text = "选择商品图片";
+            this.insertStockImgbtn.UseVisualStyleBackColor = true;
+            this.insertStockImgbtn.Click += new System.EventHandler(this.insertStockImgbtn_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cleanNames);
             this.groupBox3.Controls.Add(this.stockNamecob);
-            this.groupBox3.Controls.Add(this.checkBox6);
+            this.groupBox3.Controls.Add(this.noBarCodecb);
             this.groupBox3.Controls.Add(this.insertStockDateTimetxt);
             this.groupBox3.Controls.Add(this.label29);
             this.groupBox3.Controls.Add(this.insertStockPersonNametxt);
@@ -1080,9 +1312,8 @@ namespace QTSuperMarket
             this.groupBox3.Controls.Add(this.stockNotetxt);
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Controls.Add(this.stockQgpnud);
-            this.groupBox3.Controls.Add(this.checkBox5);
+            this.groupBox3.Controls.Add(this.noQgpcb);
             this.groupBox3.Controls.Add(this.stockNumnud);
-            this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.textBox11);
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.insertStockInfbtn);
@@ -1112,25 +1343,35 @@ namespace QTSuperMarket
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
+            // cleanNames
+            // 
+            this.cleanNames.Location = new System.Drawing.Point(618, 71);
+            this.cleanNames.Name = "cleanNames";
+            this.cleanNames.Size = new System.Drawing.Size(114, 26);
+            this.cleanNames.TabIndex = 40;
+            this.cleanNames.Text = "清理库存名";
+            this.cleanNames.UseVisualStyleBackColor = true;
+            this.cleanNames.Click += new System.EventHandler(this.cleanNames_Click);
+            // 
             // stockNamecob
             // 
             this.stockNamecob.FormattingEnabled = true;
             this.stockNamecob.Location = new System.Drawing.Point(198, 71);
             this.stockNamecob.Name = "stockNamecob";
-            this.stockNamecob.Size = new System.Drawing.Size(534, 26);
+            this.stockNamecob.Size = new System.Drawing.Size(414, 26);
             this.stockNamecob.TabIndex = 38;
             this.stockNamecob.TextChanged += new System.EventHandler(this.stockNamecob_TextChanged);
             // 
-            // checkBox6
+            // noBarCodecb
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(576, 106);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(156, 22);
-            this.checkBox6.TabIndex = 37;
-            this.checkBox6.Text = "此商品无条形码";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.noBarCodecb.AutoSize = true;
+            this.noBarCodecb.Location = new System.Drawing.Point(576, 106);
+            this.noBarCodecb.Name = "noBarCodecb";
+            this.noBarCodecb.Size = new System.Drawing.Size(156, 22);
+            this.noBarCodecb.TabIndex = 37;
+            this.noBarCodecb.Text = "此商品无条形码";
+            this.noBarCodecb.UseVisualStyleBackColor = true;
+            this.noBarCodecb.CheckedChanged += new System.EventHandler(this.noBarCodecb_CheckedChanged);
             // 
             // insertStockDateTimetxt
             // 
@@ -1190,51 +1431,51 @@ namespace QTSuperMarket
             this.stockQgpnud.Name = "stockQgpnud";
             this.stockQgpnud.Size = new System.Drawing.Size(221, 28);
             this.stockQgpnud.TabIndex = 30;
+            this.stockQgpnud.ThousandsSeparator = true;
             // 
-            // checkBox5
+            // noQgpcb
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(576, 205);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(156, 22);
-            this.checkBox5.TabIndex = 29;
-            this.checkBox5.Text = "此商品无保质期";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.noQgpcb.AutoSize = true;
+            this.noQgpcb.Location = new System.Drawing.Point(576, 205);
+            this.noQgpcb.Name = "noQgpcb";
+            this.noQgpcb.Size = new System.Drawing.Size(156, 22);
+            this.noQgpcb.TabIndex = 29;
+            this.noQgpcb.Text = "此商品无保质期";
+            this.noQgpcb.UseVisualStyleBackColor = true;
+            this.noQgpcb.CheckedChanged += new System.EventHandler(this.noQgpcb_CheckedChanged);
             // 
             // stockNumnud
             // 
             this.stockNumnud.Location = new System.Drawing.Point(198, 169);
+            this.stockNumnud.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.stockNumnud.Name = "stockNumnud";
             this.stockNumnud.Size = new System.Drawing.Size(221, 28);
             this.stockNumnud.TabIndex = 28;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(98, 561);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "计算";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.stockNumnud.ThousandsSeparator = true;
             // 
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(198, 485);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
+            this.textBox11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox11.Size = new System.Drawing.Size(534, 109);
             this.textBox11.TabIndex = 26;
+            this.textBox11.Text = "说明：\r\n    数量一栏能够添加的最大值为99999，输入值超过99999时会按照99999计算\r\n    保质期一栏中能够添加的最大值为100，输入值超过10" +
+    "0时会按照100计算";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(130, 488);
+            this.label26.Location = new System.Drawing.Point(130, 572);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(62, 18);
             this.label26.TabIndex = 25;
-            this.label26.Text = "测试：";
+            this.label26.Text = "详情：";
             // 
             // insertStockInfbtn
             // 
@@ -1306,8 +1547,9 @@ namespace QTSuperMarket
             this.stockDomtxt.Enabled = false;
             this.stockDomtxt.Location = new System.Drawing.Point(198, 203);
             this.stockDomtxt.Name = "stockDomtxt";
-            this.stockDomtxt.Size = new System.Drawing.Size(221, 28);
+            this.stockDomtxt.Size = new System.Drawing.Size(276, 28);
             this.stockDomtxt.TabIndex = 9;
+            this.stockDomtxt.Text = "2021-03-17";
             // 
             // label22
             // 
@@ -1320,7 +1562,7 @@ namespace QTSuperMarket
             // 
             // chooseDomDatebtn
             // 
-            this.chooseDomDatebtn.Location = new System.Drawing.Point(425, 203);
+            this.chooseDomDatebtn.Location = new System.Drawing.Point(480, 203);
             this.chooseDomDatebtn.Name = "chooseDomDatebtn";
             this.chooseDomDatebtn.Size = new System.Drawing.Size(90, 28);
             this.chooseDomDatebtn.TabIndex = 14;
@@ -1393,20 +1635,21 @@ namespace QTSuperMarket
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(80, 18);
             this.label17.TabIndex = 4;
-            this.label17.Text = "商品名：";
+            this.label17.Text = "库存名：";
             // 
             // stockBarcodetxt
             // 
             this.stockBarcodetxt.Location = new System.Drawing.Point(198, 103);
-            this.stockBarcodetxt.MaxLength = 50;
+            this.stockBarcodetxt.MaxLength = 13;
             this.stockBarcodetxt.Name = "stockBarcodetxt";
-            this.stockBarcodetxt.Size = new System.Drawing.Size(221, 28);
+            this.stockBarcodetxt.Size = new System.Drawing.Size(372, 28);
             this.stockBarcodetxt.TabIndex = 3;
             // 
             // stockIdtxt
             // 
             this.stockIdtxt.Enabled = false;
             this.stockIdtxt.Location = new System.Drawing.Point(198, 37);
+            this.stockIdtxt.MaxLength = 200;
             this.stockIdtxt.Name = "stockIdtxt";
             this.stockIdtxt.Size = new System.Drawing.Size(534, 28);
             this.stockIdtxt.TabIndex = 1;
@@ -1620,6 +1863,7 @@ namespace QTSuperMarket
             this.tabPage4.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
@@ -1682,7 +1926,7 @@ namespace QTSuperMarket
         private System.Windows.Forms.DataGridViewTextBoxColumn personPhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn personAddress;
         private System.Windows.Forms.Button gobtn;
-        private System.Windows.Forms.TextBox rownumbtn;
+        private System.Windows.Forms.TextBox rownumtxt;
         private System.Windows.Forms.Button lastbtn;
         private System.Windows.Forms.Button nextbtn;
         private System.Windows.Forms.Button previousbtn;
@@ -1729,7 +1973,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.PictureBox logopicb;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
@@ -1753,17 +1996,16 @@ namespace QTSuperMarket
         private System.Windows.Forms.Button chooseDomDatebtn;
         private System.Windows.Forms.ComboBox numUnitcob;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button insertStockbtn;
+        private System.Windows.Forms.Button insertStockImgbtn;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox qgpUnitcob;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button insertStockInfbtn;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.NumericUpDown stockNumnud;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox noQgpcb;
         private System.Windows.Forms.NumericUpDown stockQgpnud;
         private System.Windows.Forms.TextBox insertStockDateTimetxt;
         private System.Windows.Forms.Label label29;
@@ -1771,8 +2013,27 @@ namespace QTSuperMarket
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox stockNotetxt;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox noBarCodecb;
         private System.Windows.Forms.TextBox stockBarcodetxt;
         private System.Windows.Forms.ComboBox stockNamecob;
+        private System.Windows.Forms.Button lastbtn2;
+        private System.Windows.Forms.Button nextbtn2;
+        private System.Windows.Forms.Button previousbtn2;
+        private System.Windows.Forms.Button firstbtn2;
+        private System.Windows.Forms.Button gobtn2;
+        private System.Windows.Forms.TextBox rownumtxt2;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button cleanNames;
+        private System.Windows.Forms.Button stocksearchbtn;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.ToolStripMenuItem showDetailInftsm;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

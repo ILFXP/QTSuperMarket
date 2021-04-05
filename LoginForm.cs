@@ -52,7 +52,7 @@ namespace QTSuperMarket
                 }
                 else if (personLimit == "worker")
                 {
-                    Settings1.Default.workerLastUseName = Settings1.Default.nowWorker = personName;
+                    Settings1.Default.workerLastUseName = Settings1.Default.nowUser = personName;
                     Settings1.Default.workerLastUseTime = DateTime.Now.ToString();
                     Settings1.Default.workerLastUseNum = personNum;
                     Settings1.Default.Save();

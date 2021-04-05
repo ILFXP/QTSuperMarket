@@ -15,12 +15,26 @@ namespace QTSuperMarket
         {
             InitializeComponent();
         }
-        //定义全局变量
+        /*定义一部分全局变量*/
+
+        //查询到的总数
         public int count = 0;
+        //当前选中项
         public int currentSelect = 0;
+        //编辑的员工工号
         public string editpersonNum = "";
+        //要修改的员工姓名
         public string updateName = "";
+        //要修改的员工工号
         public string updateNum = "";
+
+        //库存的剩余保质期
+        public string stockExtime1 = "";
+        public string stockExtime2 = "";
+        //库存的过期日期
+        public string stockExDate = "";
+        //库存的当前状态
+        public string stockExState = "";
         private void adminMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             /*
@@ -105,7 +119,11 @@ namespace QTSuperMarket
 
         private void adminMainForm_Load(object sender, EventArgs e)
         {
-            //调节控件
+            /*临时使用*/
+            Settings1.Default.nowUser = "柴世嘉";
+            Settings1.Default.Save();
+
+            //调节控件属性
             stockDomtxt.Text = DateTime.Now.ToShortDateString();
             countlabel.Text = "";
             monthCalendar1.Hide();
@@ -117,13 +135,22 @@ namespace QTSuperMarket
             dataGridView1.Columns[4].Width = 160;
             dataGridView1.Columns[5].Width = 160;
             dataGridView1.RowTemplate.Height = 207;
+            //调节dateGridView2的视觉效果
+            dataGridView2.Columns[0].Width = 148;
+            dataGridView2.Columns[1].Width = 160;
+            dataGridView2.Columns[2].Width = 80;
+            dataGridView2.Columns[3].Width = 80;
+            dataGridView2.Columns[4].Width = 160;
+            dataGridView2.Columns[5].Width = 160;
+            dataGridView2.Columns[6].Width = 160;
+            dataGridView2.RowTemplate.Height = 207;
 
             //写入日志
             writeLog.writeProgramLog(string.Concat("使用管理员账号使用系统，", "使用人为：", Settings1.Default.adminName));
             //writeLog.writeProgramLog("登录系统后台，使用人：" + Settings1.Default.adminName.ToString());
             //statusTrip
             toolStripStatusLabel2.Text = "当前时间：" + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
-            toolStripStatusLabel1.Text = "当前使用人：" + Settings1.Default.adminName.Trim();
+            toolStripStatusLabel1.Text = "当前使用人：" + Settings1.Default.nowUser.Trim();
             //读取Settings设置
             textBox1.Text = Settings1.Default.workerLastUseName.Trim();
             textBox2.Text = Settings1.Default.workerLastUseTime.Trim();
@@ -234,6 +261,7 @@ namespace QTSuperMarket
                         con.Open();
                         SqlCommand com = new SqlCommand("select count(*) from personInf where personNum = '" + personNum + "'", con);
                         int numRet = (int)com.ExecuteScalar();
+                        con.Close();
                         if (numRet > 0)
                             MessageBox.Show("已经存在工号重复的员工，请更改工号后重试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
@@ -351,11 +379,11 @@ namespace QTSuperMarket
         }
         private void visiblestatus()
         {
-            gobtn.Visible = firstbtn.Visible = previousbtn.Visible = nextbtn.Visible = lastbtn.Visible = rownumbtn.Visible = true;
+            gobtn.Visible = firstbtn.Visible = previousbtn.Visible = nextbtn.Visible = lastbtn.Visible = rownumtxt.Visible = true;
         }
         private void searchbtn_Click(object sender, EventArgs e)
         {
-            rownumbtn.Text = "1";
+            rownumtxt.Text = "1";
             string search = searchtxt.Text.Trim();
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
@@ -392,7 +420,7 @@ namespace QTSuperMarket
                     count = Convert.ToInt32(searchcom.ExecuteScalar());
                     if (count == 0)
                     {
-                        rownumbtn.Text = "0";
+                        rownumtxt.Text = "0";
                     }
                     DataSet searchds = new DataSet();
                     searchds.Clear();
@@ -418,7 +446,7 @@ namespace QTSuperMarket
                         count = Convert.ToInt32(searchcom.ExecuteScalar());
                         if (count == 0)
                         {
-                            rownumbtn.Text = "0";
+                            rownumtxt.Text = "0";
                         }
                         DataSet searchds = new DataSet();
                         searchds.Clear();
@@ -454,39 +482,39 @@ namespace QTSuperMarket
             }
             else if (count > 0)
             {
-                if (rownumbtn.Text.Trim() == "")
+                if (rownumtxt.Text.Trim() == "")
                 {
                     //判断textBox10值为空值，如果是将其赋值为1
                     dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
-                    rownumbtn.Text = "1";
+                    rownumtxt.Text = "1";
                 }
                 else
                 {
                     //验证输入内容是否为数字
                     Regex numCheck = new Regex("^[0-9]*$");
-                    if (numCheck.IsMatch(rownumbtn.Text.Trim()))
+                    if (numCheck.IsMatch(rownumtxt.Text.Trim()))
                     {
                         //通过验证
                         //判断是否超出了count的大小
-                        if (Convert.ToInt32(rownumbtn.Text.Trim()) >= count)
+                        if (Convert.ToInt32(rownumtxt.Text.Trim()) >= count)
                         {
                             //超出
-                            rownumbtn.Text = count.ToString();
+                            rownumtxt.Text = count.ToString();
                             dataGridView1.CurrentCell = dataGridView1.Rows[count - 1].Cells[0];
                         }
                         else
                         {
                             //未超出
                             //判断输入值是否为0和1
-                            if (rownumbtn.Text.Trim() == "0" || rownumbtn.Text.Trim() == "1")
+                            if (rownumtxt.Text.Trim() == "0" || rownumtxt.Text.Trim() == "1")
                             {
                                 dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
-                                rownumbtn.Text = "1";
+                                rownumtxt.Text = "1";
                             }
                             else
                             {
-                                dataGridView1.CurrentCell = dataGridView1.Rows[Convert.ToInt32(rownumbtn.Text.Trim()) - 1].Cells[0];
-                                rownumbtn.Text = (dataGridView1.CurrentRow.Index + 1).ToString();
+                                dataGridView1.CurrentCell = dataGridView1.Rows[Convert.ToInt32(rownumtxt.Text.Trim()) - 1].Cells[0];
+                                rownumtxt.Text = (dataGridView1.CurrentRow.Index + 1).ToString();
                             }
                         }
                     }
@@ -516,7 +544,7 @@ namespace QTSuperMarket
                     //现行选中项的行索引已将增加到了和count一样了
                     //实际的currentSelect的值应该要比count小1
                     //给textBox10赋值为和count一样
-                    rownumbtn.Text = count.ToString();
+                    rownumtxt.Text = count.ToString();
                 }
                 else
                 {
@@ -524,7 +552,7 @@ namespace QTSuperMarket
                     //变更现行选中项
                     dataGridView1.CurrentCell = dataGridView1.Rows[currentSelect + 1].Cells[0];
                     currentSelect = dataGridView1.CurrentRow.Index;
-                    rownumbtn.Text = (currentSelect + 1).ToString();
+                    rownumtxt.Text = (currentSelect + 1).ToString();
                 }
             }
         }
@@ -538,7 +566,7 @@ namespace QTSuperMarket
             else
             {
                 dataGridView1.CurrentCell = dataGridView1.Rows[count - 1].Cells[0];
-                rownumbtn.Text = count.ToString();
+                rownumtxt.Text = count.ToString();
             }
         }
 
@@ -559,14 +587,14 @@ namespace QTSuperMarket
 
                 if (currentSelect == 0)
                 {
-                    rownumbtn.Text = "1";
+                    rownumtxt.Text = "1";
                 }
                 else
                 {
                     //如果现行选中项的行索引不为0（还有可以减少的空间）
                     //变更现行选中项
                     dataGridView1.CurrentCell = dataGridView1.Rows[currentSelect - 1].Cells[0];
-                    rownumbtn.Text = currentSelect.ToString();
+                    rownumtxt.Text = currentSelect.ToString();
                 }
             }
         }
@@ -580,7 +608,7 @@ namespace QTSuperMarket
             else
             {
                 dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
-                rownumbtn.Text = "1";
+                rownumtxt.Text = "1";
             }
         }
 
@@ -588,17 +616,17 @@ namespace QTSuperMarket
         {
             if (dataGridView1.Rows.Count == 0)
             {
-                rownumbtn.Text = "0";
+                rownumtxt.Text = "0";
             }
             else
             {
-                if (rownumbtn.Text == "0")
+                if (rownumtxt.Text == "0")
                 {
                 }
                 else
                 {
                     int currentIndex = dataGridView1.CurrentRow.Index;
-                    rownumbtn.Text = (currentIndex + 1).ToString();
+                    rownumtxt.Text = (currentIndex + 1).ToString();
                 }
 
             }
@@ -951,8 +979,8 @@ namespace QTSuperMarket
                 {
                     stockNamecob.Items.Add(rd[0].ToString());
                 }
+                stockNamecob.SelectedIndex = 0;
             }
-            stockNamecob.SelectedIndex = 1;
             rd.Close();
             con.Close();
         }
@@ -961,13 +989,11 @@ namespace QTSuperMarket
         {
             subCategorycob.Items.Clear();
             string selectName = mainCategorycob.Text.Trim();
-            stockDomtxt.Text = selectName;
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
             //先查询数据库 获取 当前类的id，再构造语句查询此id
             SqlCommand com1 = new SqlCommand("select mainCategoryId from mainCategory where mainCategoryName = '" + selectName + "'",con);
             string selectId = com1.ExecuteScalar().ToString();
-            stockDomtxt.Text = selectId;
             SqlCommand com2 = new SqlCommand("select subCategoryName from subCategory where submainid = '" + selectId + "'", con);
             com2.ExecuteNonQuery();
             SqlDataReader rd = com2.ExecuteReader();
@@ -977,8 +1003,8 @@ namespace QTSuperMarket
                 {
                     subCategorycob.Items.Add(rd[0].ToString());
                 }
+                subCategorycob.SelectedIndex = 0;
             }
-            subCategorycob.SelectedIndex = 0;
             rd.Close();
             con.Close();
         }
@@ -988,54 +1014,267 @@ namespace QTSuperMarket
 
             string stockNames = stockNamecob.Text.Trim();
             //插入数据时先进行检查
-            SqlConnection con = new SqlConnection("Date Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
-            SqlCommand com1 = new SqlCommand("select count(*) from stockNamesInf where stockNames = '" + stockNames + "'",con);
-            int numCheck = (int)com1.ExecuteNonQuery();
+            SqlCommand com = new SqlCommand("select count(*) from stockNamesInf where stockNames = '" + stockNames + "'",con);
+            int numCheck = (int)com.ExecuteNonQuery();
             if(numCheck == 0)
             {
                 //此时数据库中还没有数据，可以直接插入
-                SqlCommand com2 = new SqlCommand("insert into stockNames values('" + stockNames + "')",con);
-                com2.ExecuteScalar();
+                SqlCommand com1 = new SqlCommand("insert into stockNames values('" + stockNames + "')",con);
+                com1.ExecuteScalar();
                 con.Close();
-            }
-            else if(numCheck > 0)
-            {
-                //此时数据库中已经存在了数据，不用再进行插入了
             }
         }
         private void insertStockInfbtn_Click(object sender, EventArgs e)
         {
-            /*当数据写入时将商品名写入stockNamesInf表中*/
             /*
-             * 进行数据验证时，不用管库存号，这个值是唯一的
-             * 然后验证商品名是否为空
+             * 初始化变量如下：
+             * 存储号
+             * 库存名
+             * 条形码
+             * 主副类别
+             * 数量单位
+             * 生产日期
+             * 保质期单位
+             * 备注
+             * 添加人添加时间
              * 
+             * 详情用来输出信息
              */
+            string stockId = stockIdtxt.Text;
             string stockName = stockNamecob.Text.Trim();
-            string stockbarcode = stockBarcodetxt.Text.Trim();
-            int stockNum = Convert.ToInt32(stockNumnud.Value);
-            string stockdom = stockDomtxt.Text;
+            string stockBarCode = "";
+            if(noBarCodecb.Checked == true)
+            {
+                stockBarCode = "无条形码";
+            }
+            else
+            {
+                stockBarCode = stockBarcodetxt.Text.Trim();
+                //进行条码为13位数字的数据验证
+                Regex numCheck = new Regex("^[0-9]*$");
+                if(numCheck.IsMatch(stockBarCode) && stockBarCode.Length == 13)
+                {
+                    //通过条形码的验证
+                    stockBarCode = stockBarcodetxt.Text.Trim();
+                }
+                else
+                {
+                    MessageBox.Show("请检查您输入的条形码格式是否正确","提示",MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            string mainCategory = mainCategorycob.Text;
+            string subCategory = subCategorycob.Text;
+            string stockNum = "";
+            if(stockNumnud.Value == 0)
+            {
+                MessageBox.Show("请注意：您选择的库存数量为0\r\n这是不合常理的，请检查后重试","提示");
+                return;
+            }
+            else
+            {
+                stockNum = stockNumnud.Value.ToString();
+            }
+            string stockNumUnit = numUnitcob.Text;
+            string stockDom = stockDomtxt.Text;
+            string stockQgp = "";
+            if(noQgpcb.Checked == true)
+            {
+                stockQgp = "无保质期";
+            }
+            else
+            {
+                if(stockQgpnud.Value == 0)
+                {
+                    MessageBox.Show("请注意：您选择的保质期为0\r\n这是不合常理的，请您检查后重试","提示");
+                    return;
+                }
+                else
+                {
+                    //有保质期的情况下调用time方法进行一系列的计算
+                    stockQgp = stockQgpnud.Value.ToString();
+                    time();
+                }
+            }
+            string stockQgpUnit = qgpUnitcob.Text;
             string stockNote = stockNotetxt.Text.Trim();
+            string insertPerson = Settings1.Default.nowUser;
+            insertStockPersonNametxt.Text = insertPerson;
+            string insertDate = DateTime.Now.ToLongDateString();
+            insertStockDateTimetxt.Text = insertDate;
 
-            insertStockPersonNametxt.Text = Settings1.Default.nowWorker;
-            insertStockDateTimetxt.Text = DateTime.Now.ToShortDateString();
+            if (insertStockpicb.ImageLocation == null)
+            {
+                MessageBox.Show("请先选择库存照片","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                if(stockName == "")
+                {
+                    return;
+                }
+                else
+                {
+                    insertAndCheckStockNames();
+                    SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+                    con.Open();
+                    string fullPath = insertStockpicb.ImageLocation;
+                    FileStream fs = new FileStream(fullPath, FileMode.Open);
+                    byte[] bytes = new byte[fs.Length];
+                    BinaryReader br = new BinaryReader(fs);
+                    bytes = br.ReadBytes(Convert.ToInt32(fs.Length));
+                    SqlCommand com = new SqlCommand("insert into stockInf (stockId,stockName,stockBarCode,mainCateGory,subCategory,stockNum,stockNumUnit,stockDom,stockQgp,stockQgpUnit,stockNote,insertPerson,insertDate,stockExtime1,stockExtime2,stockExDate,stockExState,stockImage) values ('" + stockId + "','" + stockName + "','" + stockBarCode + "','" + mainCategory + "','" + subCategory + "','" + stockNum + "','" + stockNumUnit + "','" + stockDom + "','" + stockQgp + "','" + stockQgpUnit + "','" + stockNote + "','" + insertPerson + "','" + insertDate + "','" + stockExtime1 + "','" + stockExtime2 + "','" + stockExDate + "','" + stockExState + "',@ImageList)",con);
+                    com.Parameters.Add("ImageList", SqlDbType.Image);
+                    com.Parameters["ImageList"].Value = bytes;
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
 
-            textBox11.Text += stockName + "\r\n" + stockbarcode + "\r\n" + stockNum + "\r\n" + stockdom + "\r\n" + stockNote + "\r\n" + insertStockPersonNametxt.Text + "\r\n" + insertStockDateTimetxt.Text;
-
-
-
-
-
-            /*
-             * string date = stockDomtxt.Text;
-            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-            con.Open();
-            //先查询数据库 获取 当前类的id，再构造语句查询此id
-            SqlCommand com1 = new SqlCommand("insert into scrq values ('" + date + "')",con);
-            com1.ExecuteScalar();
-            con.Close();
-            */
+        private void time()
+        {
+            int a = qgpUnitcob.SelectedIndex;
+            switch (a)
+            {
+                case 0:
+                    {
+                        //天
+                        DateTime scrq = Convert.ToDateTime(stockDomtxt.Text);
+                        int tcts = Convert.ToInt32(stockQgpnud.Value);
+                        string today = DateTime.Now.ToShortDateString();
+                        string oscrq = scrq.AddDays(tcts).ToLongDateString();
+                        DateTime x1 = Convert.ToDateTime(today);
+                        DateTime x2 = Convert.ToDateTime(oscrq);
+                        TimeSpan ts = x2.Subtract(x1);
+                        double x3 = Convert.ToDouble(ts.TotalDays);
+                        stockExDate = oscrq;
+                        if (x3 > 0)
+                        {
+                            //年
+                            double x4 = Math.Floor(x3 / 365);
+                            //月
+                            double x5 = Math.Floor((x3 % 365) / 30);
+                            //天
+                            double x6 = ((x3 % 365) % 30);
+                            textBox11.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            stockExtime1 = x3 + "天";
+                            stockExtime2 = x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            stockExState = "未过期";
+                        }
+                        else if(x3 == 0)
+                        {
+                            textBox11.Text = "您添加的库存将于今天过期\r\n请及时确认";
+                            stockExtime1 = "0天";
+                            stockExtime2 = "0年零0个月零0天";
+                            stockExState = "未过期";
+                        }
+                        else if (x3 < 0)
+                        {
+                            double x4 = -x3;
+                            double x5 = Math.Floor(x4 / 365);
+                            double x6 = Math.Floor((x4 % 365) / 30);
+                            double x7 = ((x4 % 365) % 30);
+                            textBox11.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
+                            stockExtime1 = "已过期" + x4 + "天";
+                            stockExtime2 = "已过期" + x5 + "年零" + x6 + "个月零" + x7 + "天";
+                            stockExState = "已过期";
+                        }
+                        break;
+                    }
+                case 1:
+                    {
+                        //月
+                        DateTime scrq = Convert.ToDateTime(stockDomtxt.Text);
+                        int tcts = Convert.ToInt32(stockQgpnud.Value * 30);
+                        string today = DateTime.Now.ToShortDateString();
+                        string oscrq = scrq.AddDays(tcts).ToLongDateString();
+                        DateTime x1 = Convert.ToDateTime(today);
+                        DateTime x2 = Convert.ToDateTime(oscrq);
+                        TimeSpan ts = x2.Subtract(x1);
+                        double x3 = Convert.ToDouble(ts.TotalDays);
+                        stockExDate = oscrq;
+                        if (x3 > 0)
+                        {
+                            //年
+                            double x4 = Math.Floor(x3 / 365);
+                            //月
+                            double x5 = Math.Floor((x3 % 365) / 30);
+                            //天
+                            double x6 = ((x3 % 365) % 30);
+                            textBox11.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            stockExtime1 = x3 + "天";
+                            stockExtime2 = x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            stockExState = "未过期";
+                        }
+                        else if (x3 == 0)
+                        {
+                            textBox11.Text = "您添加的库存将于今天过期\r\n请及时确认";
+                            stockExtime1 = "0天";
+                            stockExtime2 = "0年零0个月零0天";
+                            stockExState = "未过期";
+                        }
+                        else if (x3 < 0)
+                        {
+                            double x4 = -x3;
+                            double x5 = Math.Floor(x4 / 365);
+                            double x6 = Math.Floor((x4 % 365) / 30);
+                            double x7 = ((x4 % 365) % 30);
+                            textBox11.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
+                            stockExtime1 = "已过期" + x4 + "天";
+                            stockExtime2 = "已过期" + x5 + "年零" + x6 + "个月零" + x7 + "天";
+                            stockExState = "已过期";
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        //年
+                        DateTime scrq = Convert.ToDateTime(stockDomtxt.Text);
+                        int tcts = Convert.ToInt32(stockQgpnud.Value * 365);
+                        string today = DateTime.Now.ToShortDateString();
+                        string oscrq = scrq.AddDays(tcts).ToLongDateString();
+                        DateTime x1 = Convert.ToDateTime(today);
+                        DateTime x2 = Convert.ToDateTime(oscrq);
+                        TimeSpan ts = x2.Subtract(x1);
+                        double x3 = Convert.ToDouble(ts.TotalDays);
+                        stockExDate = oscrq;
+                        if (x3 > 0)
+                        {
+                            //年
+                            double x4 = Math.Floor(x3 / 365);
+                            //月
+                            double x5 = Math.Floor((x3 % 365) / 30);
+                            //天
+                            double x6 = ((x3 % 365) % 30);
+                            textBox11.Text = "您添加的库存将于：" + oscrq + "过期\r\n距今天还有：" + x3 + "天\r\n折合" + x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            stockExtime1 = x3 + "天";
+                            stockExtime2 = x4 + "年零" + x5 + "个月零" + x6 + "天";
+                            stockExState = "未过期";
+                        }
+                        else if (x3 == 0)
+                        {
+                            textBox11.Text = "您添加的库存将于今天过期\r\n请及时确认";
+                            stockExtime1 = "0天";
+                            stockExtime2 = "0年零0个月零0天";
+                            stockExState = "未过期";
+                        }
+                        else if (x3 < 0)
+                        {
+                            double x4 = -x3;
+                            double x5 = Math.Floor(x4 / 365);
+                            double x6 = Math.Floor((x4 % 365) / 30);
+                            double x7 = ((x4 % 365) % 30);
+                            textBox11.Text = "您添加的库存应于：" + oscrq + "过期\r\n已经过期：" + x4 + "天折合" + x5 + "年零" + x6 + "个月零" + x7 + "天\r\n请及时确认";
+                            stockExtime1 = "已过期" + x4 + "天";
+                            stockExtime2 = "已过期" + x5 + "年零" + x6 + "个月零" + x7 + "天";
+                            stockExState = "已过期";
+                        }
+                        break;
+                    }
+            }
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
@@ -1044,18 +1283,10 @@ namespace QTSuperMarket
             monthCalendar1.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-            string str1 = stockIdtxt.Text.Trim();
-            string str2 = DateTime.Now.ToShortDateString().Replace("/","");
-            string str3 = DateTime.Now.ToLongTimeString().Replace(":","");
-            textBox11.Text = str2 + str3;
-        }
-
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        private void noQgpcb_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox5.Checked == true)
+            if(noQgpcb.Checked == true)
             {
                 //商品没有保质期
                 stockQgpnud.Enabled = false;
@@ -1068,11 +1299,11 @@ namespace QTSuperMarket
             }
         }
 
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        private void noBarCodecb_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox6.Checked == true)
+            if(noBarCodecb.Checked == true)
             {
-                stockBarcodetxt.Text = "此商品无条形码";
+                stockBarcodetxt.Text = "无条形码";
                 stockBarcodetxt.Enabled = false;
 
             }
@@ -1082,14 +1313,6 @@ namespace QTSuperMarket
                 stockBarcodetxt.Text = "";
             }
         }
-
-        /*private void stockNamecob_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string str1 = stockNamecob.Text.Trim();
-            string str2 = DateTime.Now.ToShortDateString().Replace("/", "");
-            string str3 = DateTime.Now.ToLongTimeString().Replace(":", "");
-            stockIdtxt.Text = str1 + str2 + str3;
-        }*/
 
         private void stockNamecob_TextChanged(object sender, EventArgs e)
         {
@@ -1109,6 +1332,23 @@ namespace QTSuperMarket
                 insertStockpicb.ImageLocation = ofd.FileName;
             }
             ofd.Dispose();
+        }
+
+
+        private void cleanNames_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("清理库存名后，您将无法快捷选择您所添加过的库存名，您确定清理吗？","提示",MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
+            {
+                SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+                con.Open();
+                SqlCommand com = new SqlCommand("truncate table stockNamesInf", con);
+                com.ExecuteScalar();
+                con.Close();
+                stockNamecob.Text = "";
+                stockNamecob.Items.Clear();
+                MessageBox.Show("保存的库存名已经成功清理", "提示");
+            }
         }
     }
 }

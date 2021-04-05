@@ -61,18 +61,6 @@ namespace QTSuperMarket {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string nowWorker {
-            get {
-                return ((string)(this["nowWorker"]));
-            }
-            set {
-                this["nowWorker"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int tci1 {
             get {
@@ -212,6 +200,18 @@ namespace QTSuperMarket {
             }
             set {
                 this["adminName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string nowUser {
+            get {
+                return ((string)(this["nowUser"]));
+            }
+            set {
+                this["nowUser"] = value;
             }
         }
     }
