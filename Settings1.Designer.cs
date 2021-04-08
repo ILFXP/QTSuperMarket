@@ -214,5 +214,17 @@ namespace QTSuperMarket {
                 this["nowUser"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string searchStockId {
+            get {
+                return ((string)(this["searchStockId"]));
+            }
+            set {
+                this["searchStockId"] = value;
+            }
+        }
     }
 }
