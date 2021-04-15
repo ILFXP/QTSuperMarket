@@ -40,5 +40,10 @@ namespace QTSuperMarket
             Bitmap bmpt = new Bitmap(ms);
             pictureBox1.Image = bmpt;
         }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

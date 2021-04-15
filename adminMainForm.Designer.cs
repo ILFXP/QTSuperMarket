@@ -115,6 +115,7 @@ namespace QTSuperMarket
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.insertPersoncob = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.unoverduerd = new System.Windows.Forms.RadioButton();
             this.overduerd = new System.Windows.Forms.RadioButton();
@@ -129,7 +130,6 @@ namespace QTSuperMarket
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.namesearchbtn = new System.Windows.Forms.Button();
-            this.namesearchtxt = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -399,62 +399,67 @@ namespace QTSuperMarket
             // 
             // lastbtn
             // 
-            this.lastbtn.Location = new System.Drawing.Point(760, 10);
+            this.lastbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lastbtn.BackgroundImage")));
+            this.lastbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.lastbtn.Location = new System.Drawing.Point(770, 10);
             this.lastbtn.Name = "lastbtn";
-            this.lastbtn.Size = new System.Drawing.Size(40, 30);
+            this.lastbtn.Size = new System.Drawing.Size(30, 30);
             this.lastbtn.TabIndex = 9;
-            this.lastbtn.Text = ">>";
             this.lastbtn.UseVisualStyleBackColor = true;
             this.lastbtn.Visible = false;
             this.lastbtn.Click += new System.EventHandler(this.lastbtn_Click);
             // 
             // nextbtn
             // 
-            this.nextbtn.Location = new System.Drawing.Point(714, 10);
+            this.nextbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextbtn.BackgroundImage")));
+            this.nextbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.nextbtn.Location = new System.Drawing.Point(734, 10);
             this.nextbtn.Name = "nextbtn";
-            this.nextbtn.Size = new System.Drawing.Size(40, 30);
+            this.nextbtn.Size = new System.Drawing.Size(30, 30);
             this.nextbtn.TabIndex = 8;
-            this.nextbtn.Text = ">";
             this.nextbtn.UseVisualStyleBackColor = true;
             this.nextbtn.Visible = false;
             this.nextbtn.Click += new System.EventHandler(this.nextbtn_Click);
             // 
             // previousbtn
             // 
-            this.previousbtn.Location = new System.Drawing.Point(471, 10);
+            this.previousbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousbtn.BackgroundImage")));
+            this.previousbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.previousbtn.Location = new System.Drawing.Point(531, 10);
             this.previousbtn.Name = "previousbtn";
-            this.previousbtn.Size = new System.Drawing.Size(40, 30);
+            this.previousbtn.Size = new System.Drawing.Size(30, 30);
             this.previousbtn.TabIndex = 7;
-            this.previousbtn.Text = "<";
             this.previousbtn.UseVisualStyleBackColor = true;
             this.previousbtn.Visible = false;
             this.previousbtn.Click += new System.EventHandler(this.previousbtn_Click);
             // 
             // firstbtn
             // 
-            this.firstbtn.Location = new System.Drawing.Point(425, 10);
+            this.firstbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("firstbtn.BackgroundImage")));
+            this.firstbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.firstbtn.Location = new System.Drawing.Point(495, 10);
             this.firstbtn.Name = "firstbtn";
-            this.firstbtn.Size = new System.Drawing.Size(40, 30);
+            this.firstbtn.Size = new System.Drawing.Size(30, 30);
             this.firstbtn.TabIndex = 6;
-            this.firstbtn.Text = "<<";
             this.firstbtn.UseVisualStyleBackColor = true;
             this.firstbtn.Visible = false;
             this.firstbtn.Click += new System.EventHandler(this.firstbtn_Click);
             // 
             // gobtn
             // 
-            this.gobtn.Location = new System.Drawing.Point(648, 10);
+            this.gobtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gobtn.BackgroundImage")));
+            this.gobtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.gobtn.Location = new System.Drawing.Point(698, 10);
             this.gobtn.Name = "gobtn";
-            this.gobtn.Size = new System.Drawing.Size(60, 30);
+            this.gobtn.Size = new System.Drawing.Size(30, 30);
             this.gobtn.TabIndex = 5;
-            this.gobtn.Text = "跳转";
             this.gobtn.UseVisualStyleBackColor = true;
             this.gobtn.Visible = false;
             this.gobtn.Click += new System.EventHandler(this.gobtn_Click);
             // 
             // rownumtxt
             // 
-            this.rownumtxt.Location = new System.Drawing.Point(517, 10);
+            this.rownumtxt.Location = new System.Drawing.Point(567, 10);
             this.rownumtxt.MaxLength = 8;
             this.rownumtxt.Name = "rownumtxt";
             this.rownumtxt.PlaceholderText = "请输入行号";
@@ -1065,6 +1070,7 @@ namespace QTSuperMarket
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.insertPersoncob);
             this.groupBox4.Controls.Add(this.groupBox6);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.hidegroupbox4btn);
@@ -1073,12 +1079,19 @@ namespace QTSuperMarket
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.label31);
             this.groupBox4.Controls.Add(this.namesearchbtn);
-            this.groupBox4.Controls.Add(this.namesearchtxt);
             this.groupBox4.Location = new System.Drawing.Point(3, 46);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(275, 629);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
+            // 
+            // insertPersoncob
+            // 
+            this.insertPersoncob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.insertPersoncob.Location = new System.Drawing.Point(6, 52);
+            this.insertPersoncob.Name = "insertPersoncob";
+            this.insertPersoncob.Size = new System.Drawing.Size(183, 28);
+            this.insertPersoncob.TabIndex = 13;
             // 
             // groupBox6
             // 
@@ -1160,6 +1173,7 @@ namespace QTSuperMarket
             // 
             // qgpsearchbtn
             // 
+            this.qgpsearchbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qgpsearchbtn.Location = new System.Drawing.Point(153, 29);
             this.qgpsearchbtn.Name = "qgpsearchbtn";
             this.qgpsearchbtn.Size = new System.Drawing.Size(103, 65);
@@ -1216,21 +1230,16 @@ namespace QTSuperMarket
             // 
             // namesearchbtn
             // 
-            this.namesearchbtn.Location = new System.Drawing.Point(204, 52);
+            this.namesearchbtn.Image = ((System.Drawing.Image)(resources.GetObject("namesearchbtn.Image")));
+            this.namesearchbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.namesearchbtn.Location = new System.Drawing.Point(195, 52);
             this.namesearchbtn.Name = "namesearchbtn";
-            this.namesearchbtn.Size = new System.Drawing.Size(64, 30);
+            this.namesearchbtn.Size = new System.Drawing.Size(73, 28);
             this.namesearchbtn.TabIndex = 1;
             this.namesearchbtn.Text = "查询";
+            this.namesearchbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.namesearchbtn.UseVisualStyleBackColor = true;
             this.namesearchbtn.Click += new System.EventHandler(this.namesearchbtn_Click);
-            // 
-            // namesearchtxt
-            // 
-            this.namesearchtxt.Location = new System.Drawing.Point(6, 52);
-            this.namesearchtxt.MaxLength = 3;
-            this.namesearchtxt.Name = "namesearchtxt";
-            this.namesearchtxt.Size = new System.Drawing.Size(192, 30);
-            this.namesearchtxt.TabIndex = 0;
             // 
             // dataGridView2
             // 
@@ -1431,13 +1440,15 @@ namespace QTSuperMarket
             this.countlabel2.Name = "countlabel2";
             this.countlabel2.Size = new System.Drawing.Size(189, 20);
             this.countlabel2.TabIndex = 18;
-            this.countlabel2.Text = "共查询到NULL条数据";
+            this.countlabel2.Text = "共查询到NULL条数据\r\n";
             // 
             // lastbtn2
             // 
-            this.lastbtn2.Location = new System.Drawing.Point(760, 10);
+            this.lastbtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lastbtn2.BackgroundImage")));
+            this.lastbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.lastbtn2.Location = new System.Drawing.Point(770, 10);
             this.lastbtn2.Name = "lastbtn2";
-            this.lastbtn2.Size = new System.Drawing.Size(40, 30);
+            this.lastbtn2.Size = new System.Drawing.Size(30, 30);
             this.lastbtn2.TabIndex = 17;
             this.lastbtn2.Text = ">>";
             this.lastbtn2.UseVisualStyleBackColor = true;
@@ -1446,51 +1457,55 @@ namespace QTSuperMarket
             // 
             // nextbtn2
             // 
-            this.nextbtn2.Location = new System.Drawing.Point(714, 10);
+            this.nextbtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextbtn2.BackgroundImage")));
+            this.nextbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.nextbtn2.Location = new System.Drawing.Point(734, 10);
             this.nextbtn2.Name = "nextbtn2";
-            this.nextbtn2.Size = new System.Drawing.Size(40, 30);
+            this.nextbtn2.Size = new System.Drawing.Size(30, 30);
             this.nextbtn2.TabIndex = 16;
-            this.nextbtn2.Text = ">";
             this.nextbtn2.UseVisualStyleBackColor = true;
             this.nextbtn2.Visible = false;
             this.nextbtn2.Click += new System.EventHandler(this.nextbtn2_Click);
             // 
             // previousbtn2
             // 
-            this.previousbtn2.Location = new System.Drawing.Point(471, 10);
+            this.previousbtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousbtn2.BackgroundImage")));
+            this.previousbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.previousbtn2.Location = new System.Drawing.Point(531, 10);
             this.previousbtn2.Name = "previousbtn2";
-            this.previousbtn2.Size = new System.Drawing.Size(40, 30);
+            this.previousbtn2.Size = new System.Drawing.Size(30, 30);
             this.previousbtn2.TabIndex = 15;
-            this.previousbtn2.Text = "<";
             this.previousbtn2.UseVisualStyleBackColor = true;
             this.previousbtn2.Visible = false;
             this.previousbtn2.Click += new System.EventHandler(this.previousbtn2_Click);
             // 
             // firstbtn2
             // 
-            this.firstbtn2.Location = new System.Drawing.Point(425, 10);
+            this.firstbtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("firstbtn2.BackgroundImage")));
+            this.firstbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.firstbtn2.Location = new System.Drawing.Point(495, 10);
             this.firstbtn2.Name = "firstbtn2";
-            this.firstbtn2.Size = new System.Drawing.Size(40, 30);
+            this.firstbtn2.Size = new System.Drawing.Size(30, 30);
             this.firstbtn2.TabIndex = 14;
-            this.firstbtn2.Text = "<<";
             this.firstbtn2.UseVisualStyleBackColor = true;
             this.firstbtn2.Visible = false;
             this.firstbtn2.Click += new System.EventHandler(this.firstbtn2_Click);
             // 
             // gobtn2
             // 
-            this.gobtn2.Location = new System.Drawing.Point(648, 10);
+            this.gobtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gobtn2.BackgroundImage")));
+            this.gobtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.gobtn2.Location = new System.Drawing.Point(698, 10);
             this.gobtn2.Name = "gobtn2";
-            this.gobtn2.Size = new System.Drawing.Size(60, 30);
+            this.gobtn2.Size = new System.Drawing.Size(30, 30);
             this.gobtn2.TabIndex = 13;
-            this.gobtn2.Text = "跳转";
             this.gobtn2.UseVisualStyleBackColor = true;
             this.gobtn2.Visible = false;
             this.gobtn2.Click += new System.EventHandler(this.gobtn2_Click);
             // 
             // rownumtxt2
             // 
-            this.rownumtxt2.Location = new System.Drawing.Point(517, 10);
+            this.rownumtxt2.Location = new System.Drawing.Point(567, 10);
             this.rownumtxt2.MaxLength = 9;
             this.rownumtxt2.Name = "rownumtxt2";
             this.rownumtxt2.PlaceholderText = "请输入行号";
@@ -2320,7 +2335,6 @@ namespace QTSuperMarket
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button namesearchbtn;
-        private System.Windows.Forms.TextBox namesearchtxt;
         private System.Windows.Forms.MonthCalendar monthCalendar2;
         private System.Windows.Forms.Button hidegroupbox4btn;
         private System.Windows.Forms.RadioButton haveQgprd;
@@ -2329,7 +2343,7 @@ namespace QTSuperMarket
         private System.Windows.Forms.RadioButton noQgprd;
         private System.Windows.Forms.RadioButton unoverduerd;
         private System.Windows.Forms.RadioButton overduerd;
-        private System.Windows.Forms.Button extimesearchbtn;
         private System.Windows.Forms.Button exstatesearchbtn;
+        private System.Windows.Forms.ComboBox insertPersoncob;
     }
 }

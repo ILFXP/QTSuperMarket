@@ -48,6 +48,10 @@ namespace QTSuperMarket
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -216,11 +220,40 @@ namespace QTSuperMarket
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Location = new System.Drawing.Point(269, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(491, 258);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "CS调试";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 26);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(94, 29);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "查询";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(106, 26);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(379, 27);
+            this.textBox7.TabIndex = 2;
+            // 
             // tiaoshi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 286);
+            this.ClientSize = new System.Drawing.Size(772, 285);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button5);
@@ -242,6 +275,8 @@ namespace QTSuperMarket
             this.Controls.Add(this.label1);
             this.Name = "tiaoshi";
             this.Text = "tiaoshi";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +303,8 @@ namespace QTSuperMarket
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button6;
     }
 }

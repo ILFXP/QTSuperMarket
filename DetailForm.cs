@@ -73,5 +73,10 @@ namespace QTSuperMarket
             bf.str = textBox1.Text;
             bf.ShowDialog();
         }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            this.bigPicbtn.PerformClick();
+        }
     }
 }

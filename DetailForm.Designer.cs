@@ -29,6 +29,7 @@ namespace QTSuperMarket
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -70,6 +71,7 @@ namespace QTSuperMarket
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // label1
             // 
@@ -299,11 +301,12 @@ namespace QTSuperMarket
             // 
             // bigPicbtn
             // 
-            this.bigPicbtn.Location = new System.Drawing.Point(247, 395);
+            this.bigPicbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bigPicbtn.BackgroundImage")));
+            this.bigPicbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bigPicbtn.Location = new System.Drawing.Point(277, 395);
             this.bigPicbtn.Name = "bigPicbtn";
-            this.bigPicbtn.Size = new System.Drawing.Size(60, 30);
+            this.bigPicbtn.Size = new System.Drawing.Size(30, 30);
             this.bigPicbtn.TabIndex = 29;
-            this.bigPicbtn.Text = "放大";
             this.bigPicbtn.UseVisualStyleBackColor = true;
             this.bigPicbtn.Click += new System.EventHandler(this.bigPicbtn_Click);
             // 

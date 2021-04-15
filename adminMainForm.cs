@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -22,6 +23,8 @@ namespace QTSuperMarket
         public int stockCount = 0;
         //当前选中项
         public int currentSelect = 0;
+        //当前选中页
+        public int currentSelectPage = 0;
         //编辑的员工工号
         public string editpersonNum = "";
         //要修改的员工姓名
@@ -37,6 +40,7 @@ namespace QTSuperMarket
         //库存的当前状态
         public string stockExState = "";
         public string insertDate2 = "";
+
         private void adminMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             /*
@@ -125,7 +129,7 @@ namespace QTSuperMarket
         private void adminMainForm_Load(object sender, EventArgs e)
         {
             /*临时使用*/
-            Settings1.Default.nowUser = "柴世嘉";
+            Settings1.Default.nowUser = "测试";
             Settings1.Default.Save();
 
             //调节控件属性
@@ -145,14 +149,14 @@ namespace QTSuperMarket
             dataGridView1.RowTemplate.Height = 207;
             //调节dateGridView2的视觉效果
             
-            dataGridView2.Columns[0].Width = 148;
-            dataGridView2.Columns[1].Width = 200;
+            dataGridView2.Columns[0].Width = 60;
+            dataGridView2.Columns[1].Width = 300;
             dataGridView2.Columns[2].Width = 160;
             dataGridView2.Columns[3].Width = 160;
             dataGridView2.Columns[4].Width = 160;
             dataGridView2.Columns[5].Width = 160;
-            dataGridView2.Columns[6].Width = 220;
-            dataGridView2.RowTemplate.Height = 207;
+            dataGridView2.Columns[6].Width = 170;
+            dataGridView2.RowTemplate.Height = 86;
 
             //写入日志
             writeLog.writeProgramLog(string.Concat("使用管理员账号使用系统，", "使用人为：", Settings1.Default.adminName));
@@ -174,6 +178,7 @@ namespace QTSuperMarket
             stockBrandcomBox();
             noSort();
             groupBox4Hide();
+            insertPersoncomBox();
 
             /*
              * 判断之前是否有员工使用过
@@ -186,9 +191,9 @@ namespace QTSuperMarket
                  */
                 byte[] imagebytes = null;
                 string personNum = textBox3.Text;
-                SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-                con.Open();
-                SqlCommand com = new SqlCommand("select personPhoto from personInf where personNum = '" + personNum + "'", con);
+                            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+                            con.Open();
+                            SqlCommand com = new SqlCommand("select personPhoto from personInf where personNum = '" + personNum + "'", con);
                 SqlDataReader dr = com.ExecuteReader();
                 while (dr.Read())
                 {
@@ -228,8 +233,6 @@ namespace QTSuperMarket
             ofd.Dispose();
         }
 
-        
-        //方法：选中一个另一个取消选中
         private void insertMalerad_CheckedChanged(object sender, EventArgs e)
         {
             if (insertMalerad.Checked == true) insertFemalerad.Checked = false;
@@ -1486,13 +1489,13 @@ namespace QTSuperMarket
             rownumtxt2.Visible = true;
             gobtn2.Visible = true;
         }
+        
         //方法：执行查询
         private void stocksearchbtn_Click(object sender, EventArgs e)
         {
             /*
              * 支持模糊查询
              */
-            groupBox4Hide();
             rownumtxt2.Text = "0";
             string search = searchtxt2.Text.Trim();
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
@@ -1505,20 +1508,17 @@ namespace QTSuperMarket
                 SqlCommand com2 = new SqlCommand("select count(*) from stockInf", con);
                 countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
                 stockCount = Convert.ToInt32(com2.ExecuteScalar());
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "stockInf");
+                dataGridView2.DataSource = ds.Tables["stockInf"];
+                con.Close();
                 if (stockCount == 0)
-                {
                     rownumtxt2.Text = "0";
-                    con.Close();
-                }
                 else
                 {
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    SqlCommandBuilder bu = new SqlCommandBuilder(da);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                     rownumtxt2.Text = "1";
                 }
             }
@@ -1530,24 +1530,17 @@ namespace QTSuperMarket
                 SqlCommand com2 = new SqlCommand("select count(*) from stockInf where stockName like '%" + search + "%'", con);
                 countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
                 stockCount = Convert.ToInt32(com2.ExecuteScalar());
-                if(stockCount == 0)
-                {
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "stockInf");
+                dataGridView2.DataSource = ds.Tables["stockInf"];
+                con.Close();
+                if (stockCount == 0)
                     rownumtxt2.Text = "0";
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                }
                 else
                 {
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds,"stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                     rownumtxt2.Text = "1";
                 }
             }
@@ -1730,7 +1723,6 @@ namespace QTSuperMarket
                     else
                         MessageBox.Show("仅支持数字输入，请检查后重试", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
         //方法：为dateGridView2绘制行索引
@@ -1878,11 +1870,46 @@ namespace QTSuperMarket
 
             }
         }
-
+        private void insertPersoncomBox()
+        {
+            //将添加人填入按姓名查询
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com = new SqlCommand("select insertPerson from stockInf", con);
+            com.ExecuteNonQuery();
+            SqlDataReader rd = com.ExecuteReader();
+            List<string> list1 = new List<string>();
+            if (rd.HasRows)
+            {
+                while (rd.Read())
+                {
+                    //string[] strs = new string[] { "A", "A", "A", "A", "B", "A", "C", "B" };
+                    list1.Add(rd[0].ToString());
+                    for (int i = 0; i < list1.Count; i++)
+                    {
+                        for (int j = list1.Count - 1; j > i; j--)
+                        {
+                            if (list1[i] == list1[j])
+                            {
+                                list1.RemoveAt(j);
+                            }
+                        }
+                    }
+                }
+                for (int k = 0; k < list1.Count; k++)
+                {
+                    insertPersoncob.Items.Add(list1[k]);
+                }
+                insertPersoncob.SelectedIndex = 0;
+            }
+            rd.Close();
+            con.Close();
+        }
         //方法：按条件查询
         private void searchIfbtn_Click(object sender, EventArgs e)
         {
             groupBox4.Visible = true;
+            searchIfbtn.Enabled = false;
         }
         //方法：变更日期时查询
         private void monthCalendar2_DateSelected(object sender, DateRangeEventArgs e)
@@ -1897,87 +1924,35 @@ namespace QTSuperMarket
             SqlCommand com2 = new SqlCommand("select count(*) from stockInf where insertDate2 = '" + insertDate2 + "'", con);
             countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
             stockCount = Convert.ToInt32(com2.ExecuteScalar());
+            SqlDataAdapter da = new SqlDataAdapter(com1);
+            DataSet ds = new DataSet();
+            ds.Clear();
+            da.Fill(ds, "stockInf");
+            dataGridView2.DataSource = ds.Tables["stockInf"];
+            con.Close();
             if (stockCount == 0)
-            {
                 rownumtxt2.Text = "0";
-                SqlDataAdapter da = new SqlDataAdapter(com1);
-                DataSet ds = new DataSet();
-                ds.Clear();
-                da.Fill(ds, "stockInf");
-                dataGridView2.DataSource = ds.Tables["stockInf"];
-                con.Close();
-                return;
-            }
             else
             {
-                SqlDataAdapter da = new SqlDataAdapter(com1);
-                DataSet ds = new DataSet();
-                ds.Clear();
-                da.Fill(ds, "stockInf");
-                dataGridView2.DataSource = ds.Tables["stockInf"];
-                con.Close();
+                dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                 rownumtxt2.Text = "1";
             }
-        }
-
-        private void namesearchbtn_Click(object sender, EventArgs e)
-        {
-            rownumtxt2.Text = "0";
-            string search = namesearchtxt.Text.Trim();
-            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
-            con.Open();
-            Regex nameCheck = new Regex("^[\u4e00-\u9fa5]{0,}$");
-            if (nameCheck.IsMatch(namesearchtxt.Text.Trim()))
-            {
-                visiblestate1();
-                SqlCommand com1 = new SqlCommand("select stockId,stockImage,stockName,stockNum2,stockDom,stockExDate,stockExtime1,stockExState from stockInf where insertPerson like '%" + search + "%'", con);
-                SqlCommand com2 = new SqlCommand("select count(*) from stockInf where insertPerson like '%" + search + "%'", con);
-                countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
-                stockCount = Convert.ToInt32(com2.ExecuteScalar());
-                if (stockCount == 0)
-                {
-                    rownumtxt2.Text = "0";
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                }
-                else
-                {
-                    groupBox4Hide();
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                    rownumtxt2.Text = "1";
-                }
-            }
-            else
-            {
-                MessageBox.Show("您输入的姓名格式错误，请检查后重试！","提示",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                con.Close();
-                namesearchtxt.Text = "";
-                return;
-
-            }
+                
         }
 
         private void hidegroupbox4btn_Click(object sender, EventArgs e)
         {
             groupBox4Hide();
+            searchIfbtn.Enabled = true;
         }
 
-
+        //按照有无保质期查询
         private void qgpsearchbtn_Click(object sender, EventArgs e)
         {
+            visiblestate1();
             rownumtxt2.Text = "0";
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
-            visiblestate1();
             if (haveQgprd.Checked == true)
             {
                 string search = "无保质期";
@@ -1985,25 +1960,17 @@ namespace QTSuperMarket
                 SqlCommand com2 = new SqlCommand("select count(*) from stockInf where stockQgp2 != '" + search + "'", con);
                 countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
                 stockCount = Convert.ToInt32(com2.ExecuteScalar());
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "stockInf");
+                dataGridView2.DataSource = ds.Tables["stockInf"];
+                con.Close();
                 if (stockCount == 0)
-                {
                     rownumtxt2.Text = "0";
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                }
                 else
                 {
-                    groupBox4Hide();
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                     rownumtxt2.Text = "1";
                 }
             }
@@ -2014,36 +1981,29 @@ namespace QTSuperMarket
                 SqlCommand com2 = new SqlCommand("select count(*) from stockInf where stockQgp2 = '" + search + "'", con);
                 countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
                 stockCount = Convert.ToInt32(com2.ExecuteScalar());
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "stockInf");
+                dataGridView2.DataSource = ds.Tables["stockInf"];
+                con.Close();
                 if (stockCount == 0)
-                {
                     rownumtxt2.Text = "0";
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                }
                 else
                 {
-                    groupBox4Hide();
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                     rownumtxt2.Text = "1";
                 }
             }
         }
 
+        //按照过期状态查询
         private void exstatesearchbtn_Click(object sender, EventArgs e)
         {
+            visiblestate1();
             rownumtxt2.Text = "0";
             SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
             con.Open();
-            visiblestate1();
             if (overduerd.Checked == true)
             {
                 string search = "已过期";
@@ -2051,25 +2011,17 @@ namespace QTSuperMarket
                 SqlCommand com2 = new SqlCommand("select count(*) from stockInf where stockExState = '" + search + "'", con);
                 countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
                 stockCount = Convert.ToInt32(com2.ExecuteScalar());
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "stockInf");
+                dataGridView2.DataSource = ds.Tables["stockInf"];
+                con.Close();
                 if (stockCount == 0)
-                {
                     rownumtxt2.Text = "0";
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                }
                 else
                 {
-                    groupBox4Hide();
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                     rownumtxt2.Text = "1";
                 }
             }
@@ -2080,30 +2032,23 @@ namespace QTSuperMarket
                 SqlCommand com2 = new SqlCommand("select count(*) from stockInf where stockExState = '" + search + "'", con);
                 countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
                 stockCount = Convert.ToInt32(com2.ExecuteScalar());
+                SqlDataAdapter da = new SqlDataAdapter(com1);
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds, "stockInf");
+                dataGridView2.DataSource = ds.Tables["stockInf"];
+                con.Close();
                 if (stockCount == 0)
-                {
                     rownumtxt2.Text = "0";
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
-                }
                 else
                 {
-                    groupBox4Hide();
-                    SqlDataAdapter da = new SqlDataAdapter(com1);
-                    DataSet ds = new DataSet();
-                    ds.Clear();
-                    da.Fill(ds, "stockInf");
-                    dataGridView2.DataSource = ds.Tables["stockInf"];
-                    con.Close();
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
                     rownumtxt2.Text = "1";
                 }
             }
         }
 
+        //双击打开详情窗口
         private void dataGridView2_DoubleClick(object sender, EventArgs e)
         {
             if(stockCount == 0)
@@ -2120,5 +2065,25 @@ namespace QTSuperMarket
                 df.ShowDialog();
             }
         }
+        
+        //按添加人姓名查询
+        private void namesearchbtn_Click(object sender, EventArgs e)
+        {
+            visiblestate1();
+            string search = insertPersoncob.SelectedItem.ToString();
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=QTSuperMarket;Integrated Security=True");
+            con.Open();
+            SqlCommand com1 = new SqlCommand("select stockId,stockImage,stockName,stockNum2,stockDom,stockExDate,stockExtime1,stockExState from stockInf where insertPerson = '" + search + "'", con);
+            SqlCommand com2 = new SqlCommand("select count(*) from stockInf where insertPerson = '" + search + "'", con);
+            countlabel2.Text = "共查询到" + com2.ExecuteScalar() + "条数据";
+            stockCount = Convert.ToInt32(com2.ExecuteScalar());
+            SqlDataAdapter da = new SqlDataAdapter(com1);
+            DataSet ds = new DataSet();
+            ds.Clear();
+            da.Fill(ds, "stockInf");
+            dataGridView2.DataSource = ds.Tables["stockInf"];
+            con.Close();
+        }
+
     }
 }

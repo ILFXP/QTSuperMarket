@@ -18,6 +18,8 @@ namespace QTSuperMarket
             //Application.Run(new GuideForm());
             //Application.Run(new LoginForm());
             //Application.Run(new Loading());
+            //Application.Run(new workerMainForm());
+            //Application.Run(new tiaoshi());
         }
     }
 }
